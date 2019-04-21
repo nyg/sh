@@ -1,0 +1,38 @@
+#!/usr/bin/env sh
+
+OS=$(uname)
+
+if [ "$OS" = FreeBDS ] ; then
+    alias l='ls -AFGhl'
+elif [ "$OS" = Darwin ] ; then
+    alias ll='LC_COLLATE=C gls -AFl --color=auto --group-directories-first --si'
+    alias l='exa -lFag --group-directories-first --time-style=long-iso'
+elif [ "$OS" = OpenBSD ] ; then
+    alias l="colorls -FlAGhT"
+else
+    alias l='LC_COLLATE=C ls -lAFh --group-directories-first'
+fi
+
+# Utilities
+alias tree='tree -aCF --dirsfirst -I .git'
+alias c='clear;clear'
+alias d='du -hd1'
+alias df='df -h'
+alias ..='cd ..'
+alias halt='sudo shutdown -h now'
+
+# Base64
+alias b64='base64 <<< '
+alias d64='base64 -D <<< '
+
+# md5
+alias md5='md5sum'
+
+# Git
+alias gs='git status'
+alias gc='git commit -m'
+alias gp='git push'
+alias gb='git branch -a'
+alias gd='git diff'
+alias gds='git diff --staged'
+alias gpm='git pull upstream master'
