@@ -1,4 +1,6 @@
 #!/usr/bin/env sh
+#
+# Usage: curl https://git.sr.ht/~nyg/sh/blob/master/bootstrap.sh | sh
 
 #
 # Step 1: setup the .ssh directory
