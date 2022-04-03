@@ -4,12 +4,6 @@ set -eu
 
 . "$HOME/.$USER-sh/common.sh"
 
-if is_installed curl
-then
-    echo curl is already installed
-    exit
-fi
-
 if is_os Darwin
 then
     brew install curl
