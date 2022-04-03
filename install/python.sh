@@ -27,6 +27,7 @@ then
     echo Installing pyenv…
     curl https://pyenv.run | bash
 
+    echo Setting up pyenv…
     eval "$(pyenv init --path)"
     eval "$(pyenv init -)"
 
