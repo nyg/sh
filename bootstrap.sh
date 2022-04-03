@@ -22,7 +22,7 @@ add_sudo_group()
         if groups | grep -v sudo >/dev/null
         then
             echo Adding "$USER" to sudo group, root password required
-            su root -c "usermod -aG sudo $USER"
+            su -l root -c "usermod -aG sudo $USER"
         fi
     fi
 }
