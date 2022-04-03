@@ -5,3 +5,8 @@ is_installed()
 {
     which "$1" >/dev/null
 }
+
+is_os()
+{
+    [ "$(uname)" = "$1" ]
+}
