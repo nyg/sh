@@ -23,6 +23,8 @@ add_sudo_group()
         then
             echo Adding "$USER" to sudo group, root password required
             su -l root -c "usermod -aG sudo $USER"
+            echo Please log out for the change to take effect
+            exit 0
         fi
     fi
 }
