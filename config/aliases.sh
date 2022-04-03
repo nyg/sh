@@ -1,5 +1,4 @@
 OS=`uname`
-USR=`whoami`
 
 # Utilities
 alias c="clear;clear"
@@ -67,13 +66,13 @@ alias d64='base64 -D <<< '
 
 #
 # OS Specific
-if [ "$OS" = 'OpenBSD' ]
+if [ "$OS" = OpenBSD ]
 then
     alias l="colorls -FlAGhT"
 elif [ "$OS" = FreeBDS ]
 then
     alias l='ls -FlAGh'
-elif [ "$OS" = 'Darwin' ]
+elif [ "$OS" = Darwin ]
 then
     alias ll="LC_COLLATE=C gls -AFl --color=auto --group-directories-first --si"
     alias l="exa -lFag --group-directories-first --time-style=long-iso"
