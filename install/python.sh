@@ -18,12 +18,17 @@ then
                         libncursesw5-dev xz-utils tk-dev libxml2-dev           \
                         libxmlsec1-dev libffi-dev liblzma-dev
 
-    echo Sourcing pyenv env vars…
-    . "$HOME/.$USER-sh/config/pyenv.sh"
+    export PYENV_ROOT="$HOME/.pyenv"
+    export PATH="$PYENV_ROOT/bin:$PATH"
 
     echo Installing curl…
     . "$HOME/.$USER-sh/install/curl.sh"
+
+    echo Installing pyenv…
     curl https://pyenv.run | bash
+
+    eval "$(pyenv init --path)"
+    eval "$(pyenv init -)"
 
     for v in 2 3 ; do
         echo Installing version $v
