@@ -46,6 +46,12 @@ then
             fi
         fi
     fi
+
+    # Unknown
+    else
+        echo Unknown OS, aborting… >&2
+        exit 1
+    fi
 fi
 
 #
