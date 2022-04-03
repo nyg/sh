@@ -1,3 +1,11 @@
+#!/usr/bin/env sh
+#
+# The goal of this script is to clone the repo in $HOME/.$USER-sh.
+#
+# Usage:
+#   curl https://git.sr.ht/~nyg/sh/blob/master/bootstrap.sh | sh
+#   wget -q -O - https://git.sr.ht/~nyg/sh/blob/master/bootstrap.sh | sh
+
 set -eu
 
 # Checks if the given software is installed.
@@ -45,7 +53,6 @@ then
                 sudo apt install git
             fi
         fi
-    fi
 
     # Unknown
     else
