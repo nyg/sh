@@ -8,7 +8,7 @@ if is_os Darwin
 then
     echo Installing dependencies…
     xcode-select --install
-    brew install pyenv openssl readline sqlite3 xz zlib
+    brew install openssl readline sqlite3 xz zlib pyenv
 elif is_os Linux && is_installed apt
 then
     echo Installing dependencies…
@@ -26,20 +26,22 @@ then
 
     echo Installing pyenv…
     curl https://pyenv.run | bash
-
-    echo Setting up pyenv…
-    eval "$(pyenv init --path)"
-    eval "$(pyenv init -)"
-
-    for v in 2 3 ; do
-        echo Installing version $v
-        last_version=$(pyenv install -l | grep "^\s*$v\.\d*\.\d*$"| tail -1)
-        pyenv install $last_version
-    done
-
-    pyenv rehash
-    pyenv global $last_version
 else
     echo Could not install python >&2
     exit 1
 fi
+
+echo Setting up pyenv shims path…
+eval "$(pyenv init --path)"
+echo Init pyenv…
+eval "$(pyenv init -)"
+
+for v in 2 3
+do
+    echo Installing version ${v}…
+    last_version=$(pyenv install -l | grep -P "^\s*$v\.\d*\.\d*$"| tail -1)
+    pyenv install "$last_version"
+done
+
+pyenv rehash
+pyenv global "$last_version"
