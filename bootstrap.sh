@@ -57,7 +57,7 @@ then
                 add_sudo_group
 
                 echo Installing git…
-                sudo apt install git
+                sudo apt install -y git
             fi
         else
             echo Unknown package manager, aborting… >&2
