@@ -4,9 +4,9 @@ set -eu
 
 . "$HOME/.$USER-sh/common.sh"
 
-# also check for linux?
-if ! is_installed apt
+if is_os Linux && is_installed apt
 then
+    sudo apt update
     sudo apt install -y expect
 fi
 
