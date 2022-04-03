@@ -1,4 +1,6 @@
-OS=`uname`
+#!/usr/bin/env sh
+
+OS=$(uname)
 
 # Utilities
 alias c="clear;clear"
@@ -28,8 +30,8 @@ alias gd="git diff"
 alias gds="git diff --staged"
 alias gpp="git pull -p"
 
-function gh() {
-    URL=`git remote get-url origin | sed -E 's/^git@|\.git$//g' | sed 's/github.com:/github.com\//'`
+gh() {
+    URL=$(git remote get-url origin | sed -E 's/^git@|\.git$//g' | sed 's/github.com:/github.com\//')
     open "https://$URL"
 }
 
@@ -52,9 +54,9 @@ alias dcbu="dcb && dcu"
 alias notes="atom /Users/user/Documents/dev/misc/cs-notes"
 
 # OpenSSL
-function sha() {
-    echo -n $2 | openssl dgst -sha$1
-}
+# sha() {
+#     echo -n "$2" | openssl dgst -sha"$1"
+# }
 
 # md5
 alias md5='md5sum'
