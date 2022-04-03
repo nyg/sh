@@ -1,12 +1,12 @@
 set -eu
 
-# checks if the given software is installed
+# Checks if the given software is installed.
 is_installed()
 {
     which "$1" >/dev/null
 }
 
-# add user to sudo group if necessary
+# Adds user to sudo group if necessary.
 add_sudo_group()
 {
     if [ "$USER" != root ]
@@ -20,8 +20,8 @@ add_sudo_group()
 }
 
 #
-# Install git if necessary
-if is_installed git
+# Install git if necessary.
+if ! is_installed git
 then
     echo Installing git…
     OS=$(uname)
@@ -49,7 +49,7 @@ then
 fi
 
 #
-# Clone the repo into $HOME/.$USER-sh
+# Clone the repo into `$HOME/.$USER-sh'.
 git clone https://git.sr.ht/~nyg/sh "$HOME"/."$USER"-sh
 
 #
