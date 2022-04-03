@@ -31,13 +31,15 @@ add_sudo_group()
 # Install git if necessary.
 if ! is_installed git
 then
-    echo Installing git…
     OS=$(uname)
 
     # macOS
     if [ "$OS" = Darwin ]
     then
+        echo Installing brew…
         /usr/bin/ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"
+
+        echo Installing git…
         brew install git
 
     # Linux
@@ -47,11 +49,17 @@ then
         then
             if [ -w /var/lib/dpkg/lock-frontend ]
             then
+                echo Installing git…
                 apt install git
             else
                 add_sudo_group
+
+                echo Installing git…
                 sudo apt install git
             fi
+        else
+            echo Unknown package manager, aborting… >&2
+            exit 1
         fi
 
     # Unknown
