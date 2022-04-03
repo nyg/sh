@@ -3,8 +3,8 @@
 # The goal of this script is to clone the repo in $HOME/.$USER-sh.
 #
 # Usage:
-#   curl https://git.sr.ht/~nyg/sh/blob/master/bootstrap.sh | sh
-#   wget -q -O - https://git.sr.ht/~nyg/sh/blob/master/bootstrap.sh | sh
+#   sh <(curl -s https://git.sr.ht/~nyg/sh/blob/master/bootstrap.sh)
+#   sh <(wget -q -O - https://git.sr.ht/~nyg/sh/blob/master/bootstrap.sh)
 
 set -eu
 
@@ -22,7 +22,7 @@ add_sudo_group()
         if groups | grep -v sudo >/dev/null
         then
             echo Adding "$USER" to sudo group, root password required
-            su -c "usermod -aG sudo $USER" root
+            su root -c "usermod -aG sudo $USER"
         fi
     fi
 }
