@@ -40,8 +40,8 @@ for v in 2 3
 do
     echo Installing version ${v}…
     last_version=$(pyenv install -l | grep -P "^\s*$v\.\d*\.\d*$"| tail -1)
-    pyenv install "$last_version"
+    pyenv install $last_version
 done
 
 pyenv rehash
-pyenv global "$last_version"
+pyenv global $last_version
