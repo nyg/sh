@@ -43,5 +43,8 @@ do
     pyenv install $last_version
 done
 
+echo Finishing setup…
 pyenv rehash
 pyenv global $last_version
+
+echo Done, please restart shell
