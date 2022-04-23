@@ -31,21 +31,27 @@ add_sudo_group()
 
 #
 # Install git if necessary.
-if ! is_installed git
+# Note: on macOS, the git command is present but calling it will prompt a GUI to
+#       install the Command Line Tools. Installing brew will do that in a silent
+#       manner.
+
+OS=$(uname)
+
+# macOS
+if [ "$OS" = Darwin ]
 then
-    OS=$(uname)
+    echo Installing brew…
+    /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
 
-    # macOS
-    if [ "$OS" = Darwin ]
-    then
-        echo Installing brew…
-        /usr/bin/ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"
+    echo Installing git…
+    brew install git
 
-        echo Installing git…
-        brew install git
+    echo Done!
 
-    # Linux
-    elif [ "$OS" = Linux ]
+# other OSes
+elif ! is_installed git
+then
+    if [ "$OS" = Linux ]
     then
         if is_installed apt
         then
@@ -58,17 +64,19 @@ then
 
                 echo Installing git…
                 sudo apt install -y git
+
+                echo Done!
             fi
         else
             echo Unknown package manager, aborting… >&2
             exit 1
         fi
-
-    # Unknown
     else
         echo Unknown OS, aborting… >&2
         exit 1
     fi
+else
+    echo Git is installed
 fi
 
 #
