@@ -4,11 +4,14 @@ set -eu
 
 . "$HOME/.$USER-sh/common.sh"
 
+export PYENV_ROOT="$HOME/.pyenv"
+export PATH="$PYENV_ROOT/bin:$PATH"
+
 if is_os Darwin
 then
-    echo Installing dependencies…
-    xcode-select --install
-    brew install openssl readline sqlite3 xz zlib pyenv
+    echo Installing pyenv…
+    brew install pyenv
+
 elif is_os Linux && is_installed apt
 then
     echo Installing dependencies…
@@ -17,9 +20,6 @@ then
                         libreadline-dev libsqlite3-dev wget curl llvm          \
                         libncursesw5-dev xz-utils tk-dev libxml2-dev           \
                         libxmlsec1-dev libffi-dev liblzma-dev
-
-    export PYENV_ROOT="$HOME/.pyenv"
-    export PATH="$PYENV_ROOT/bin:$PATH"
 
     echo Installing curl…
     . "$HOME/.$USER-sh/install/curl.sh"
@@ -38,13 +38,24 @@ eval "$(pyenv init -)"
 
 for v in 2 3
 do
-    echo Installing version ${v}…
-    last_version=$(pyenv install -l | grep -P "^\s*$v\.\d*\.\d*$"| tail -1)
-    pyenv install $last_version
+    if is_os Darwin
+    then
+        last_version=$(pyenv install -l | grep -e "^\s*$v\.\d*\.\d*$" | tail -1)
+    else
+        last_version=$(pyenv install -l | grep -P "^\s*$v\.\d*\.\d*$" | tail -1)
+    fi
+
+    echo Installing version ${last_version}…
+    pyenv install ${last_version// /}
 done
 
 echo Finishing setup…
 pyenv rehash
 pyenv global $last_version
 
-echo Done, please restart shell
+echo config/pyenv.sh needs to be sourced, enter shell rc file in $HOME:
+read rcfile
+echo "\n. $HOME/.$USER-sh/config/pyenv.sh" >> $HOME/$rcfile
+exec $SHELL
+
+echo Done!
