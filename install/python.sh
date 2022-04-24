@@ -55,7 +55,7 @@ pyenv global $last_version
 
 echo config/pyenv.sh needs to be sourced, enter shell rc file in $HOME:
 read rcfile
-echo '\n. $HOME/.$USER-sh/config/pyenv.sh' >> $HOME/$rcfile
-exec $SHELL
+echo '\n. $HOME/.$USER-sh/config/pyenv.sh' >> "$HOME/$rcfile"
+exec $SHELL -l
 
 echo Done!

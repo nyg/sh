@@ -1,5 +1,6 @@
 #!/usr/bin/env sh
 
+# probably not needed if installed with brew
 export PYENV_ROOT="$HOME/.pyenv"
 
 # add PYENV_ROOT/bin to PATH, not necessary for macOS if installed with brew
