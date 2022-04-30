@@ -28,5 +28,3 @@ brew list --cask > brew-installed-cask.txt
 
 # create archive
 tar -cf $bck_dir.tar $bck_dir
-
-# ln -s $HOME/.$USER-sh/config/ssh $HOME/.ssh/config
