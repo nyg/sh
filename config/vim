@@ -1,0 +1,19 @@
+" line numbers
+set number
+
+" show cursor position
+set ruler
+
+" indentation
+set smartindent
+
+" tabulation
+set expandtab
+set shiftwidth=4
+set softtabstop=4
+
+" syntax highlighter
+syntax on
+
+" viminfo location
+set viminfo+=n~/.vim/viminfo
