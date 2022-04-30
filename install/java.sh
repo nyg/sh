@@ -9,9 +9,7 @@ then
     echo Installing jenv…
     brew install jenv
 
-    echo Init jenv, loaded: $JENV_LOADED
-    eval "$(jenv init -)"
-    echo loaded: $JENV_LOADED
+    eval "$(jenv init - $(basename $SHELL))"
 
     # keeps JAVA_HOME up-to-date
     jenv enable-plugin export

@@ -1,0 +1,11 @@
+set Prompt %grn%T %red%L %blu%D
+set PromptTimeFormat %Y-%m-%d %H:%M
+
+set LogLevel 3
+set verbose true
+
+set ConsoleLogging true
+set SessionLogging true
+set TimestampOutput true
+
+clear -x

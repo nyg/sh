@@ -1,0 +1,10 @@
+[user]
+    name = nyg
+    email = nyg@users.noreply.github.com
+
+[alias]
+    co = checkout
+
+[core]
+    precomposeunicode = false
+    editor = vim

@@ -1,0 +1,9 @@
+/root/.msf4/logs/console.log {
+	missingok
+	notifempty
+	daily
+	olddir console-old
+	rotate -1
+	copytruncate
+	dateext
+}

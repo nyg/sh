@@ -2,6 +2,8 @@
 
 OS=$(uname)
 
+# TODO: check command exists before declaring aliases
+
 # Utilities
 alias c="clear;clear"
 alias cdc="cd;c"
@@ -13,6 +15,7 @@ alias ..="cd .."
 alias p='echo -e "${PATH//:/\\n}"'
 alias o='open .'
 alias typora='open -a Typora'
+alias diff='diff --color -y --suppress-common-lines'
 
 # Brew
 alias brewery="brew update && brew upgrade && brew cleanup"
@@ -65,6 +68,8 @@ alias md5='md5sum'
 alias b64='base64 <<< '
 alias d64='base64 -D <<< '
 
+# Metasploit
+alias msf='msfconsole -q'
 
 #
 # OS Specific
