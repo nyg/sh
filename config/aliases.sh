@@ -14,11 +14,7 @@ alias df='df -h'
 alias ..="cd .."
 alias p='echo -e "${PATH//:/\\n}"'
 alias o='open .'
-alias typora='open -a Typora'
 alias diff='diff --color -y --suppress-common-lines'
-
-# Brew
-alias brewery="brew update && brew upgrade && brew cleanup"
 
 # SVN
 alias ss="svn status"
@@ -83,4 +79,7 @@ elif [ "$OS" = Darwin ]
 then
     alias ll="LC_COLLATE=C gls -AFl --color=auto --group-directories-first --si"
     alias l="exa -lFag --group-directories-first --time-style=long-iso"
+
+    alias brewery="brew update && brew upgrade && brew cleanup"
+    alias typora='open -a Typora'
 fi
