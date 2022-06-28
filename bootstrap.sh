@@ -42,7 +42,7 @@ then
         if is_installed apt
         then
             echo Installing git…
-            su -l root -c "apt install -y git"
+            su -l root -c "apt update && apt install -y git"
             echo Done!
         else
             echo Unknown package manager, aborting… >&2
