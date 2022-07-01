@@ -1,0 +1,23 @@
+#!/usr/bin/env sh
+
+set -eu
+
+. "$HOME/.$USER-sh/common.sh"
+
+echo Installing nvm…
+
+if is_installed wget
+then
+    wget -qO- https://raw.githubusercontent.com/nvm-sh/nvm/v0.39.1/install.sh | bash
+elif is_installed curl
+then
+    curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.39.1/install.sh | bash
+else
+    echo Could not install nvm >&2
+    exit 1
+fi
+
+echo Installing latest node version…
+nvm install node
+
+echo Done!
