@@ -17,6 +17,10 @@ else
     exit 1
 fi
 
+echo Loading nvm…
+export NVM_DIR="$HOME/.nvm"
+[ -s "$NVM_DIR/nvm.sh" ] && . "$NVM_DIR/nvm.sh"
+
 echo Installing latest node version…
 nvm install node
 
