@@ -3,8 +3,6 @@
 # install software
 sudo apt install audacity
 sudo apt install wavsteg
-sudo apt install tree
-sudo apt install htop
 sudo apt install asciinema
 sudo apt install vim
 
