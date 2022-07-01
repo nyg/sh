@@ -33,7 +33,7 @@ EOF
 
     echo "Use commands mariadb (client) and mysqladmin (administration)."
 else
-    echo Could not install curl >&2
+    echo Could not install mariadb >&2
     exit 1
 fi
 
