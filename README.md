@@ -17,6 +17,8 @@ sh <(wget -q -O - https://git.sr.ht/~nyg/sh/blob/master/bootstrap.sh)
 ```
 On Debian, add /usr/sbin to path to get visudo.
 
+Move doc to cs-notes
+
 export LANG=en_US.UTF-8
 export LC_ALL=en_US.UTF-8
 export ICL="$HOME/Library/Mobile Documents/com~apple~CloudDocs/"
