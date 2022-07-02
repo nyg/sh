@@ -19,6 +19,8 @@ On Debian, add /usr/sbin to path to get visudo.
 
 Move doc to cs-notes
 
+Usefull soft linux: tree htop curl
+
 export LANG=en_US.UTF-8
 export LC_ALL=en_US.UTF-8
 export ICL="$HOME/Library/Mobile Documents/com~apple~CloudDocs/"
