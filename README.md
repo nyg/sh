@@ -25,6 +25,17 @@ export LANG=en_US.UTF-8
 export LC_ALL=en_US.UTF-8
 export ICL="$HOME/Library/Mobile Documents/com~apple~CloudDocs/"
 export PATH=$HOME/.$USER-sh/bin:$PATH
+export SAGE_ROOT="/usr/local/Caskroom/sage/9.4,1.2.2/SageMath-9-4.app/Contents/Frameworks/Sage.framework/Versions/9.4"
+export SAGE_LOCAL="$SAGE_ROOT/local"
+
+if [ "$OS" = 'Darwin' ]
+then
+    export PATH=/usr/local/bin:$PATH
+fi
+
+# custom binaries/scripts
+export PATH=$HOME/.$USER-sh/bin:$PATH
+```
 
 Files are divided in three categories:
 
@@ -32,6 +43,7 @@ Files are divided in three categories:
 * **config** files, as mentioned aboved
 * **env** files which usually modify env variables or need to be executed each time a new shell starts.
 
+```
 #
 # setup the .ssh directory
 # echo "Setup .ssh?"
