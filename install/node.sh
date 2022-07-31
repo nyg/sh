@@ -24,4 +24,6 @@ export NVM_DIR="$HOME/.nvm"
 echo Installing latest node version…
 nvm install node
 
+ln -s "$HOME/.$USER-sh/config/npmrc" "$HOME/.npmrc"
+
 echo Done!
