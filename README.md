@@ -12,15 +12,24 @@ sh <(curl -s https://git.sr.ht/~nyg/sh/blob/master/bootstrap.sh)
 sh <(wget -q -O - https://git.sr.ht/~nyg/sh/blob/master/bootstrap.sh)
 ```
 
+## Description
+
+Files are divided in three categories:
+
+* **install** files, which will install software as well as create symbolic links for eventual config files
+* **config** files, as mentioned aboved
+* **scripts** scripts
+
 ## TODO
 
-```
-On Debian, add /usr/sbin to path to get visudo.
+* Move doc to cs-notes
 
-Move doc to cs-notes
+### macOS
 
-Usefull soft linux: tree htop curl
+* backup: check which config can be added to git and symlinked
+* use Codium and LibreWolf
 
+```sh
 export LANG=en_US.UTF-8
 export LC_ALL=en_US.UTF-8
 export ICL="$HOME/Library/Mobile Documents/com~apple~CloudDocs/"
@@ -37,23 +46,7 @@ fi
 export PATH=$HOME/.$USER-sh/bin:$PATH
 ```
 
-Files are divided in three categories:
+### Debian
 
-* **install** files, which will install software as well as create symbolic links for eventual config files
-* **config** files, as mentioned aboved
-* **env** files which usually modify env variables or need to be executed each time a new shell starts.
-
-```
-#
-# setup the .ssh directory
-# echo "Setup .ssh?"
-# select yn in "Yes" "No"; do
-#     case $yn in
-#         Yes )
-#             read -p "Input folder whose content must be copied to .ssh:" folder
-#             cp "$folder"/* $HOME/.ssh
-#             echo Done!
-#         No ) exit;;
-#     esac
-# done
-```
+* On Debian, add /usr/sbin to path to get visudo.
+* Usefull soft linux: tree htop curl
