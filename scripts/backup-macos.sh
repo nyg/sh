@@ -15,62 +15,42 @@ mas list | sed -E 's/[ ]{2,}/;;;/g' | awk -F";;;" '{print "mas install " $2 }' >
 chmod u+x mas-install.sh
 
 # Brave Browser
-# TODO backup profiles and settings
-
-# CotEditor
-# TODO pref
-
-# Cryptowatch Desktop
-# TODO settings
+cp -R ~/Library/Application\ Support/BraveSoftware/Brave-Browser/{Default,Profile*} $bck_dir
 
 # Divvy
-# TODO settings
+cp ~/Library/Preferences/com.mizage.Divvy.plist $bck_dir
 
-# Docker
-# TODO settings ?
-
-# Electrum
-# TODO keys ?
-
-# copy Firefox profiles
+# Firefox
 cp -R ~/Library/Application\ Support/Firefox/Profiles $bck_dir/profiles
 
 # iTerm
-# Then restore from the iTerm Preferences panel
-cp ~/Library/Preferences/com.googlecode.iterm2.plist $bck_dir
-cp ~/Library/autojump/autojump.txt $bck_dir
+# To restore: General > Preferences > Load preferences from a custom folder or URL
+mkdir $bck_dir/iterm
+cp ~/Library/Preferences/com.googlecode.iterm2.plist $bck_dir/iterm
+cp ~/Library/autojump/autojump.txt $bck_dir/iterm
+cp ~/.zsh_history $bck_dir/iterm
 
 # Karabiner Elements
 cp ~/.config/karabiner/karabiner.json $bck_dir
 
-# Logi Options
-# TODO
-
 # Safari
 cp ~/Library/Safari/Bookmarks.plist $bck_dir
-# TODO preferences
-
-# Telegram
-# TODO preferences
 
 # Transmission
-# TODO preferences
+cp ~/Library/Preferences/org.m0k.transmission.plist $bck_dir
 
 # Typora
-# TODO preferences
+cp ~/Library/Preferences/abnerworks.Typora.plist $bck_dir
 
 # VSCode
 mkdir $bck_dir/vscode
 cp -R ~/.vscode $bck_dir/vscode/dotfolder
 cp -R ~/Library/Application\ Support/Code/User/snippets $bck_dir/vscode
-cp ~/Library/Application\ Support/Code/User/settings.json $bck_dir/vscode
-# TODO
+cp ~/Library/Application\ Support/Code/User/{settings,keybindings}.json $bck_dir/vscode
 
 # VLC
-# TODO preferences
+cp ~/Library/Preferences/org.videolan.vlc.plist $bck_dir
 
-# copy SSH keys
-cp -R ~/.ssh/*@* $bck_dir/ssh
 
 #
 # Homebrew
@@ -82,17 +62,18 @@ chmod u+x brew-install.sh
 brew list --cask | xargs -n1 echo brew install --cask > brew-cask-install.sh
 chmod u+x brew-cask-install.sh
 
+
 #
-# zsh & oh-my-zsh
+# Misc
 #
 
+# SSH keys
+cp -R ~/.ssh/*@* $bck_dir/ssh
 
-
-# cron ? zsh history, npmrc savexact, sandisk key
-
+# Custom hosts
 cat /etc/hosts | grep '# back-up' > hosts.txt
-# check which config can be added to git and symlinked
 
+# cron
 
 
 # create archive
