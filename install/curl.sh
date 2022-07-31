@@ -4,6 +4,8 @@ set -eu
 
 . "$HOME/.$USER-sh/common.sh"
 
+echo Installing curl…
+
 if is_os Darwin
 then
     brew install curl
@@ -15,3 +17,5 @@ else
     echo Could not install curl >&2
     exit 1
 fi
+
+echo Done!

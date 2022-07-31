@@ -23,5 +23,8 @@ else
     exit 1
 fi
 
+echo Setting up vim configuration files…
 mkdir -p "$HOME/.vim"
 ln -s "$HOME/.$USER-sh/config/vimrc" "$HOME/.vim/vimrc"
+
+echo Done!
