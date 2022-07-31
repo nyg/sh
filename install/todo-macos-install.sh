@@ -1,4 +1,3 @@
-
 # change default shell
 echo "/usr/local/bin/zsh" | sudo tee -a /etc/shells
 chsh -s /usr/local/bin/zsh
@@ -27,8 +26,3 @@ git clone --depth=1 https://github.com/romkatv/powerlevel10k.git $ZSH_CUSTOM/the
 # ssh
 mkdir $HOME/.ssh
 cp -R /Volumes/NYG4000/bck/ssh .ssh
-
-# install manuel de 1pwd et import de l'archive
-# copie des préférences de divvy
-
-cp /Volumes/NYG4000/bck/Bookmarks.plist Library/Safari/
