@@ -24,4 +24,4 @@ else
 fi
 
 mkdir -p "$HOME/.vim"
-ln -s "$HOME/.$USER-sh/config/vim" "$HOME/.vim/vimrc"
+ln -s "$HOME/.$USER-sh/config/vimrc" "$HOME/.vim/vimrc"
