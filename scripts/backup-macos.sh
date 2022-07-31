@@ -1,5 +1,7 @@
 #!/usr/bin/env sh
 
+set -eu
+
 bck_dir=backup-$(date "+%Y%m%d-%H%M%S")
 mkdir $bck_dir
 
@@ -7,7 +9,7 @@ mkdir $bck_dir
 # /Applications
 #
 
-# application list
+# List
 ls -1 /Applications > application-list.txt
 
 # App Store
@@ -73,8 +75,9 @@ cp -R ~/.ssh/*@* $bck_dir/ssh
 # Custom hosts
 cat /etc/hosts | grep '# back-up' > hosts.txt
 
-# cron
 
+#
+# Create archive
+#
 
-# create archive
 tar -cf $bck_dir.tar $bck_dir
