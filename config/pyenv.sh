@@ -1,5 +1,3 @@
-#!/usr/bin/env sh
-
 # probably not needed if installed with brew
 export PYENV_ROOT="$HOME/.pyenv"
 

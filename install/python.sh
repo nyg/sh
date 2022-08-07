@@ -49,13 +49,13 @@ do
     pyenv install ${last_version// /}
 done
 
-echo Finishing setup…
+echo Setting the last version as the global one…
 pyenv rehash
 pyenv global $last_version
 
-echo config/pyenv.sh needs to be sourced, enter shell rc file in $HOME:
-read rcfile
-echo '\n. $HOME/.$USER-sh/config/pyenv.sh' >> "$HOME/$rcfile"
+echo Linking pyenv.sh config/sh/pyenv.sh…
+ln -s "$HOME/.$USER-sh/config/pyenv.sh $HOME/.$USER-sh/config/sh"
+
 exec $SHELL -l
 
 echo Done!

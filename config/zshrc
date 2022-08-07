@@ -1,0 +1,9 @@
+source "$HOME/.$USER-sh/config/p10k/init.zsh"
+source "$HOME/.$USER-sh/config/omz/init.zsh"
+
+for $sh in "$HOME/.$USER-sh/config/sh/*.sh"
+do
+    source "$sh"
+done
+
+source "$HOME/.$USER-sh/config/p10k/config.zsh"

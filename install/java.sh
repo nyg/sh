@@ -33,9 +33,8 @@ then
         i=$((i+1))
     done
 
-    echo config/jenv.sh needs to be sourced, enter shell rc file in $HOME:
-    read rcfile
-    echo '\n. $HOME/.$USER-sh/config/jenv.sh' >> "$HOME/$rcfile"
+    echo Linking jenv.sh config/sh/jenv.sh…
+    ln -s "$HOME/.$USER-sh/config/jenv.sh $HOME/.$USER-sh/config/sh"
 
 else
     echo Unknown OS, aborting… >&2
