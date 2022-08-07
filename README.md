@@ -26,6 +26,7 @@ Files are divided in three categories:
 
 ### macOS
 
+* ps -p $$ | cut -d " " -f1 | xargs lsof -p
 * backup: check which config can be added to git and symlinked
 * use Codium and LibreWolf
 
@@ -39,6 +40,12 @@ export SAGE_LOCAL="$SAGE_ROOT/local"
 
 if [ "$OS" = 'Darwin' ]
 then
+    # https://zsh.sourceforge.io/Guide/zshguide02.html#l6
+    # https://zsh.sourceforge.io/Doc/Release/zsh_toc.html
+    # https://www.softec.lu/site/DevelopersCorner/MasteringThePathHelper
+    # https://unix.stackexchange.com/questions/22979/path-helper-and-zsh
+    # https://osxdaily.com/2010/05/06/speed-up-a-slow-terminal-by-clearing-log-files/
+    # https://github.com/yb66/path_helper
     export PATH=/usr/local/bin:$PATH
 fi
 
