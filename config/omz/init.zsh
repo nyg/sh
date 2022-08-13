@@ -10,4 +10,5 @@ zstyle ':omz:update' frequency 7
 
 plugins=(git autojump dirhistory)
 
+export ZSH_COMPDUMP="$ZSH/cache/zcompdump-$HOST-$ZSH_VERSION"
 source "$ZSH/oh-my-zsh.sh"

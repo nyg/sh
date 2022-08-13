@@ -23,6 +23,10 @@ Files are divided in three categories:
 ## TODO
 
 * Move doc to cs-notes
+* zsh
+  * fix zcompdump (is compinit invoked twice?)
+  * histfile
+  * zshdotdir
 
 ### macOS
 

@@ -34,7 +34,8 @@ then
     done
 
     echo Linking jenv.sh config/sh/jenv.sh…
-    ln -s "$HOME/.$USER-sh/config/jenv.sh $HOME/.$USER-sh/config/sh"
+    mkdir -p "$HOME/.$USER-sh/config/sh"
+    ln -s "$HOME/.$USER-sh/config/jenv.sh $HOME/.$USER-sh/config/sh/jenv.sh"
 
 else
     echo Unknown OS, aborting… >&2

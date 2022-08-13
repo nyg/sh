@@ -54,7 +54,8 @@ pyenv rehash
 pyenv global $last_version
 
 echo Linking pyenv.sh config/sh/pyenv.sh…
-ln -s "$HOME/.$USER-sh/config/pyenv.sh $HOME/.$USER-sh/config/sh"
+mkdir -p "$HOME/.$USER-sh/config/sh"
+ln -s "$HOME/.$USER-sh/config/pyenv.sh $HOME/.$USER-sh/config/sh/pyenv.sh"
 
 exec $SHELL -l
 
