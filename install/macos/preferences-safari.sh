@@ -1,11 +1,12 @@
 #!/usr/bin/env sh
 
+set -exu
+
 #
 # Preferences
 
 # General
-defaults write com.apple.Safari HomePage -string 'about:blank'
-defaults write com.apple.Safari OpenPrivateWindowWhenNotRestoringSessionAtLaunch -bool fasle
+defaults write com.apple.Safari OpenPrivateWindowWhenNotRestoringSessionAtLaunch -bool false
 defaults write com.apple.Safari NewWindowBehavior -int 1
 defaults write com.apple.Safari NewTabBehavior -int 1
 defaults write com.apple.Safari HistoryAgeInDaysLimit -int 365000
@@ -44,7 +45,7 @@ defaults write com.apple.Safari WebKitStorageBlockingPolicy -int 1
 defaults write com.apple.Safari WebKitPreferences.storageBlockingPolicy -int 1
 defaults write com.apple.Safari BlockStoragePolicy -int 2
 defaults write com.apple.Safari WebKitPreferences.applePayCapabilityDisclosureAllowed -bool true
-defaults write com.apple.Safari WebKitPreferences.privateClickMeasurementEnabled -bool true
+defaults write com.apple.Safari WebKitPreferences.privateClickMeasurementEnabled -bool false
 
 # Advanced
 defaults write com.apple.Safari ShowFullURLInSmartSearchField -bool true
