@@ -9,7 +9,7 @@ mkdir $bck_dir
 # /Applications
 #
 
-# List
+# List of all apps
 ls -1 /Applications > application-list.txt
 
 # App Store
@@ -25,17 +25,10 @@ cp ~/Library/Preferences/com.mizage.Divvy.plist $bck_dir
 # Firefox
 cp -R ~/Library/Application\ Support/Firefox/Profiles $bck_dir/profiles
 
-# iTerm
-# To restore: General > Preferences > Load preferences from a custom folder or URL
-mkdir $bck_dir/iterm
-cp ~/Library/Preferences/com.googlecode.iterm2.plist $bck_dir/iterm
-cp ~/Library/autojump/autojump.txt $bck_dir/iterm
-cp ~/.zsh_history $bck_dir/iterm
-
 # Karabiner Elements
 cp ~/.config/karabiner/karabiner.json $bck_dir
 
-# Safari
+# Safari Bookmarks
 cp ~/Library/Safari/Bookmarks.plist $bck_dir
 
 # Transmission
@@ -52,6 +45,9 @@ cp ~/Library/Application\ Support/Code/User/{settings,keybindings}.json $bck_dir
 
 # VLC
 cp ~/Library/Preferences/org.videolan.vlc.plist $bck_dir
+
+# iTerm
+echo Manually backup iTerm preferences: https://nyg.gitbook.io/cs-notes/softwares/ctrl-key-shortcuts-iterm#preferences-backup-and-restore
 
 
 #
@@ -74,6 +70,9 @@ cp -R ~/.ssh/*@* $bck_dir/ssh
 
 # Custom hosts
 cat /etc/hosts | grep '# back-up' > hosts.txt
+
+# ZSH
+cp ~/.zsh_history $bck_dir/zsh_history
 
 
 #
