@@ -1,6 +1,10 @@
 source "$HOME/.$USER-sh/config/p10k/init.zsh"
 source "$HOME/.$USER-sh/config/omz/init.zsh"
 
+# if [ -x /usr/libexec/path_helper ]; then
+#     eval `/usr/libexec/path_helper -s`
+# fi
+
 for $sh in "$HOME/.$USER-sh/config/sh/*.sh"
 do
     source "$sh"
