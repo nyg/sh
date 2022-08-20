@@ -31,9 +31,6 @@ cp ~/.config/karabiner/karabiner.json $bck_dir
 # Safari Bookmarks
 cp ~/Library/Safari/Bookmarks.plist $bck_dir
 
-# Transmission
-cp ~/Library/Preferences/org.m0k.transmission.plist $bck_dir
-
 # Typora
 cp ~/Library/Preferences/abnerworks.Typora.plist $bck_dir
 
