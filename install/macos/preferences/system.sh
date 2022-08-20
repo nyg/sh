@@ -1,5 +1,7 @@
 #!/usr/bin/env sh
 
+set -exu
+
 #
 # System Preferences
 
