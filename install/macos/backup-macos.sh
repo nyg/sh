@@ -1,6 +1,6 @@
 #!/usr/bin/env sh
 
-set -eu
+set -exu
 
 bck_dir=backup-$(date "+%Y%m%d-%H%M%S")
 mkdir $bck_dir
@@ -10,20 +10,22 @@ mkdir $bck_dir
 #
 
 # List of all apps
-ls -1 /Applications > application-list.txt
+ls -1 /Applications > $bck_dir/application-list.txt
 
 # App Store
-mas list | sed -E 's/[ ]{2,}/;;;/g' | awk -F";;;" '{print "mas install " $2 }' > mas-install.sh
-chmod u+x mas-install.sh
+mas list | sed -E 's/[ ]{2,}/;;;/g' | awk -F";;;" '{print "mas install " $2 }' > $bck_dir/mas-install.sh
+chmod u+x $bck_dir/mas-install.sh
 
 # Brave Browser
-cp -R ~/Library/Application\ Support/BraveSoftware/Brave-Browser/{Default,Profile*} $bck_dir
+mkdir $bck_dir/brave
+cp -R ~/Library/Application\ Support/BraveSoftware/Brave-Browser/{Default,Profile*} $bck_dir/brave
 
 # Divvy
 cp ~/Library/Preferences/com.mizage.Divvy.plist $bck_dir
 
 # Firefox
-cp -R ~/Library/Application\ Support/Firefox/Profiles $bck_dir/profiles
+mkdir $bck_dir/firefox
+cp -R ~/Library/Application\ Support/Firefox/Profiles $bck_dir/firefox
 
 # Karabiner Elements
 cp ~/.config/karabiner/karabiner.json $bck_dir
@@ -51,11 +53,11 @@ echo Manually backup iTerm preferences: https://nyg.gitbook.io/cs-notes/software
 # Homebrew
 #
 
-brew leaves --installed-on-request | xargs -n1 echo brew install > brew-install.sh
-chmod u+x brew-install.sh
+brew leaves --installed-on-request | xargs -n1 echo brew install > $bck_dir/brew-install.sh
+chmod u+x $bck_dir/brew-install.sh
 
-brew list --cask | xargs -n1 echo brew install --cask > brew-cask-install.sh
-chmod u+x brew-cask-install.sh
+brew list --cask | xargs -n1 echo brew install --cask > $bck_dir/brew-cask-install.sh
+chmod u+x $bck_dir/brew-cask-install.sh
 
 
 #
@@ -63,10 +65,11 @@ chmod u+x brew-cask-install.sh
 #
 
 # SSH keys
-cp -R ~/.ssh/*@* $bck_dir/ssh
+mkdir $bck_dir/ssh-keys
+cp ~/.ssh/*@* $bck_dir/ssh-keys
 
 # Custom hosts
-cat /etc/hosts | grep '# back-up' > hosts.txt
+cat /etc/hosts | grep '# back-up' > $bck_dir/etc-hosts
 
 # ZSH
 cp ~/.zsh_history $bck_dir/zsh_history
