@@ -1,34 +1,54 @@
-###############################################################################
-# Transmission.app                                                            #
-###############################################################################
+#
+# General
 
-# Use `~/Documents/Torrents` to store incomplete downloads
-defaults write org.m0k.transmission UseIncompleteDownloadFolder -bool true
-defaults write org.m0k.transmission IncompleteDownloadFolder -string "${HOME}/Documents/Torrents"
+defaults write -app Transmission AutoSize -bool true
+defaults write -app Transmission CheckRemoveDownloading -bool true
+defaults write -app Transmission CheckQuitDownloading -bool true
+defaults write -app Transmission AutoUpdateBeta -bool true
 
-# Use `~/Downloads` to store completed downloads
-defaults write org.m0k.transmission DownloadLocationConstant -bool true
+#
+# Transfers
 
-# Don’t prompt for confirmation before downloading
-defaults write org.m0k.transmission DownloadAsk -bool false
-defaults write org.m0k.transmission MagnetOpenAsk -bool false
+# doesn't update the UI, works?
+# defaults write -app Transmission DownloadLocationConstant -bool true
+# defaults write -app Transmission DownloadFolder -string "$HOME/Movies"
 
-# Don’t prompt for confirmation before removing non-downloading active transfers
-defaults write org.m0k.transmission CheckRemoveDownloading -bool true
+# defaults write -app Transmission AutoStartDownload -bool true
+defaults write -app Transmission DeleteOriginalTorrent -bool true
 
-# Trash original torrent files
-defaults write org.m0k.transmission DeleteOriginalTorrent -bool true
+# doesn't work
+# defaults write -app Transmission MagnetOpenAsk -bool true
 
-# Hide the donate message
-defaults write org.m0k.transmission WarningDonate -bool false
-# Hide the legal disclaimer
-defaults write org.m0k.transmission WarningLegal -bool false
+defaults write -app Transmission RatioCheck -bool true
 
-# IP block list.
-# Source: https://giuliomac.wordpress.com/2014/02/19/best-blocklist-for-transmission/
-defaults write org.m0k.transmission BlocklistNew -bool true
-defaults write org.m0k.transmission BlocklistURL -string "http://john.bitsurge.net/public/biglist.p2p.gz"
-defaults write org.m0k.transmission BlocklistAutoUpdate -bool true
+#
+# Bandwidth
 
-# Randomize port on launch
-defaults write org.m0k.transmission RandomPort -bool true
+defaults write -app Transmission SpeedLimitDownloadLimit -int 200
+defaults write -app Transmission SpeedLimitUploadLimit -int 50
+
+#
+# Peers
+
+defaults write -app Transmission EncryptionRequire -bool true
+
+defaults write -app Transmission BlocklistNew -bool true
+defaults write -app Transmission BlocklistURL -string "https://github.com/Naunter/BT_BlockLists/raw/master/bt_blocklists.gz"
+defaults write -app Transmission BlocklistAutoUpdate -bool true
+
+#
+# Network
+
+defaults write -app Transmission RandomPort -bool true
+
+
+#
+# UI
+
+defaults write -app Transmission WarningDonate -bool false
+defaults write -app Transmission WarningLegal -bool false
+
+defaults write -app Transmission "NSToolbar Configuration TRMainToolbar" -dict "TB Icon Size Mode" 1 "TB Is Shown" 0 "TB Display Mode" 2 "TB Size Mode" 1
+
+defaults write -app Transmission Sort -string Progress
+defaults write -app Transmission SortReverse -bool true
