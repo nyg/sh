@@ -26,7 +26,6 @@ then
     echo Linking zshrc file…
     ln -s "$HOME/.$USER-sh/config/zshrc $HOME/.zshrc"
 else
-    else
     echo Could not install zsh >&2
     exit 1
 fi
