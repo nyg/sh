@@ -75,6 +75,9 @@ then
 elif [ "$OS" = FreeBDS ]
 then
     alias l='ls -FlAGh'
+elif [ "$OS" = Linux ]
+then
+    alias l="LC_COLLATE=C ls -AFl --color=auto --group-directories-first --si"
 elif [ "$OS" = Darwin ]
 then
     alias ll="LC_COLLATE=C gls -AFl --color=auto --group-directories-first --si"
