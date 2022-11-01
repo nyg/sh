@@ -21,9 +21,6 @@ then
                         libncursesw5-dev xz-utils tk-dev libxml2-dev           \
                         libxmlsec1-dev libffi-dev liblzma-dev
 
-    echo Installing curl…
-    . "$HOME/.$USER-sh/install/curl.sh"
-
     echo Installing pyenv…
     curl https://pyenv.run | bash
 else
@@ -40,13 +37,13 @@ for v in 2 3
 do
     if is_os Darwin
     then
-        last_version=$(pyenv install -l | grep -e "^\s*$v\.\d*\.\d*$" | tail -1)
+        last_version=$(pyenv install -l | grep -e "^\s*$v\.\d*\.\d*$" | tail -1 | sed 's/ *//')
     else
-        last_version=$(pyenv install -l | grep -P "^\s*$v\.\d*\.\d*$" | tail -1)
+        last_version=$(pyenv install -l | grep -P "^\s*$v\.\d*\.\d*$" | tail -1 | sed 's/ *//')
     fi
 
     echo Installing version ${last_version}…
-    pyenv install ${last_version// /}
+    pyenv install $last_version
 done
 
 echo Setting the last version as the global one…
@@ -55,7 +52,7 @@ pyenv global $last_version
 
 echo Linking pyenv.sh config/sh/pyenv.sh…
 mkdir -p "$HOME/.$USER-sh/config/sh"
-ln -s "$HOME/.$USER-sh/config/pyenv.sh $HOME/.$USER-sh/config/sh/pyenv.sh"
+ln -s "$HOME/.$USER-sh/config/pyenv.sh" "$HOME/.$USER-sh/config/sh/pyenv.sh"
 
 exec $SHELL -l
 
