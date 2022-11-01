@@ -7,6 +7,7 @@ set -eu
 if is_installed vim
 then
     echo Vim is already installed.
+    exit 0
 fi
 
 echo Installing vim…
