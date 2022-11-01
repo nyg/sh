@@ -1,5 +1,3 @@
-#!/usr/bin/env sh
-
 OS=$(uname)
 
 # TODO: check command exists before declaring aliases
