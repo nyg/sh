@@ -42,7 +42,14 @@ then
         if is_installed apt
         then
             echo Installing git…
-            su -l root -c "apt update && apt install -y git"
+
+            if groups | grep -qw sudo
+            then
+                sudo apt update && sudo apt install -y git
+            else
+                su -l root -c "apt update && apt install -y git"
+            fi
+
             echo Done!
         else
             echo Unknown package manager, aborting… >&2
