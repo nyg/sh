@@ -7,7 +7,7 @@ set -eu
 if is_os Linux && is_installed apt
 then
     echo Installing openssh-server…
-    sudo apt install openssh-server
+    sudo apt install -y openssh-server
 
     echo Enabling ssh.service
     sudo systemctl enable ssh
