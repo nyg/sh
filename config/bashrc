@@ -87,3 +87,8 @@ if ! shopt -oq posix; then
     . /etc/bash_completion
   fi
 fi
+
+for $sh in "$HOME/.$USER-sh/config/sh/*.sh"
+do
+    . "$sh"
+done
