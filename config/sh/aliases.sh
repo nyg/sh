@@ -8,17 +8,12 @@ OS=$(uname)
 alias c="clear;clear"
 alias cdc="cd;c"
 alias tree="tree -aCF --dirsfirst -I .git"
-alias cat="bat"
 alias d="du -hd1"
 alias df='df -h'
 alias ..="cd .."
 alias p='echo -e "${PATH//:/\\n}"'
 alias o='open .'
 alias diff='diff --color -y --suppress-common-lines'
-
-# SVN
-alias ss="svn status"
-alias sc="svn commit -m"
 
 # Git
 alias gs="git status"
@@ -49,14 +44,6 @@ alias dcu="docker-compose up"
 alias dcd="docker-compose down"
 alias dcbu="dcb && dcu"
 
-# Misc
-alias notes="atom /Users/user/Documents/dev/misc/cs-notes"
-
-# OpenSSL
-# sha() {
-#     echo -n "$2" | openssl dgst -sha"$1"
-# }
-
 # md5
 alias md5='md5sum'
 
@@ -85,4 +72,6 @@ then
 
     alias brewery="brew update && brew upgrade && brew cleanup"
     alias typora='open -a Typora'
+
+    alias cat="bat"
 fi
