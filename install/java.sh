@@ -4,15 +4,28 @@ set -eu
 
 . "$HOME/.$USER-sh/common.sh"
 
+init_jenv() {
+    eval "$(jenv init - $(basename $SHELL))"
+}
+
+enable_export_plugin() {
+    # keeps JAVA_HOME up-to-date
+    jenv enable-plugin export
+}
+
+link_config() {
+    echo Linking jenv.sh to config/sh/jenv.sh…
+    mkdir -p "$HOME/.$USER-sh/config/sh"
+    ln -s "$HOME/.$USER-sh/config/jenv.sh" "$HOME/.$USER-sh/config/sh/jenv.sh"
+}
+
 if is_os Darwin
 then
     echo Installing jenv…
     brew install jenv
 
-    eval "$(jenv init - $(basename $SHELL))"
-
-    # keeps JAVA_HOME up-to-date
-    jenv enable-plugin export
+    init_jenv
+    enable_export_plugin
 
     echo Installing latest Java version…
     brew install --cask temurin
@@ -33,9 +46,16 @@ then
         i=$((i+1))
     done
 
-    echo Linking jenv.sh config/sh/jenv.sh…
-    mkdir -p "$HOME/.$USER-sh/config/sh"
-    ln -s "$HOME/.$USER-sh/config/jenv.sh" "$HOME/.$USER-sh/config/sh/jenv.sh"
+    link_config
+
+else if is_os Linux
+then
+    echo Cloning jenv to ~/.jenv…
+    git clone https://github.com/jenv/jenv.git ~/.jenv
+
+    init_jenv
+    enable_export_plugin
+    link_config
 
 else
     echo Unknown OS, aborting… >&2
