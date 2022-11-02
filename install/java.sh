@@ -48,7 +48,7 @@ then
 
     link_config
 
-else if is_os Linux
+elif is_os Linux
 then
     echo Cloning jenv to ~/.jenv…
     git clone https://github.com/jenv/jenv.git ~/.jenv
