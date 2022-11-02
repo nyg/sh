@@ -5,6 +5,7 @@ set -eu
 . "$HOME/.$USER-sh/common.sh"
 
 init_jenv() {
+    export PATH="$HOME/.jenv/bin:$PATH"
     eval "$(jenv init - $(basename $SHELL))"
 }
 
