@@ -1,0 +1,5 @@
+softwares
+
+config/sh/*
+!config/sh/aliases.sh
+!config/sh/path.sh
