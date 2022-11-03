@@ -1,4 +1,7 @@
-#!/usr/bin/env sh
+#!/usr/bin/env bash
+# jEnv files generated for bash are not sh-compatible.
+# https://whichjdk.com/ -> Adoptium Temurin by Eclipse (formerly AdoptOpenJdk)
+# https://adoptium.net/installation/linux
 
 set -eu
 
@@ -18,6 +21,7 @@ link_config() {
     echo Linking jenv.sh to config/sh/jenv.sh…
     mkdir -p "$HOME/.$USER-sh/config/sh"
     ln -s "$HOME/.$USER-sh/config/jenv.sh" "$HOME/.$USER-sh/config/sh/jenv.sh"
+    exec $SHELL -l
 }
 
 if is_os Darwin
@@ -47,7 +51,9 @@ then
         i=$((i+1))
     done
 
+    jenv rehash
     link_config
+    jenv doctor
 
 elif is_os Linux
 then
@@ -58,10 +64,32 @@ then
     enable_export_plugin
     link_config
 
+    read -p "Install Adoptium JDK 8 and 17? (y/n) " confirm
+    if [ "$confirm" = y ]
+    then
+        echo Installing Java 8 & 17…
+        sudo apt install -y apt-transport-https
+
+        mkdir -p /etc/apt/keyrings
+        wget -O - https://packages.adoptium.net/artifactory/api/gpg/key/public | sudo tee /etc/apt/keyrings/adoptium.asc
+
+        echo "deb [signed-by=/etc/apt/keyrings/adoptium.asc] https://packages.adoptium.net/artifactory/deb $(awk -F= '/^VERSION_CODENAME/{print$2}' /etc/os-release) main" \
+        | sudo tee /etc/apt/sources.list.d/adoptium.list
+
+        sudo apt update
+        sudo apt install -y temurin-8-jdk temurin-17-jdk
+
+        jenv add /usr/lib/jvm/temurin-8-jdk-amd64/
+        jenv add /usr/lib/jvm/temurin-17-jdk-amd64/
+
+        jenv rehash
+    fi
+
+    link_config
+    jenv doctor
 else
     echo Unknown OS, aborting… >&2
     exit 1
 fi
 
-jenv doctor
 echo Done!
