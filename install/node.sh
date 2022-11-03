@@ -27,6 +27,5 @@ nvm install node
 echo Linking npmrc configuration file…
 ln -s "$HOME/.$USER-sh/config/npmrc" "$HOME/.npmrc"
 
-exec $SHELL -l
-
 echo Done!
+exec $SHELL -l
