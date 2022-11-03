@@ -78,9 +78,11 @@ then
 
         if is_installed update-alternatives
         then
+            echo Removing alternatives for java…
             sudo update-alternatives --remove-all java || echo No java alternatives removed
         fi
 
+        echo Adding JDKs to jenv…
         jenv add /usr/lib/jvm/temurin-8-jdk-amd64/
         jenv add /usr/lib/jvm/temurin-17-jdk-amd64/
         jenv rehash
@@ -91,6 +93,7 @@ else
     exit 1
 fi
 
+echo 17 > "$HOME/.jenv/version"
 link_config
 
 echo Done! Check everything is ok with \'jenv doctor\'.
