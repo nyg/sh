@@ -21,7 +21,7 @@ link_config() {
     echo Linking jenv.sh to config/sh/jenv.sh…
     mkdir -p "$HOME/.$USER-sh/config/sh"
     ln -s "$HOME/.$USER-sh/config/jenv.sh" "$HOME/.$USER-sh/config/sh/jenv.sh"
-    exec $SHELL -l
+    echo Done linking
 }
 
 if is_os Darwin
@@ -52,8 +52,6 @@ then
     done
 
     jenv rehash
-    link_config
-    jenv doctor
 
 elif is_os Linux
 then
@@ -62,12 +60,11 @@ then
 
     init_jenv
     enable_export_plugin
-    link_config
 
     read -p "Install Adoptium JDK 8 and 17? (y/n) " confirm
     if [ $confirm = y ]
     then
-        echo Installing Java 8 & 17…
+        echo Installing Java 8 \& 17…
         sudo apt install -y apt-transport-https
 
         mkdir -p /etc/apt/keyrings
@@ -90,11 +87,12 @@ then
         jenv rehash
     fi
 
-    link_config
-    jenv doctor
 else
     echo Unknown OS, aborting… >&2
     exit 1
 fi
 
-echo Done!
+link_config
+
+echo Done! Check everything is ok with \'jenv doctor\'.
+exec $SHELL -l
