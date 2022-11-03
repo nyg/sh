@@ -64,26 +64,25 @@ then
     read -p "Install Adoptium JDK 8 and 17? (y/n) " confirm
     if [ $confirm = y ]
     then
-        echo Installing Java 8 \& 17…
-        sudo apt install -y apt-transport-https
-
+        echo Downloading Adoptium GPG key…
         mkdir -p /etc/apt/keyrings
         wget -O - https://packages.adoptium.net/artifactory/api/gpg/key/public | sudo tee /etc/apt/keyrings/adoptium.asc
 
+        echo Configuring Adoptium apt repository…
         echo "deb [signed-by=/etc/apt/keyrings/adoptium.asc] https://packages.adoptium.net/artifactory/deb $(awk -F= '/^VERSION_CODENAME/{print$2}' /etc/os-release) main" \
         | sudo tee /etc/apt/sources.list.d/adoptium.list
 
+        echo Installing Java 8 \& 17…
         sudo apt update
-        sudo apt install -y temurin-8-jdk temurin-17-jdk
+        sudo apt install -y apt-transport-https temurin-8-jdk temurin-17-jdk
 
         if is_installed update-alternatives
         then
-            sudo update-alternatives --remove java
+            sudo update-alternatives --remove-all java || echo No java alternatives removed
         fi
 
         jenv add /usr/lib/jvm/temurin-8-jdk-amd64/
         jenv add /usr/lib/jvm/temurin-17-jdk-amd64/
-
         jenv rehash
     fi
 
