@@ -65,7 +65,7 @@ then
     link_config
 
     read -p "Install Adoptium JDK 8 and 17? (y/n) " confirm
-    if [ "$confirm" = y ]
+    if [ $confirm = y ]
     then
         echo Installing Java 8 & 17…
         sudo apt install -y apt-transport-https
@@ -78,6 +78,11 @@ then
 
         sudo apt update
         sudo apt install -y temurin-8-jdk temurin-17-jdk
+
+        if is_installed update-alternatives
+        then
+            sudo update-alternatives --remove java
+        fi
 
         jenv add /usr/lib/jvm/temurin-8-jdk-amd64/
         jenv add /usr/lib/jvm/temurin-17-jdk-amd64/
