@@ -65,7 +65,7 @@ then
     if [ $confirm = y ]
     then
         echo Downloading Adoptium GPG key…
-        mkdir -p /etc/apt/keyrings
+        sudo mkdir -p /etc/apt/keyrings
         wget -O - https://packages.adoptium.net/artifactory/api/gpg/key/public | sudo tee /etc/apt/keyrings/adoptium.asc
 
         echo Configuring Adoptium apt repository…
