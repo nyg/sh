@@ -1,4 +1,5 @@
 #!/usr/bin/env sh
+# https://gitlab.com/paulcarroty/vscodium-deb-rpm-repo
 
 set -eu
 
@@ -15,10 +16,9 @@ then
     echo 'deb [ signed-by=/usr/share/keyrings/vscodium-archive-keyring.gpg ] https://paulcarroty.gitlab.io/vscodium-deb-rpm-repo/debs vscodium main' \
         | sudo tee /etc/apt/sources.list.d/vscodium.list
 
-
-    echo Installing VSCodium
+    echo Installing VSCodium…
     sudo apt update
-    sudo apt install -y codium codium-insiders
+    sudo apt install -y codium
 
 else
     echo Could not install VSCodium >&2
