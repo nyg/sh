@@ -4,14 +4,18 @@ set -eu
 
 . "$HOME/.$USER-sh/common.sh"
 
-echo Installing nvm…
+if is_os Darwin
+then
+    echo Installing nvm…
+    brew install nvm
+elif is_os Linux
+then
+    echo Fetching tag name of latest version…
+    latest=$(curl -s https://api.github.com/repos/nvm-sh/nvm/releases/latest \
+        | jq -r .tag_name)
 
-if is_installed wget
-then
-    wget -qO- https://raw.githubusercontent.com/nvm-sh/nvm/v0.39.1/install.sh | bash
-elif is_installed curl
-then
-    curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.39.1/install.sh | bash
+    echo Installing nvm ${latest}…
+    curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/$latest/install.sh | bash
 else
     echo Could not install nvm >&2
     exit 1
