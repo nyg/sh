@@ -16,9 +16,8 @@ then
     curl -fsSL https://raw.githubusercontent.com/nagygergo/jetbrains-toolbox-install/master/jetbrains-toolbox.sh \
         | bash
 
+    echo Done!
 else
     echo Could not install JetBrains Toolbox >&2
     exit 1
 fi
-
-echo Done!
