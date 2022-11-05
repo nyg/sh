@@ -19,7 +19,6 @@ enable_export_plugin() {
 
 link_config() {
     echo Linking jenv.sh to config/sh/jenv.sh…
-    mkdir -p "$HOME/.$USER-sh/config/sh"
     ln -s "$HOME/.$USER-sh/config/jenv.sh" "$HOME/.$USER-sh/config/sh/jenv.sh"
     echo Done linking
 }
