@@ -8,16 +8,14 @@ set -eu
 if is_os Linux && is_installed apt
 then
     # echo Adding GPG key…
+    # key=/usr/share/keyrings/microsoft-archive-keyring.gpg
     # curl -s https://packages.microsoft.com/keys/microsoft.asc \
     #     | gpg --dearmor \
-    #     | sudo tee /usr/share/keyrings/microsoft-archive-keyring.gpg > /dev/null
+    #     | sudo tee $key > /dev/null
 
     # echo Adding repository…
-    # file=/etc/apt/sources.list.d/teams.list
-    # echo -n "deb [arch=amd64 signed-by=/usr/share/keyrings/microsoft-archive-keyring.gpg]" \
-    #     | sudo tee $file
-    # echo " https://packages.microsoft.com/repos/ms-teams stable main" \
-    #     | sudo tee -a $file
+    # echo "deb [arch=amd64 signed-by=$key] https://packages.microsoft.com/repos/ms-teams stable main" \
+    #     | sudo tee /etc/apt/sources.list.d/teams.list
 
     # echo Installing Teams…
     # sudo apt update

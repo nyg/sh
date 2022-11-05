@@ -11,16 +11,14 @@ set -eu
 if is_os Linux && is_installed apt
 then
     echo Adding GPG key…
-    curl -q https://download.sublimetext.com/sublimehq-pub.gpg \
+    key=/etc/apt/keyrings/sublime-text.gpg
+    curl -s https://download.sublimetext.com/sublimehq-pub.gpg \
         | gpg --dearmor \
-        | sudo tee /etc/apt/keyrings/sublime-text.gpg > /dev/null
+        | sudo tee $key > /dev/null
 
     echo Adding repository…
-    file=/etc/apt/sources.list.d/sublime-text.list
-    echo -n "deb [arch=amd64 signed-by=/etc/apt/keyrings/sublime-text.gpg]" \
-        | sudo tee $file
-    echo " https://download.sublimetext.com/ apt/stable/" \
-        | sudo tee -a $file
+    echo "deb [arch=amd64 signed-by=$key] https://download.sublimetext.com/ apt/stable/" \
+        | sudo tee /etc/apt/sources.list.d/sublime-text.list
 
     echo Installing Sublime Text…
     sudo apt update
