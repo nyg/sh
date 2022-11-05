@@ -13,4 +13,5 @@ sudo apt install -y \
     samba \
     xrdp \
     gnome-tweaks \
-    dconf-editor
+    dconf-editor \
+    asciinema
