@@ -19,7 +19,7 @@ fi
 echo Removing previous version…
 rm -rf "$HOME/.$USER-sh/softwares/visualvm"
 
-echo Unzipping archive…
+echo Extracting archive…
 unzip /tmp/visualvm.zip -d "$HOME/.$USER-sh/softwares/"
 rm /tmp/visualvm.zip
 mv "$HOME"/".$USER-sh"/softwares/visualvm* "$HOME/.$USER-sh/softwares/visualvm"
@@ -30,7 +30,7 @@ echo "#!/usr/bin/env sh" > "$launcher"
 echo 'visualvm_jdkhome=$JAVA_HOME nohup $HOME/.$USER-sh/softwares/visualvm/bin/visualvm > /dev/null 2>&1 &' >> "$launcher"
 chmod u+x "$launcher"
 
-echo Linking executable to "$HOME/.local/bin/visualvm"…
+echo Linking launcher to "$HOME/.local/bin/visualvm"…
 ln -s "$HOME/.$USER-sh/softwares/visualvm/visualvm.sh" "$HOME/.local/bin/visualvm" || echo Link already exists
 
 echo Done!
