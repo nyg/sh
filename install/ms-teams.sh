@@ -1,5 +1,5 @@
 #!/usr/bin/env sh
-# https://gitlab.com/paulcarroty/vscodium-deb-rpm-repo
+# https://learn.microsoft.com/en-us/microsoftteams/get-clients?tabs=Linux
 
 set -eu
 
