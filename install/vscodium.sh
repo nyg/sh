@@ -8,13 +8,13 @@ set -eu
 if is_os Linux && is_installed apt
 then
     echo Adding GPG key…
-    key_file=/etc/apt/keyrings/vscodium.gpg
+    key=/etc/apt/keyrings/vscodium.gpg
     curl -s https://gitlab.com/paulcarroty/vscodium-deb-rpm-repo/raw/master/pub.gpg \
         | gpg --dearmor \
-        | sudo tee $key_file > /dev/null
+        | sudo tee $key > /dev/null
 
     echo Adding repository…
-    echo "deb [signed-by=$key_file] https://paulcarroty.gitlab.io/vscodium-deb-rpm-repo/debs vscodium main" \
+    echo "deb [signed-by=$key] https://paulcarroty.gitlab.io/vscodium-deb-rpm-repo/debs vscodium main" \
         | sudo tee /etc/apt/sources.list.d/vscodium.list
 
     echo Installing VSCodium…

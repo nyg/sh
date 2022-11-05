@@ -4,10 +4,11 @@ set -eu
 
 . "$HOME/.$USER-sh/common.sh"
 
+echo Fetching URL of latest VisualVM version…
 download_url=$(curl -s https://api.github.com/repos/oracle/visualvm/releases/latest \
    | jq -r '.assets[] | select(.name | test("visualvm.*zip")) | .browser_download_url')
-echo Downloading VisualVM from $download_url…
 
+echo Downloading VisualVM from "$download_url"…
 (cd /tmp; curl -Lo visualvm.zip "$download_url")
 
 if [ ! -f /tmp/visualvm.zip ]

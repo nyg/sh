@@ -1,8 +1,4 @@
 #!/usr/bin/env sh
-# Needs fixing
-# https://askubuntu.com/questions/1286545/what-commands-exactly-should-replace-the-deprecated-apt-key
-# https://www.digitalocean.com/community/tutorials/how-to-handle-apt-key-and-add-apt-repository-deprecation-using-gpg-to-add-external-repositories-on-ubuntu-22-04
-# https://askubuntu.com/questions/1437207/what-is-the-right-place-to-put-keyrings-for-repositories
 
 set -eu
 

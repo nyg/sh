@@ -8,18 +8,20 @@ set -eu
 if is_os Linux && is_installed apt
 then
     echo Adding GPG key…
-    wget -qO - https://typora.io/linux/public-key.asc | sudo tee /etc/apt/trusted.gpg.d/typora.asc
+    key=/etc/apt/keyrings/typora.asc
+    curl -s https://typora.io/linux/public-key.asc \
+        | sudo tee $key > /dev/null
 
     echo Adding repository…
-    sudo add-apt-repository 'deb https://typora.io/linux ./'
+    echo "deb [signed-by=$key] https://typora.io/linux ./" \
+        | sudo tee /etc/apt/sources.list.d/typora.list
 
     echo Installing Typora…
     sudo apt update
     sudo apt install -y typora
 
+    echo Done!
 else
     echo Could not install Typora >&2
     exit 1
 fi
-
-echo Done!
