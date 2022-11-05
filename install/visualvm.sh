@@ -27,7 +27,7 @@ mv "$HOME"/".$USER-sh"/softwares/visualvm* "$HOME/.$USER-sh/softwares/visualvm"
 echo Creating launcher…
 launcher="$HOME/.$USER-sh/softwares/visualvm/visualvm.sh"
 echo "#!/usr/bin/env sh" > "$launcher"
-echo 'nohup visualvm_jdkhome=$JAVA_HOME $HOME/.$USER-sh/softwares/visualvm/bin/visualvm > /dev/null 2>&1 &' >> "$launcher"
+echo 'visualvm_jdkhome=$JAVA_HOME nohup $HOME/.$USER-sh/softwares/visualvm/bin/visualvm > /dev/null 2>&1 &' >> "$launcher"
 chmod u+x "$launcher"
 
 echo Linking executable to "$HOME/.local/bin/visualvm"…
