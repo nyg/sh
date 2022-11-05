@@ -1,4 +1,7 @@
 #!/usr/bin/env sh
+
+set -eu
+
 docker stop portainer
 docker rm portainer
 docker rmi portainer/portainer-ce:latest
