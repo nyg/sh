@@ -8,17 +8,24 @@ set -eu
 if is_os Linux && is_installed apt
 then
     echo Adding GPG key…
-    curl https://packages.microsoft.com/keys/microsoft.asc \
-        | sudo gpg --dearmor -o /usr/share/keyrings/microsoft-archive-keyring.gpg
+    mkdir -p /etc/apt/keyrings
+    curl -s https://packages.microsoft.com/keys/microsoft.asc \
+        | gpg --dearmor \
+        | sudo tee /etc/apt/keyrings/microsoft-teams.gpg
 
-    sudo sh -c 'echo "deb [arch=amd64 signed-by=/usr/share/keyrings/microsoft-archive-keyring.gpg] https://packages.microsoft.com/repos/ms-teams stable main" > /etc/apt/sources.list.d/teams.list'
+    echo Adding repository…
+    file=/etc/apt/sources.list.d/microsoft-teams.list
+    echo -n "deb [arch=amd64 signed-by=/etc/apt/keyrings/microsoft-teams.gpg]" \
+        | sudo tee $file
+    echo " https://packages.microsoft.com/repos/ms-teams stable main" \
+        | sudo tee -a $file
 
+    echo Installing Teams…
     sudo apt update
     sudo apt install teams
 
+    echo Done!
 else
-    echo Could not install VSCodium >&2
+    echo Could not install Teams >&2
     exit 1
 fi
-
-echo Done!
