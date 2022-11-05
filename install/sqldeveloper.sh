@@ -34,7 +34,7 @@ rm $archive
 echo Overriding launcher…
 launcher="$HOME/.$USER-sh/softwares/sqldeveloper/sqldeveloper.sh"
 echo "#!/usr/bin/env sh" > "$launcher"
-echo "nohup $HOME/.$USER-sh/softwares/sqldeveloper/sqldeveloper/bin/sqldeveloper > /dev/null 2>&1 &" >> "$launcher"
+echo 'nohup $HOME/.$USER-sh/softwares/sqldeveloper/sqldeveloper/bin/sqldeveloper > /dev/null 2>&1 &' >> "$launcher"
 
 echo Linking executable to "$HOME/.local/bin/sqldev"…
 ln -s "$HOME/.$USER-sh/softwares/sqldeveloper/sqldeveloper.sh" "$HOME/.local/bin/sqldev" || echo Link already exists
