@@ -4,7 +4,7 @@ set -eu
 
 . "$HOME/.$USER-sh/common.sh"
 
-if is_os Linux && is_installed apt
+if is_os Linux
 then
     echo Removing existing version…
     rm -rf "$HOME/.$USER-sh/softwares/postman"
@@ -15,7 +15,7 @@ then
     echo Extracting archive…
     tar xvf /tmp/postman.tar.gz -C "$HOME/.$USER-sh/softwares"
     rm /tmp/postman.tar.gz
-    
+
     mv "$HOME/.$USER-sh/softwares/Postman/app" "$HOME/.$USER-sh/softwares/postman"
     rm -rf "$HOME/.$USER-sh/softwares/Postman"
 
@@ -28,9 +28,8 @@ then
     echo Linking launcher to "$HOME/.local/bin/postman"…
     ln -s "$HOME/.$USER-sh/softwares/postman/postman.sh" "$HOME/.local/bin/postman" || echo Link already exists
 
+    echo Done!
 else
     echo Could not install Postman >&2
     exit 1
 fi
-
-echo Done!

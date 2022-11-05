@@ -4,7 +4,7 @@ set -eu
 
 . "$HOME/.$USER-sh/common.sh"
 
-if is_os 'Darwin'
+if is_os Darwin
 then
     echo Installing MesloLGS font…
     (cd /Library/Fonts ; curl --remote-name-all hcttps://raw.githubusercontent.com/romkatv/powerlevel10k-media/master/MesloLGS%20NF%20{Regular,Bold,Italic,Bold%20Italic}.ttf)

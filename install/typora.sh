@@ -1,5 +1,6 @@
 #!/usr/bin/env sh
 # https://support.typora.io/Typora-on-Linux/
+# https://support.typora.io/Offline-Activation/
 
 set -eu
 
@@ -9,7 +10,7 @@ if is_os Linux && is_installed apt
 then
     echo Adding GPG key…
     key=/etc/apt/keyrings/typora.asc
-    curl -s https://typora.io/linux/public-key.asc \
+    curl -fsS https://typora.io/linux/public-key.asc \
         | sudo tee $key > /dev/null
 
     echo Adding repository…

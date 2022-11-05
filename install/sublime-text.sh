@@ -8,7 +8,7 @@ if is_os Linux && is_installed apt
 then
     echo Adding GPG key…
     key=/etc/apt/keyrings/sublime-text.gpg
-    curl -s https://download.sublimetext.com/sublimehq-pub.gpg \
+    curl -fsS https://download.sublimetext.com/sublimehq-pub.gpg \
         | gpg --dearmor \
         | sudo tee $key > /dev/null
 

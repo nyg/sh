@@ -9,7 +9,7 @@ if is_os Linux && is_installed apt
 then
     # echo Adding GPG key…
     # key=/usr/share/keyrings/microsoft-archive-keyring.gpg
-    # curl -s https://packages.microsoft.com/keys/microsoft.asc \
+    # curl -fsS https://packages.microsoft.com/keys/microsoft.asc \
     #     | gpg --dearmor \
     #     | sudo tee $key > /dev/null
 

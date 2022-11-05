@@ -9,7 +9,7 @@ if is_os Linux && is_installed apt
 then
     echo Adding GPG key…
     key=/etc/apt/keyrings/vscodium.gpg
-    curl -s https://gitlab.com/paulcarroty/vscodium-deb-rpm-repo/raw/master/pub.gpg \
+    curl -fsS https://gitlab.com/paulcarroty/vscodium-deb-rpm-repo/raw/master/pub.gpg \
         | gpg --dearmor \
         | sudo tee $key > /dev/null
 
