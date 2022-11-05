@@ -20,7 +20,7 @@ then
     echo -n "deb [arch=amd64 signed-by=/etc/apt/keyrings/sublime-text.gpg]" \
         | sudo tee $file
     echo " https://download.sublimetext.com/ apt/stable/" \
-        | sudo tee $ile
+        | sudo tee -a $file
 
     echo Installing Sublime Text…
     sudo apt update
