@@ -16,13 +16,15 @@ then
     exit 1
 fi
 
-echo Unzipping VisualVM in "$HOME/.$USER-sh/softwares/"
-mkdir -p "$HOME/.$USER-sh/softwares/"
+echo Removing previous version…
+rm -rf "$HOME/.$USER-sh/softwares/visualvm"
+
+echo Unzipping archive…
 unzip /tmp/visualvm.zip -d "$HOME/.$USER-sh/softwares/"
 rm /tmp/visualvm.zip
+mv "$HOME"/".$USER-sh"/softwares/visualvm* "$HOME/.$USER-sh/softwares/visualvm"
 
 echo Linking executable to "$HOME/.local/bin/visualvm"…
-mkdir -p "$HOME/.local/bin"
-ln -s "$HOME"/".$USER-sh"/softwares/visualvm*/bin/visualvm "$HOME/.local/bin/visualvm"
+ln -s "$HOME/.$USER-sh/softwares/visualvm/bin/visualvm" "$HOME/.local/bin/visualvm" || echo Link already exists
 
 echo Done!
