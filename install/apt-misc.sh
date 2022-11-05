@@ -11,4 +11,6 @@ sudo apt install -y \
     sshpass \
     gparted \
     samba \
-    xrdp
+    xrdp \
+    gnome-tweaks \
+    dconf-editor
