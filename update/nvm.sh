@@ -6,16 +6,14 @@ set -eu
 
 if is_os Darwin
 then
-    echo Installing nvm…
-    brew install nvm
+    echo Updating nvm…
+    brew upgrade nvm
 elif is_os Linux
 then
-    echo Fetching tag name of latest version…
-    latest=$(curl -s https://api.github.com/repos/nvm-sh/nvm/releases/latest \
-        | jq -r .tag_name)
+    git -C $NVM_DIR fetch --tags origin
 
-    echo Installing nvm ${latest}…
-    curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/$latest/install.sh | bash
+    last_tag=$(git -P -C $NVM_DIR tag --sort=taggerdate | tail -1)
+    git -C $NVM_DIR -c advice.detachedHead=false co $last_tag
 else
     echo Could not update nvm >&2
     exit 1
