@@ -1,17 +1,2 @@
-# update PATH
-[ -d "$HOME/bin" ] && PATH="$HOME/bin:$PATH"
-[ -d "$HOME/.local/bin" ] && PATH="$HOME/.local/bin:$PATH"
-[ -d "$HOME/.$USER-sh/scripts" ] && PATH="$HOME/.$USER-sh/scripts:$PATH"
-
-# load shell rc file
 [ -n "$ZSH_VERSION" ] && [ -f "$HOME/.zshrc" ] && . "$HOME/.zshrc"
 [ -n "$BASH_VERSION" ] && [ -f "$HOME/.bashrc" ] && . "$HOME/.bashrc"
-
-# load all files in $HOME/.$USER-sh/config/sh/
-for sh in "$HOME"/".$USER-sh"/config/sh/*.sh
-do
-    . "$sh"
-done
-
-# TODO: Added by Toolbox App
-export PATH="$PATH:/home/user/.local/share/JetBrains/Toolbox/scripts"
