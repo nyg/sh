@@ -7,9 +7,9 @@
 # fi
 
 # load all files in $HOME/.$USER-sh/config/sh/
-for sh in "$HOME"/".$USER-sh"/config/sh/*.sh
+for file in "$HOME"/".$USER-sh"/config/sh/*.sh
 do
-    . "$sh"
+    . "$file"
 done
 
 . "$HOME/.$USER-sh/config/p10k/config.zsh"

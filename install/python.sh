@@ -50,8 +50,9 @@ echo Setting the last version as the global one…
 pyenv rehash
 pyenv global $last_version
 
-echo Linking pyenv.sh to config/sh/pyenv.sh…
-ln -s "$HOME/.$USER-sh/config/pyenv.sh" "$HOME/.$USER-sh/config/sh/pyenv.sh"
+echo Linking pyenv/init.sh and pyenv/path.sh…
+ln -s "$HOME/.$USER-sh/config/pyenv/init.sh" "$HOME/.$USER-sh/config/sh/pyenv.sh"
+ln -s "$HOME/.$USER-sh/config/pyenv/path.sh" "$HOME/.$USER-sh/config/path/pyenv.sh"
 
 echo Done!
 exec $SHELL -l

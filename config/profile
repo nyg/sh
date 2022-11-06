@@ -1,2 +1,10 @@
-[ -n "$ZSH_VERSION" ] && [ -f "$HOME/.zshrc" ] && . "$HOME/.zshrc"
-[ -n "$BASH_VERSION" ] && [ -f "$HOME/.bashrc" ] && . "$HOME/.bashrc"
+for path_file in "$HOME"/".$USER-sh"/config/path/*.sh
+do
+    . "$path_file"
+done
+
+if [ ! -z "$PS1" ]
+then
+    [ -n "$ZSH_VERSION" ] && [ -f "$HOME/.zshrc" ] && . "$HOME/.zshrc"
+    [ -n "$BASH_VERSION" ] && [ -f "$HOME/.bashrc" ] && . "$HOME/.bashrc"
+fi

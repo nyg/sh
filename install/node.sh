@@ -30,8 +30,8 @@ nvm install node
 echo Linking npmrc configuration file…
 ln -s "$HOME/.$USER-sh/config/npmrc" "$HOME/.npmrc" || echo .npmrc already exists
 
-echo Linking nvm.sh to config/sh/nvm.sh…
-ln -s "$HOME/.$USER-sh/config/nvm.sh" "$HOME/.$USER-sh/config/sh/nvm.sh"
+echo Linking nvm/init.sh…
+ln -s "$HOME/.$USER-sh/config/nvm/init.sh" "$HOME/.$USER-sh/config/sh/nvm.sh"
 
 echo Done!
 exec $SHELL -l

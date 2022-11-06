@@ -2,4 +2,6 @@ softwares
 
 config/sh/*
 !config/sh/aliases.sh
+
+config/path/*
 !config/sh/path.sh
