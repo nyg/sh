@@ -6,9 +6,4 @@
 #     eval `/usr/libexec/path_helper -s`
 # fi
 
-for sh in "$HOME"/".$USER-sh"/config/sh/*.sh
-do
-    . "$sh"
-done
-
 . "$HOME/.$USER-sh/config/p10k/config.zsh"
