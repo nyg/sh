@@ -1,6 +1,7 @@
 #!/usr/bin/env sh
 
 sudo apt install -y \
+    vim \
     tree \
     htop \
     jq \
@@ -11,7 +12,6 @@ sudo apt install -y \
     sshpass \
     gparted \
     samba \
-    xrdp \
     gnome-tweaks \
     dconf-editor \
     asciinema
