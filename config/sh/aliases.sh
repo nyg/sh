@@ -1,6 +1,4 @@
-OS=$(uname)
-
-# TODO: check command exists before declaring aliases
+. "$HOME/.$USER-sh/common.sh"
 
 # Utilities
 alias c="clear;clear"
@@ -52,18 +50,32 @@ alias d64='base64 -D <<< '
 # Metasploit
 alias msf='msfconsole -q'
 
+## sshpass
+sshp_pwd="$HOME/.config/sshpass/password.gpg"
+if is_installed sshpass && [ -r "$sshp_pwd" ]
+then
+    alias ssh='gpg -d -q "$sshp_pwd" | sshpass ssh -o StrictHostKeyChecking=no ${@}'
+    alias scp='gpg -d -q "$sshp_pwd" | sshpass scp -o StrictHostKeyChecking=no ${@}'
+    alias ssho='/bin/ssh'
+    alias scpo='/bin/scp'
+fi
+
 #
 # OS Specific
-if [ "$OS" = OpenBSD ]
+
+if is_os OpenBSD
 then
     alias l="colorls -FlAGhT"
-elif [ "$OS" = FreeBDS ]
+
+elif is_os FreeBDS
 then
     alias l='ls -FlAGh'
-elif [ "$OS" = Linux ]
+
+elif is_os Linux
 then
     alias l="LC_COLLATE=C ls -AFl --color=auto --group-directories-first --si"
-elif [ "$OS" = Darwin ]
+
+elif is_os Darwin
 then
     alias ll="LC_COLLATE=C gls -AFl --color=auto --group-directories-first --si"
     alias l="exa -lFag --group-directories-first --time-style=long-iso"
