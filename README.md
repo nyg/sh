@@ -5,10 +5,10 @@
 Will clone this repo in `$HOME/.$USER-sh`.
 
 ```sh
-# macOS
+# curl
 sh <(curl -s https://git.sr.ht/~nyg/sh/blob/master/bootstrap.sh)
 
-# Debian
+# wget
 sh <(wget -q -O - https://git.sr.ht/~nyg/sh/blob/master/bootstrap.sh)
 ```
 
@@ -16,9 +16,11 @@ sh <(wget -q -O - https://git.sr.ht/~nyg/sh/blob/master/bootstrap.sh)
 
 Files are divided in three categories:
 
-* **install** files, which will install software as well as create symbolic links for eventual config files
-* **config** files, as mentioned aboved
-* **scripts** scripts
+* `etc` configuration files,
+* `bin` miscellaneous scripts, directory is added to the path,
+* `install` installation scripts, one per software,
+* `configure` configuration scripts (for softwares that are already installed),
+* `update` update scripts for installed softwares.
 
 ## TODO
 
@@ -66,4 +68,33 @@ export PATH=$HOME/.$USER-sh/bin:$PATH
 ### Debian
 
 * On Debian, add /usr/sbin to path to get visudo.
-* Usefull soft linux: tree htop curl
+
+### Ubuntu 22.04
+
+* TODO remove snap?
+  * https://onlinux.systems/guides/20220524_how-to-disable-and-remove-snap-on-ubuntu-2204
+* Doc
+  * https://askubuntu.com/questions/1286545/what-commands-exactly-should-replace-the-deprecated-apt-key
+  * https://www.digitalocean.com/community/tutorials/how-to-handle-apt-key-and-add-apt-repository-deprecation-using-gpg-to-add-external-repositories-on-ubuntu-22-04
+  * https://askubuntu.com/questions/1437207/what-is-the-right-place-to-put-keyrings-for-repositories
+* gsettings set org.gnome.mutter overlay-key ""
+
+#### Steps
+
+1. bootstrap
+2. install/curl
+3. script/apt-update
+4. install/vim
+5. install/ssh-server
+6. copy git.sr.ht keys via scp: `scp ~/.ssh/git@git.sr.ht* <user>@<ip>:~/.ssh/`
+7. configure/git
+8. change remote url for repo: git remote set-url origin git@git.sr.ht:~nyg/sh
+   1. TODO create script
+9. configure/bash
+10. install/node
+11. install/python
+12. script fstab shared folders (check todo linux)
+13. install/java
+14. install/visualvm (mbeans plugin can be installed from UI easily, stored in ~/.visualvm)
+15. JetBrains
+    1. TODO modifies .profile and creates .profile.bak
