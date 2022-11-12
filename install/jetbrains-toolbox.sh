@@ -1,6 +1,7 @@
 #!/usr/bin/env sh
 # https://www.jetbrains.com/toolbox-app/
 # https://www.jetbrains.com/help/idea/installation-guide.html#fe5cb000
+# TODO modifies .profile and creates .profile.bak
 
 set -eu
 

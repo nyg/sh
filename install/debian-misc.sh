@@ -2,6 +2,7 @@
 
 sudo apt install -y \
     vim \
+    curl \
     tree \
     htop \
     jq \

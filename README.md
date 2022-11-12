@@ -30,20 +30,35 @@ Post-install flow examples.
 ### Ubuntu VM
 
 ```sh
-./install/curl
-./bin/apt-update
-./install/vim
-./install/ssh-server
-# copy git.sr.ht keys via scp: `scp ~/.ssh/git@git.sr.ht* <user>@<ip>:~/.ssh/`
-./configure/git
-# TODO change remote url for repo: git remote set-url origin git@git.sr.ht:~nyg/sh
-./configure/bash
-./install/node
-./install/python
-# TODO script fstab shared folders (check todo linux)
-./install/java
-./install/visualvm # (mbeans plugin can be installed from UI easily, stored in ~/.visualvm)
-./install/jetbrains.sh # TODO modifies .profile and creates .profile.bak
+sh <(wget -q -O - https://git.sr.ht/~nyg/sh/blob/master/bootstrap.sh)
+./configure/bash.sh
+./configure/git.sh
+
+./bin/apt-update.sh
+
+./install/debian-misc.sh
+./configure/vim.sh
+
+./install/ssh-server.sh
+./bin/mount-shared.sh
+# copy git.sr.ht keys from host: scp ~/.ssh/git@git.sr.ht* <user>@<ip>:~/.ssh/
+# change repo remote url to ssh: git remote set-url origin git@git.sr.ht:~nyg/sh
+
+./install/node.sh
+./install/python.sh
+
+./install/java.sh
+./install/visualvm.sh
+./install/jetbrains-toolbox.sh
+
+./install/brave-browser.sh
+./install/postman.sh
+./install/sqldeveloper.sh
+./install/sublime-text.sh
+./install/typora.sh
+./install/vscodium.sh
+
+./install/zsh.sh
 ```
 
 ## TODO

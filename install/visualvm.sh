@@ -1,4 +1,5 @@
 #!/usr/bin/env sh
+# Note: mbeans plugin can be installed from UI easily, stored in ~/.visualvm
 
 set -eu
 
