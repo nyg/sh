@@ -24,8 +24,8 @@ then
     mv .zshrc* $HOME/.Trash
 
     echo Linking zshrc file…
-    ln -s "$HOME/.$USER-sh/config/zshrc" "$HOME/.zshrc"
-    ln -s "$HOME/.$USER-sh/config/profile" "$HOME/.zprofile"
+    ln -s "$HOME/.$USER-sh/etc/zshrc" "$HOME/.zshrc"
+    ln -s "$HOME/.$USER-sh/etc/profile" "$HOME/.zprofile"
 
 elif is_os Linux && is_installed apt
 then
@@ -49,8 +49,8 @@ then
 
     echo Linking zshrc file…
     rm "$HOME/.zshrc"
-    ln -s "$HOME/.$USER-sh/config/zshrc" "$HOME/.zshrc"
-    ln -s "$HOME/.$USER-sh/config/profile" "$HOME/.zprofile"
+    ln -s "$HOME/.$USER-sh/etc/zshrc" "$HOME/.zshrc"
+    ln -s "$HOME/.$USER-sh/etc/profile" "$HOME/.zprofile"
 
     rm $HOME/.zcompdump*
 

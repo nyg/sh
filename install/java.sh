@@ -19,8 +19,8 @@ enable_export_plugin() {
 
 link_config() {
     echo Linking jenv/init.sh and jenv/path.sh…
-    ln -s "$HOME/.$USER-sh/config/jenv/init.sh" "$HOME/.$USER-sh/config/sh/jenv.sh"
-    ln -s "$HOME/.$USER-sh/config/jenv/path.sh" "$HOME/.$USER-sh/config/path/jenv.sh"
+    ln -s "$HOME/.$USER-sh/etc/jenv/init.sh" "$HOME/.$USER-sh/etc/sh/jenv.sh"
+    ln -s "$HOME/.$USER-sh/etc/jenv/path.sh" "$HOME/.$USER-sh/etc/path/jenv.sh"
 }
 
 if is_os Darwin

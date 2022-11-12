@@ -80,8 +80,8 @@ if ! shopt -oq posix; then
   fi
 fi
 
-# load all files in $HOME/.$USER-sh/config/sh/
-for file in "$HOME"/".$USER-sh"/config/sh/*.sh
+# load all files in $HOME/.$USER-sh/etc/sh/
+for file in "$HOME"/".$USER-sh"/etc/sh/*.sh
 do
     . "$file"
 done

@@ -28,10 +28,10 @@ echo Installing latest node version…
 nvm install node
 
 echo Linking npmrc configuration file…
-ln -s "$HOME/.$USER-sh/config/npmrc" "$HOME/.npmrc" || echo .npmrc already exists
+ln -s "$HOME/.$USER-sh/etc/npmrc" "$HOME/.npmrc" || echo .npmrc already exists
 
 echo Linking nvm/init.sh…
-ln -s "$HOME/.$USER-sh/config/nvm/init.sh" "$HOME/.$USER-sh/config/sh/nvm.sh"
+ln -s "$HOME/.$USER-sh/etc/nvm/init.sh" "$HOME/.$USER-sh/etc/sh/nvm.sh"
 
 echo Done!
 exec $SHELL -l

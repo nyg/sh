@@ -1,4 +1,4 @@
-for path_file in "$HOME"/".$USER-sh"/config/path/*.sh
+for path_file in "$HOME"/".$USER-sh"/etc/path/*.sh
 do
     . "$path_file"
 done

@@ -2,8 +2,6 @@
 
 ## Bootstrap
 
-Will clone this repo in `$HOME/.$USER-sh`.
-
 ```sh
 # curl
 sh <(curl -s https://git.sr.ht/~nyg/sh/blob/master/bootstrap.sh)
@@ -12,15 +10,41 @@ sh <(curl -s https://git.sr.ht/~nyg/sh/blob/master/bootstrap.sh)
 sh <(wget -q -O - https://git.sr.ht/~nyg/sh/blob/master/bootstrap.sh)
 ```
 
+This will install `git` and clone this repository in `$HOME/.$USER-sh`.
+
 ## Description
 
-Files are divided in three categories:
+Files are divided in six folders:
 
 * `etc` configuration files,
 * `bin` miscellaneous scripts, directory is added to the path,
 * `install` installation scripts, one per software,
 * `configure` configuration scripts (for softwares that are already installed),
 * `update` update scripts for installed softwares.
+* `softwares` install location for softwares such as Postman, SQLDeveloper, etc.
+
+## Examples
+
+Post-install flow examples.
+
+### Ubuntu VM
+
+```sh
+./install/curl
+./bin/apt-update
+./install/vim
+./install/ssh-server
+# copy git.sr.ht keys via scp: `scp ~/.ssh/git@git.sr.ht* <user>@<ip>:~/.ssh/`
+./configure/git
+# TODO change remote url for repo: git remote set-url origin git@git.sr.ht:~nyg/sh
+./configure/bash
+./install/node
+./install/python
+# TODO script fstab shared folders (check todo linux)
+./install/java
+./install/visualvm # (mbeans plugin can be installed from UI easily, stored in ~/.visualvm)
+./install/jetbrains.sh # TODO modifies .profile and creates .profile.bak
+```
 
 ## TODO
 
@@ -75,23 +99,3 @@ fi
   * https://www.digitalocean.com/community/tutorials/how-to-handle-apt-key-and-add-apt-repository-deprecation-using-gpg-to-add-external-repositories-on-ubuntu-22-04
   * https://askubuntu.com/questions/1437207/what-is-the-right-place-to-put-keyrings-for-repositories
 * gsettings set org.gnome.mutter overlay-key ""
-
-#### Steps
-
-1. bootstrap
-2. install/curl
-3. script/apt-update
-4. install/vim
-5. install/ssh-server
-6. copy git.sr.ht keys via scp: `scp ~/.ssh/git@git.sr.ht* <user>@<ip>:~/.ssh/`
-7. configure/git
-8. change remote url for repo: git remote set-url origin git@git.sr.ht:~nyg/sh
-   1. TODO create script
-9. configure/bash
-10. install/node
-11. install/python
-12. script fstab shared folders (check todo linux)
-13. install/java
-14. install/visualvm (mbeans plugin can be installed from UI easily, stored in ~/.visualvm)
-15. JetBrains
-    1. TODO modifies .profile and creates .profile.bak

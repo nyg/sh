@@ -6,4 +6,4 @@
 # sudo systemctl enable postgresql.service
 # sudo msfdb init
 
-# ln -s $HOME/.$USER-sh/config/msfconsole.rc $HOME/.msf4/msfconsole.rc
+# ln -s $HOME/.$USER-sh/etc/metasploit/msfconsole.rc $HOME/.msf4/msfconsole.rc

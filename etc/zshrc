@@ -1,0 +1,15 @@
+. "$HOME/.$USER-sh/etc/p10k/init.zsh"
+. "$HOME/.$USER-sh/etc/omz/init.zsh"
+
+# macOS
+# if [ -x /usr/libexec/path_helper ]; then
+#     eval `/usr/libexec/path_helper -s`
+# fi
+
+# load all files in $HOME/.$USER-sh/etc/sh/
+for file in "$HOME"/".$USER-sh"/etc/sh/*.sh
+do
+    . "$file"
+done
+
+. "$HOME/.$USER-sh/etc/p10k/config.zsh"

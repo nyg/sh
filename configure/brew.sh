@@ -3,6 +3,6 @@
 set -eu
 
 echo Adding brew cron job…
-crontab config/brew-cron.txt
+crontab etc/brew-cron.txt
 
 echo Done!
