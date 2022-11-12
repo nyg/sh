@@ -60,9 +60,6 @@ then
     # https://github.com/yb66/path_helper
     export PATH=/usr/local/bin:$PATH
 fi
-
-# custom binaries/scripts
-export PATH=$HOME/.$USER-sh/bin:$PATH
 ```
 
 ### Debian
