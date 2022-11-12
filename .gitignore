@@ -4,4 +4,4 @@ config/sh/*
 !config/sh/aliases.sh
 
 config/path/*
-!config/sh/path.sh
+!config/path/path.sh
