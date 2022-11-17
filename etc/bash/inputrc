@@ -1,7 +1,34 @@
 $include /etc/inputrc
 
-"\e[A":history-search-backward
-"\e[B":history-search-forward
+# uses position of cursor to filter history of commands when using up
+# and down arrows
+"\e[A": history-search-backward
+"\e[B": history-search-forward
 
+# binds TAB to cycle through auto-complete results and shift-TAB to
+# cycle through results backwards
+TAB: menu-complete
+"\e[Z": menu-complete-backward
+
+# bind ctrl-w to erasing a word (composed of digits and letters only)
+# will stop at other characters, e.g. _ - /
+set bind-tty-special-chars off
+"\C-w": backward-kill-word
+
+# ignore case during auto-completion
 set completion-ignore-case on
+
+# considers - and _ as the same during auto-completion
+set completion-map-case on
+
+# colors files show in auto-complete result, base on their respective
+# file type
 set colored-stats on
+
+# shows all possible completions (if no partial completion is possible)
+# immediatly instead of ringing the bell
+set show-all-if-ambiguous on
+
+# add slash after symbolic links and directory in auto-complete results
+set mark-symlinked-directories on
+
