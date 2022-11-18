@@ -2,20 +2,24 @@
 
 set -eu
 
-echo Fetching URL of latest SQLDeveloper version…
-download_url=$(curl -s https://www.oracle.com/database/sqldeveloper/technologies/download/ \
-    | sed -n "s/.*data-file=\"\([^\"]*\)\".*/https:\1/p" \
-    | grep no-jre \
-    | head -1)
-url="https://www.oracle.com/webapps/redirect/signon?nexturl=$download_url"
-echo URL is "$url"
+# Fails if cookies are not set…
+# echo Fetching URL of latest SQLDeveloper version…
+# download_url=$(curl -s https://www.oracle.com/database/sqldeveloper/technologies/download/ \
+#     | sed -n "s/.*data-file=\"\([^\"]*\)\".*/https:\1/p" \
+#     | grep no-jre \
+#     | head -1)
+# url="https://www.oracle.com/webapps/redirect/signon?nexturl=$download_url"
+# echo URL is "$url"
+url=https://www.oracle.com/database/sqldeveloper/technologies/download/
 
-read -p "Enter any key to open URL in browser. Log into OTN and save SQLDeveloper to the Downloads folder. Ctrl + C to abort." any_key
+echo "Web browser will open at: $url"
+echo "Save SQLDeveloper for Other Platforms into the Downloads folder."
+read -p "Press any key to continue…" any_key
 
 echo Opening URL in browser…
-python -m webbrowser "$url"
+python -m webbrowser "$url" > /dev/null 2>&1
 
-read -p "Press any key once SQLDeveloper has been downloaded. Ctrl + C to abort." any_key
+read -p "Press any key once SQLDeveloper has been downloaded…" any_key
 archive=$(find "$HOME/Downloads" -name 'sqldeveloper-*-no-jre.zip' -printf "%T@ %p\n" | sort -n | head -1 | cut -f2 -d' ')
 
 if [ -z $archive ]
