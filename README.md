@@ -14,35 +14,39 @@ This will install `git` and clone this repository in `$HOME/.$USER-sh`.
 
 ## Description
 
-Files are divided in six folders:
+Files are divided in multiple folders:
 
 * `etc` configuration files,
 * `bin` miscellaneous scripts, directory is added to the path,
 * `install` installation scripts, one per software,
+* `uninstall` uninstallation scripts,
 * `configure` configuration scripts (for softwares that are already installed),
-* `update` update scripts for installed softwares.
+* `update` update scripts for installed softwares,
 * `softwares` install location for softwares such as Postman, SQLDeveloper, etc.
+* `backup` backup scripts for specific OSes.
 
 ## Examples
 
-Post-install flow examples.
+Examples of post-install flows.
 
 ### Ubuntu VM
 
 ```sh
 sh <(wget -q -O - https://git.sr.ht/~nyg/sh/blob/master/bootstrap.sh)
+
 ./configure/bash.sh
 ./configure/git.sh
 
-./bin/apt-update.sh
+apt-update.sh
 
 ./install/debian-misc.sh
 ./configure/vim.sh
 
 ./install/ssh-server.sh
-./bin/mount-shared.sh
-# copy git.sr.ht keys from host: scp ~/.ssh/git@git.sr.ht* <user>@<ip>:~/.ssh/
-# change repo remote url to ssh: git remote set-url origin git@git.sr.ht:~nyg/sh
+# copy git.sr.ht keys from host
+#   scp ~/.ssh/git@git.sr.ht* <user>@<ip>:~/.ssh/
+# change repo remote url to ssh
+#   git remote set-url origin git@git.sr.ht:~nyg/sh
 
 ./install/node.sh
 ./install/python.sh
@@ -63,17 +67,20 @@ sh <(wget -q -O - https://git.sr.ht/~nyg/sh/blob/master/bootstrap.sh)
 
 ## TODO
 
-* Move doc to cs-notes
-* zsh
-  * fix zcompdump (is compinit invoked twice?)
-  * histfile
-  * zshdotdir
+### Misc
+
+* Move documentation to cs-notes
+
+### ZSH
+
+* fix zcompdump (is compinit invoked twice?)
+* histfile
+* zshdotdir
 
 ### macOS
 
-* ps -p $$ | cut -d " " -f1 | xargs lsof -p
+* `ps -p $$ | cut -d " " -f1 | xargs lsof -p`
 * backup: check which config can be added to git and symlinked
-* use Codium and LibreWolf
 * Links
   * https://macos-defaults.com/
   * https://github.com/catilac/plistwatch
@@ -103,14 +110,15 @@ fi
 
 ### Debian
 
-* On Debian, add /usr/sbin to path to get visudo.
+* add `/usr/sbin` to path to get visudo
 
 ### Ubuntu 22.04
 
-* TODO remove snap?
-  * https://onlinux.systems/guides/20220524_how-to-disable-and-remove-snap-on-ubuntu-2204
-* Doc
+* Doc for apt key
   * https://askubuntu.com/questions/1286545/what-commands-exactly-should-replace-the-deprecated-apt-key
   * https://www.digitalocean.com/community/tutorials/how-to-handle-apt-key-and-add-apt-repository-deprecation-using-gpg-to-add-external-repositories-on-ubuntu-22-04
   * https://askubuntu.com/questions/1437207/what-is-the-right-place-to-put-keyrings-for-repositories
 * gsettings set org.gnome.mutter overlay-key ""
+* Default editor
+  * https://askubuntu.com/questions/454649/how-can-i-change-the-default-editor-of-the-sudoedit-command-to-be-vim
+* Remove update-alternatives
