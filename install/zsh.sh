@@ -43,7 +43,6 @@ then
     git clone https://github.com/wting/autojump.git ${ZSH_CUSTOM:-$HOME/.oh-my-zsh/custom}/plugins/autojump
     (cd ${ZSH_CUSTOM:-$HOME/.oh-my-zsh/custom}/plugins/autojump; ./install.py)
 
-
     echo Cloning powerlevel10k…
     git clone --depth=1 https://github.com/romkatv/powerlevel10k.git ${ZSH_CUSTOM:-$HOME/.oh-my-zsh/custom}/themes/powerlevel10k
 
@@ -52,7 +51,7 @@ then
     ln -s "$HOME/.$USER-sh/etc/zshrc" "$HOME/.zshrc"
     ln -s "$HOME/.$USER-sh/etc/profile" "$HOME/.zprofile"
 
-    rm $HOME/.zcompdump*
+    rm -f $HOME/.zcompdump*
 
 else
     echo Could not install zsh >&2
