@@ -14,7 +14,7 @@ then
 
     # Note: this will rename an existing .zshrc file to .zshrc.pre-oh-my-zsh.
     echo Installing oh-my-zsh…
-    sh -c "$(curl -fsSL https://raw.githubusercontent.com/robbyrussell/oh-my-zsh/master/tools/install.sh)"
+    RUNZSH=no sh -c "$(curl -fsSL https://raw.githubusercontent.com/robbyrussell/oh-my-zsh/master/tools/install.sh)"
 
     # Note: this will run p10k configure to set up stuff in zshrc.
     echo Installing powerlevel10k…
@@ -27,6 +27,8 @@ then
     ln -s "$HOME/.$USER-sh/etc/zshrc" "$HOME/.zshrc"
     ln -s "$HOME/.$USER-sh/etc/profile" "$HOME/.zprofile"
 
+    rm -f $HOME/.zcompdump*
+
 elif is_os Linux && is_installed apt
 then
     echo Installing zsh…
@@ -36,8 +38,8 @@ then
     (cd /usr/local/share/fonts; sudo curl --remote-name-all https://raw.githubusercontent.com/romkatv/powerlevel10k-media/master/MesloLGS%20NF%20{Regular,Bold,Italic,Bold%20Italic}.ttf)
 
     echo Installing oh-my-zsh…
-    sh -c "$(curl -fsSL https://raw.githubusercontent.com/robbyrussell/oh-my-zsh/master/tools/install.sh)"
-    rm .shell.pre-oh-my-zsh
+    RUNZSH=no sh -c "$(curl -fsSL https://raw.githubusercontent.com/robbyrussell/oh-my-zsh/master/tools/install.sh)"
+    rm -f .shell.pre-oh-my-zsh
 
     echo Installing autojump…
     git clone https://github.com/wting/autojump.git ${ZSH_CUSTOM:-$HOME/.oh-my-zsh/custom}/plugins/autojump
