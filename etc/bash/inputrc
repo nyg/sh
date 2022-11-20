@@ -31,4 +31,3 @@ set show-all-if-ambiguous on
 
 # add slash after symbolic links and directory in auto-complete results
 set mark-symlinked-directories on
-
