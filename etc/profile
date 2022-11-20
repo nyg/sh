@@ -1,3 +1,5 @@
+export VISUAL=/usr/bin/vim
+
 for path_file in "$HOME"/".$USER-sh"/etc/path/*.sh
 do
     . "$path_file"
