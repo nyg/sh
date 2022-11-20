@@ -25,3 +25,7 @@ sudo apt autoremove --purge snapd
 
 sudo rm -rf /var/cache/snapd/
 rm -rf "$HOME/snap"
+
+sudo apt-mark hold snapd
+
+echo Done! Remove /snap/bin from /etc/environment and /etc/sudoers.
