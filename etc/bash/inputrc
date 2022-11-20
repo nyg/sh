@@ -7,8 +7,8 @@ $include /etc/inputrc
 
 # binds TAB to cycle through auto-complete results and shift-TAB to
 # cycle through results backwards
-TAB: menu-complete
-"\e[Z": menu-complete-backward
+"\e[C": menu-complete
+"\e[D": menu-complete-backward
 
 # bind ctrl-w to erasing a word (composed of digits and letters only)
 # will stop at other characters, e.g. _ - /
