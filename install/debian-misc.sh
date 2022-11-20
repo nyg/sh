@@ -16,3 +16,6 @@ sudo apt install -y \
     gnome-tweaks \
     dconf-editor \
     asciinema
+
+sudo apt remove --purge -y \
+    nano
