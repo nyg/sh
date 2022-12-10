@@ -17,7 +17,7 @@ echo "Save SQLDeveloper for Other Platforms into the Downloads folder."
 read -p "Press any key to continue…" any_key
 
 echo Opening URL in browser…
-python -m webbrowser "$url" > /dev/null 2>&1
+xdg-open "$url" > /dev/null 2>&1
 
 read -p "Press any key once SQLDeveloper has been downloaded…" any_key
 archive=$(find "$HOME/Downloads" -name 'sqldeveloper-*-no-jre.zip' -printf "%T@ %p\n" | sort -n | head -1 | cut -f2 -d' ')
