@@ -2,6 +2,13 @@
 
 xdg-open https://c-nergy.be/products.html > /dev/null 2>&1
 
+# Installation:
+# - download script
+# - unzip xrdp-installer-*.zip
+# - chmod +x xrdp-installer-*.sh
+# - ./xrdp-installer-*.sh -c -s
+# - rm xrdp-installer-*
+
 # Notes:
 # - script might not work via ssh, .xsessionrc will have to be created manually
 # - script creates the /etc/xrdp/startwm.sh and .griffon files, .griffon seems to be just a back-up
