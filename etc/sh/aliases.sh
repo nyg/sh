@@ -30,7 +30,8 @@ alias vl="vagrant box list"
 alias vu="vagrant up"
 
 # Docker
-alias dps="docker ps"
+alias dps="docker ps -a"
+alias dcp="docker container prune -f"
 alias dip="docker inspect --format='{{range .NetworkSettings.Networks}}{{.IPAddress}}{{end}}'"
 alias dkk="docker kill"
 
@@ -39,6 +40,10 @@ alias dcb="docker-compose build"
 alias dcu="docker-compose up"
 alias dcd="docker-compose down"
 alias dcbu="dcb && dcu"
+
+# Maven
+alias mci="mvn clean install"
+alias mcid="mvn clean install -DskipTests"
 
 # md5
 alias md5='md5sum'
@@ -54,8 +59,8 @@ alias msf='msfconsole -q'
 sshp_pwd="$HOME/.config/sshpass/password.gpg"
 if is_installed sshpass && [ -r "$sshp_pwd" ]
 then
-    alias ssh='gpg -d -q "$sshp_pwd" | sshpass ssh -o StrictHostKeyChecking=no ${@}'
-    alias scp='gpg -d -q "$sshp_pwd" | sshpass scp -o StrictHostKeyChecking=no ${@}'
+    alias ssh='sshpass -f <(gpg -dq "$sshp_pwd") ssh -o StrictHostKeyChecking=no ${@}'
+    alias scp='sshpass -f <(gpg -dq "$sshp_pwd") scp -o StrictHostKeyChecking=no ${@}'
     alias ssho='/bin/ssh'
     alias scpo='/bin/scp'
 fi
