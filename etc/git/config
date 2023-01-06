@@ -1,26 +1,25 @@
-[user]
-    name = nyg
-    email = nyg@users.noreply.github.com
+[advice]
+    detachedHead = false
 
 [alias]
     co = checkout
 
 [core]
-    precomposeunicode = false
+    precomposeUnicode = false
     editor = vim
-    excludesfile = ~/.config/git/global-ignore
+    excludesFile = ~/.config/git/global-ignore
 
 [diff]
-    guitool = opendiff
+    guiTool = opendiff
 
-[difftool]
+[diffTool]
     prompt = false
 
-[pull]
-    rebase = false
+[init]
+    defaultBranch = master
 
 [pager]
     branch = false
 
-[init]
-    defaultBranch = master
+[pull]
+    rebase = false
