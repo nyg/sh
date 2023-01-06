@@ -14,10 +14,10 @@ then
     rm "$HOME/.gitconfig"
 fi
 
-read -p "Value for user.name" username
+read -p "Value for user.name (empty to skip) " username
 [ ! -z "$username" ] && git config --global user.name "$username"
 
-read -p "Value for user.email" email
+read -p "Value for user.email (empty to skip) " email
 [ ! -z "$email" ] && git config --global user.email "$email"
 
 echo Done!
