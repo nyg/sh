@@ -1,6 +1,11 @@
 #!/usr/bin/env sh
 # https://brave.com/linux/#release-channel-installation
 
+# TODO
+# l /usr/share/keyrings/brave-browser-archive-keyring.gpg
+# l /etc/apt/trusted.gpg.d/brave-browser-release.gpg (symlink to first one)
+# l /etc/apt/keyrings/brave-browser.gpg
+
 set -eu
 
 . "$HOME/.$USER-sh/common.sh"
