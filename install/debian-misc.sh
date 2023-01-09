@@ -15,6 +15,7 @@ sudo apt install -y \
     samba \
     gnome-tweaks \
     dconf-editor \
+    # rdesktop \
     asciinema
 
 sudo apt remove --purge -y \
