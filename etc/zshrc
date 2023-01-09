@@ -6,6 +6,28 @@
 #     eval `/usr/libexec/path_helper -s`
 # fi
 
+# ssh autocomplete
+# TODO put into a file
+# https://serverfault.com/a/170481
+
+# disable users autocompletion
+zstyle ':completion:*:(ssh|scp):*' users
+
+# retrieve hosts from ssh's config and known_hosts file
+h=()
+if [[ -r ~/.ssh/config ]]; then
+    h=($h ${${${(@M)${(f)"$(cat ~/.ssh/config)"}:#Host *}#Host }:#*[*?]*})
+fi
+
+if [[ -r ~/.ssh/known_hosts ]]; then
+    h=($h ${${${(f)"$(cat ~/.ssh/known_hosts{,2} || true)"}%%\ *}%%,*}) 2>/dev/null
+fi
+
+if [[ $#h -gt 0 ]]; then
+    zstyle ':completion:*:(ssh|scp):*' hosts $h
+fi
+
+
 # load all files in $HOME/.$USER-sh/etc/sh/
 for file in "$HOME"/".$USER-sh"/etc/sh/*.sh
 do
