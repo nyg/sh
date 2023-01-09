@@ -4,6 +4,12 @@ set -eu
 
 . "$HOME/.$USER-sh/common.sh"
 
+if ! python -c 'import sys; assert sys.version_info >= (3,3)' >/dev/null 2>&1
+then
+    echo Python 3.3+ is required to install autojump >&2
+    exit 1
+fi
+
 if is_os Darwin
 then
     echo Installing zsh…
@@ -15,6 +21,10 @@ then
     # Note: this will rename an existing .zshrc file to .zshrc.pre-oh-my-zsh.
     echo Installing oh-my-zsh…
     RUNZSH=no sh -c "$(curl -fsSL https://raw.githubusercontent.com/robbyrussell/oh-my-zsh/master/tools/install.sh)"
+
+    echo Installing autojump…
+    git clone https://github.com/wting/autojump.git ${ZSH_CUSTOM:-$HOME/.oh-my-zsh/custom}/plugins/autojump
+    (cd ${ZSH_CUSTOM:-$HOME/.oh-my-zsh/custom}/plugins/autojump; ./install.py)
 
     # Note: this will run p10k configure to set up stuff in zshrc.
     echo Installing powerlevel10k…
