@@ -12,11 +12,22 @@ set -eu
 
 if is_os Linux && is_installed apt
 then
+    read -p "Use proxy? (if not, leave empty) " proxy_url
+    proxy_opts=""
+    if [ ! -z proxy_url ]
+    then
+        proxy_opts="http-proxy=$proxy_url"
+    fi
+
     echo Adding GPG key…
     key=/etc/apt/keyrings/matt-rose-ppa.gpg
     # TODO official way of getting the public key
-    sudo gpg --homedir /tmp --no-default-keyring --keyring $key \
-        --keyserver keyserver.ubuntu.com --recv-keys BD2FE0A01E3164DB
+    # https://github.com/gnome-terminator/terminator/issues/699
+    sudo gpg --homedir /tmp \
+        --no-default-keyring --keyring $key \
+        --keyserver keyserver.ubuntu.com \
+        --keyserver-options "timeout=20 $proxy_opts" \
+        --recv-keys BD2FE0A01E3164DB
 
     echo Adding repository…
     echo "deb [signed-by=$key] https://ppa.launchpadcontent.net/mattrose/terminator/ubuntu/ jammy main" \
