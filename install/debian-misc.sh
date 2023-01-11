@@ -9,7 +9,7 @@ sudo apt install -y \
     terminator \
     meld \
     vlc \
-    flameshot \
+    # flameshot \
     sshpass \
     gparted \
     samba \
