@@ -25,8 +25,8 @@ then
     # https://github.com/gnome-terminator/terminator/issues/699
     sudo gpg --homedir /tmp \
         --no-default-keyring --keyring $key \
-        --keyserver keyserver.ubuntu.com \
-        --keyserver-options "timeout=20 $proxy_opts" \
+        --keyserver hkp://keyserver.ubuntu.com \
+        --keyserver-options "timeout=30 $proxy_opts" \
         --recv-keys BD2FE0A01E3164DB
 
     echo Adding repository…
