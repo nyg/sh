@@ -4,11 +4,12 @@
 alias c="clear;clear"
 alias cdc="cd;c"
 alias tree="tree -aCF --dirsfirst -I .git"
-alias d="du -hd1"
+alias d="du -hd1 | sort -h"
 alias df='df -h'
 alias ..="cd .."
+alias ...="cd ../.."
+alias ....="cd ../../.."
 alias p='echo -e "${PATH//:/\\n}"'
-alias o='open .'
 alias diff='diff --color -y --suppress-common-lines'
 
 # Git
@@ -44,6 +45,12 @@ alias dcbu="dcb && dcu"
 # Maven
 alias mci="mvn clean install"
 alias mcid="mvn clean install -DskipTests"
+
+# OpenSSL
+function sha() {
+    # usage: sha 256 abcdef
+    echo -n $2 | openssl dgst -sha$1
+}
 
 # md5
 alias md5='md5sum'
@@ -84,9 +91,8 @@ elif is_os Darwin
 then
     alias ll="LC_COLLATE=C gls -AFl --color=auto --group-directories-first --si"
     alias l="exa -lFag --group-directories-first --time-style=long-iso"
-
     alias brewery="brew update && brew upgrade && brew cleanup"
     alias typora='open -a Typora'
-
     alias cat="bat"
+    alias o='open .'
 fi
