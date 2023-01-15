@@ -1,7 +1,1 @@
 softwares
-
-etc/sh/*
-!etc/sh/aliases.sh
-
-etc/path/*
-!etc/path/path.sh
