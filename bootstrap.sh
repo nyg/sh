@@ -26,8 +26,13 @@ OS=$(uname)
 # macOS
 if [ "$OS" = Darwin ]
 then
-    echo Installing brew…
-    /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
+    if ! is_installed brew
+    then
+        echo Installing brew…
+        /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
+    else
+        echo Brew is already installed
+    fi
 
     echo Installing git…
     brew install git
@@ -60,7 +65,7 @@ then
         exit 1
     fi
 else
-    echo Git is installed
+    echo Git is already installed
 fi
 
 #
