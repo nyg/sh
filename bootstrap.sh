@@ -37,8 +37,6 @@ then
     echo Installing git…
     brew install git
 
-    echo Done!
-
 # other OSes
 elif ! is_installed git
 then
@@ -54,8 +52,6 @@ then
             else
                 su -l root -c "apt update && apt install -y git"
             fi
-
-            echo Done!
         else
             echo Unknown package manager, aborting… >&2
             exit 1
@@ -72,3 +68,5 @@ fi
 # Clone the repo into `$HOME/.$USER-sh'.
 git clone https://git.sr.ht/~nyg/sh "$HOME/.$USER-sh"
 mkdir -p "$HOME/.$USER-sh/softwares" "$HOME/.local/bin"
+
+echo Done!
