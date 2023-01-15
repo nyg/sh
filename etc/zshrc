@@ -22,6 +22,14 @@
 #     zstyle ':completion:*:(ssh|scp):*' hosts $h
 # fi
 
+# misc zsh options
+
+# https://github.com/ohmyzsh/ohmyzsh/issues/31#issuecomment-359728582
+# https://stackoverflow.com/a/20037419
+unsetopt nomatch
+setopt dotglob
+setopt HIST_IGNORE_SPACE
+unset MAILCHECK
 
 # load all files in $HOME/.$USER-sh/etc/sh/
 for file in "$HOME"/".$USER-sh"/etc/sh/*.sh
