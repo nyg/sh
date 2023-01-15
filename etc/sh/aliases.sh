@@ -55,7 +55,7 @@ alias d64='base64 -D <<< '
 # Metasploit
 alias msf='msfconsole -q'
 
-## sshpass
+# sshpass
 sshp_pwd="$HOME/.config/sshpass/password.gpg"
 if is_installed sshpass && [ -r "$sshp_pwd" ]
 then
