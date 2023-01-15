@@ -14,6 +14,6 @@ then
 
     echo Done!
 else
-    echo Unsupported configuration >&2
+    echo Unsupported OS >&2
     exit 1
 fi
