@@ -1,5 +1,4 @@
-# probably not needed if installed with brew
-export PYENV_ROOT="$HOME/.pyenv"
+# TODO not needed for macOS if installed with brew
 
-# add PYENV_ROOT/bin to PATH, not necessary for macOS if installed with brew
+export PYENV_ROOT="$HOME/.pyenv"
 [ -d $PYENV_ROOT/bin ] && export PATH="$PYENV_ROOT/bin:$PATH"
