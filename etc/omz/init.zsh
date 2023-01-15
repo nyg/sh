@@ -8,7 +8,7 @@ DISABLE_AUTO_TITLE="true"
 zstyle ':omz:update' mode reminder
 zstyle ':omz:update' frequency 7
 
-plugins=(git autojump dirhistory)
+plugins=(git autojump dirhistory copypath)
 
 export ZSH_COMPDUMP="$ZSH/cache/zcompdump-$HOST-$ZSH_VERSION"
 source "$ZSH/oh-my-zsh.sh"
