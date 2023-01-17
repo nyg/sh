@@ -44,7 +44,10 @@ alias dcbu="dcb && dcu"
 
 # Maven
 alias mci="mvn clean install"
-alias mcid="mvn clean install -DskipTests"
+alias mcis="mvn clean install -DskipTests -Dpmd.skip -Dcheckstyle.skip -Dspotbugs.skip"
+alias mbp="mvn buildplan:list -Dbuildplan.showLifecycles"
+alias mep="mvn help:effective-pom -Dverbose"
+alias mpu="mvn versions:display-property-updates | grep '->'"
 
 # OpenSSL
 function sha() {
