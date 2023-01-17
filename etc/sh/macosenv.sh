@@ -1,2 +1,2 @@
 ICL="$HOME/Library/Mobile Documents/com~apple~CloudDocs/"
-[ -d "$ICL" ] && export $ICL
+[ -d "$ICL" ] && export ICL
