@@ -50,7 +50,8 @@ cp ~/Library/Preferences/com.colliderli.iina.plist $bck_dir
 echo Manually backup iTerm preferences: https://nyg.srht.site/softwares/iterm/#preferences-backup-restore
 
 # Karabiner Elements
-cp ~/.config/karabiner/karabiner.json $bck_dir
+mkdir $bck_dir/karabiner
+cp -R ~/.config/karabiner $bck_dir/karabiner
 
 # Safari Bookmarks
 cp ~/Library/Safari/Bookmarks.plist $bck_dir
