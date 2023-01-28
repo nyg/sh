@@ -49,6 +49,10 @@ alias mbp="mvn buildplan:list -Dbuildplan.showLifecycles"
 alias mep="mvn help:effective-pom -Dverbose"
 alias mpu="mvn versions:display-property-updates | grep '->'"
 
+# Carnotzet
+alias mza="mvn zet:start"
+alias mzo="mvn zet:stop zet:clean"
+
 # OpenSSL
 function sha() {
     # usage: sha 256 abcdef
