@@ -3,6 +3,9 @@
 
 [alias]
     co = checkout
+    b = branch
+    r = remote
+    s = status
 
 [core]
     precomposeUnicode = false
