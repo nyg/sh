@@ -23,6 +23,7 @@ then
 
     echo Installing pyenv…
     curl https://pyenv.run | bash
+
 else
     echo Could not install python >&2
     exit 1
@@ -50,9 +51,8 @@ echo Setting the last version as the global one…
 pyenv rehash
 pyenv global 3
 
-echo Linking pyenv/init.sh and pyenv/path.sh…
-ln -s "$HOME/.$USER-sh/etc/pyenv/init.sh" "$HOME/.$USER-sh/etc/sh/pyenv.sh"
-ln -s "$HOME/.$USER-sh/etc/pyenv/path.sh" "$HOME/.$USER-sh/etc/path/pyenv.sh"
+echo Linking pyenv/init.sh…
+ln -s "$HOME/.$USER-sh/etc/pyenv/init.sh" "$HOME/.$USER-sh/etc/sh/login.d/pyenv.sh"
 
 echo Done!
 exec $SHELL -l

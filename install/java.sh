@@ -8,7 +8,7 @@ set -eu
 . "$HOME/.$USER-sh/common.sh"
 
 init_jenv() {
-    export PATH="$HOME/.jenv/bin:$PATH"
+    PATH="$PATH:$HOME/.jenv/bin"
     eval "$(jenv init - $(basename $SHELL))"
 }
 
@@ -18,9 +18,8 @@ enable_export_plugin() {
 }
 
 link_config() {
-    echo Linking jenv/init.sh and jenv/path.sh…
-    ln -s "$HOME/.$USER-sh/etc/jenv/init.sh" "$HOME/.$USER-sh/etc/sh/jenv.sh"
-    ln -s "$HOME/.$USER-sh/etc/jenv/path.sh" "$HOME/.$USER-sh/etc/path/jenv.sh"
+    echo Linking jenv/init.sh…
+    ln -s "$HOME/.$USER-sh/etc/jenv/init.sh" "$HOME/.$USER-sh/etc/sh/login.d/jenv.sh"
 }
 
 if is_os Darwin
@@ -93,7 +92,7 @@ else
     exit 1
 fi
 
-echo 17 > "$HOME/.jenv/version"
+jenv global 17
 link_config
 
 echo Done! Check everything is ok with \'jenv doctor\'.
