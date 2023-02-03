@@ -1,3 +1,11 @@
+# Prints line which caused the error.
+err_report()
+{
+    echo Error on line $(caller): \'$1\'
+}
+
+trap 'err_report "$BASH_COMMAND"' ERR
+
 # Checks if the given software is installed.
 is_installed()
 {
