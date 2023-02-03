@@ -7,8 +7,10 @@ set -eu
 if [ -r "$HOME/.ssh/config" ]
 then
     echo Using existing SSH config file to replace etc/git/config…
-    cat "$HOME/.ssh/config" > "$HOME/.$USER-sh/etc/ssh/config"
+    temp_file=$(mktemp /tmp/gitconfig.XXXXXX)
+    cat "$HOME/.ssh/config" > "$temp_file"
     rm "$HOME/.ssh/config"
+    cat "$temp_file" > "$HOME/.$USER-sh/etc/ssh/config"
 fi
 
 echo Linking SSH configuration file…
