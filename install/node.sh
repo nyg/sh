@@ -31,7 +31,7 @@ nvm install node
 
 echo Linking npmrc configuration file…
 [ -r "$HOME/.npmrc" ] && cat "$HOME/.npmrc" "$HOME/.$USER-sh/etc/npm/npmrc" > "$HOME/.$USER-sh/etc/npm/npmrc"
-backup_if_exists npm "$HOME/.npmrc"
+backup_if_exists "$HOME/.npmrc"
 ln -s "$HOME/.$USER-sh/etc/npm/npmrc" "$HOME/.npmrc"
 
 echo Linking nvm/init.sh…

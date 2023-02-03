@@ -4,7 +4,7 @@ set -eu
 
 . "$HOME/.$USER-sh/common.sh"
 
-backup_if_exists zsh "${ZDOTDIR:-$HOME}"/.{zshenv,zprofile,zshrc,zlogin,zlogout}
+backup_if_exists "${ZDOTDIR:-$HOME}"/.{zshenv,zprofile,zshrc,zlogin,zlogout}
 
 # source zshenv to avoid hardcoding ZDOTDIR
 . "$HOME/.$USER-sh/etc/zsh/zshenv"
