@@ -37,11 +37,12 @@ backup_if_exists()
     do
         if [ -w "$f" ]
         then
-            bck_file=$(mktemp $(basename "$f").XXXXXX)
-            rm "$bck_file"
+            temp_file=$(mktemp /tmp/XXXXXX)
+            bck_file=$(basename "$temp_file")
 
             echo Moving "$f" to "$bck_dir/$bck_file"
-            mv "$f" "$bck_dir/$bck_file"
+            cat "$f" > "$temp_file"
+            cat "$temp_file" > "$bck_dir/$bck_file"
         fi
     done
 }
