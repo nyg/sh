@@ -9,7 +9,8 @@ backup_if_exists "${ZDOTDIR:-$HOME}"/.{zshenv,zprofile,zshrc,zlogin,zlogout}
 # source zshenv to avoid hardcoding ZDOTDIR
 . "$HOME/.$USER-sh/etc/zsh/zshenv"
 
-mkdir -p "${ZDOTDIR}"
+echo Linking zsh configuration files…
+mkdir -p "${ZDOTDIR:-$HOME}"
 ln -s "$HOME/.$USER-sh/etc/zsh/zshenv" "${ZDOTDIR:-$HOME}/.zshenv"
 ln -s "$HOME/.$USER-sh/etc/zsh/zprofile" "${ZDOTDIR:-$HOME}/.zprofile"
 ln -s "$HOME/.$USER-sh/etc/zsh/zshrc" "${ZDOTDIR:-$HOME}/.zshrc"
