@@ -21,7 +21,10 @@ is_os()
 # Creates directory if it does not already exists.
 create_if_not_exists()
 {
-    [ ! -d "$1" ] && mkdir "$1"
+    if [ ! -d "$1" ]
+    then
+        mkdir "$1"
+    fi
 }
 
 # Moves any existing of $@ to directory .$USER-sh/backup.
