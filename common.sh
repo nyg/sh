@@ -18,20 +18,11 @@ is_os()
     [ "$(uname)" = "$1" ]
 }
 
-# Creates directory if it does not already exists.
-create_if_not_exists()
-{
-    if [ ! -d "$1" ]
-    then
-        mkdir -p "$1"
-    fi
-}
-
 # Moves any existing of $@ to directory .$USER-sh/backup.
 backup_if_exists()
 {
     bck_dir="$HOME/.$USER-sh/backup"
-    create_if_not_exists "$bck_dir"
+    mkdir -p "$bck_dir"
 
     for f in "$@"
     do

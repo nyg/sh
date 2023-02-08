@@ -9,7 +9,7 @@ append_if_exists "$HOME/.config/git/config" "$HOME/.$USER-sh/etc/git/config"
 backup_if_exists "$HOME/.config/git/global-ignore"
 
 echo Linking git configuration files…
-create_if_not_exists "$HOME/.config/git"
+mkdir -p "$HOME/.config/git"
 ln -s "$HOME/.$USER-sh/etc/git/config" "$HOME/.config/git/config"
 ln -s "$HOME/.$USER-sh/etc/git/global-ignore" "$HOME/.config/git/global-ignore"
 
