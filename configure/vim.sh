@@ -4,7 +4,11 @@ set -eu
 
 . "$HOME/.$USER-sh/common.sh"
 
-append_if_exists "$VIM_HOME/vimrc" "$HOME/.$USER-sh/etc/vim/vimrc"
+if [ "$VIM_HOME" ]
+then
+    append_if_exists "$VIM_HOME/vimrc" "$HOME/.$USER-sh/etc/vim/vimrc"
+fi
+
 append_if_exists "$HOME/.vimrc" "$HOME/.$USER-sh/etc/vim/vimrc"
 
 . "$HOME/.$USER-sh/etc/vim/vimenv.sh"
