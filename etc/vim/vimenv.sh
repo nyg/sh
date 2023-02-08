@@ -1,1 +1,1 @@
-export VIM_HOME="$HOME/config/vim"
+export VIM_HOME="$HOME/.config/vim"

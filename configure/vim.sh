@@ -2,11 +2,19 @@
 
 set -eu
 
-echo Setting up vim configuration files…
+. "$HOME/.$USER-sh/common.sh"
 
-mkdir -p "$HOME/.config/vim"
-ln -s "$HOME/.$USER-sh/etc/vim/vimrc" "$HOME/.config/vim/vimrc"
+append_if_exists "$VIM_HOME/vimrc" "$HOME/.$USER-sh/etc/vim/vimrc"
+append_if_exists "$HOME/.vimrc" "$HOME/.$USER-sh/etc/vim/vimrc"
 
+. "$HOME/.$USER-sh/etc/vim/vimenv.sh"
+
+echo Linking vim configuration files…
+mkdir -p "$VIM_HOME"
+ln -s "$HOME/.$USER-sh/etc/vim/vimrc" "$VIM_HOME/vimrc"
 ln -s "$HOME/.$USER-sh/etc/vim/vimenv.sh" "$HOME/.$USER-sh/etc/sh/vimenv.sh"
 
-echo Done!
+echo Done, make sure VIM_HOME is correctly set to $VIM_HOME!
+
+echo exec\'ing new shell now…
+exec $SHELL
