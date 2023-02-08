@@ -18,7 +18,7 @@ mkdir -p "$VIM_HOME"
 ln -s "$HOME/.$USER-sh/etc/vim/vimrc" "$VIM_HOME/vimrc"
 ln -s "$HOME/.$USER-sh/etc/vim/vimenv.sh" "$HOME/.$USER-sh/etc/sh/vimenv.sh"
 
-echo Done, make sure VIM_HOME is correctly set to $VIM_HOME!
+echo Done, make sure VIM_HOME is correctly set to $VIM_HOME.
 
 echo exec\'ing new shell now…
 exec $SHELL

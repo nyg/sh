@@ -16,4 +16,4 @@ set softtabstop=4
 syntax on
 
 " viminfo location
-set viminfo+=n~/.vim/viminfo
+set viminfo+=n~/.config/vim/viminfo
