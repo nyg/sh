@@ -49,6 +49,11 @@ backup_if_exists()
 # Appends a file to another and backs up the former.
 append_if_exists()
 {
+    if [ ! -f "$1" ]
+    then
+        return
+    fi
+
     if [ -w "$1" ] && [ -w "$2" ]
     then
         echo Found $1, appending to $2
