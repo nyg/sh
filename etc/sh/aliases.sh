@@ -100,8 +100,18 @@ then
 
 elif is_os Darwin
 then
-    alias ll="LC_COLLATE=C gls -AFl --color=auto --group-directories-first --si"
-    alias l="exa -lFag --group-directories-first --time-style=long-iso"
+    if is_installed gls
+    then
+        alias ll="LC_COLLATE=C gls -AFl --color=auto --group-directories-first --si"
+    fi
+
+    if is_installed exa
+    then
+        alias l="exa -lFag --group-directories-first --time-style=long-iso"
+    else
+        alias l="ls -lFagG"
+    fi
+
     alias brewery="brew update && brew upgrade && brew cleanup"
     alias typora='open -a Typora'
     alias cat="bat"
