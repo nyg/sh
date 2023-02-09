@@ -109,7 +109,7 @@ then
     then
         alias l="exa -lFag --group-directories-first --time-style=long-iso"
     else
-        alias l="ls -lFagG"
+        alias l="ls -FAGlh"
     fi
 
     alias brewery="brew update && brew upgrade && brew cleanup"
