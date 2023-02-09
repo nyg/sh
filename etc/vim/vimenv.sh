@@ -1,1 +1,1 @@
-export VIM_HOME="$HOME/.config/vim"
+export VIMINIT='source $HOME/.config/vim/vimrc'
