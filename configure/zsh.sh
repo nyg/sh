@@ -6,11 +6,14 @@ set -eu
 
 backup_if_exists "${ZDOTDIR:-$HOME}"/.{zshenv,zprofile,zshrc,zlogin,zlogout}
 
-# source zshenv to avoid hardcoding ZDOTDIR
-. "$HOME/.$USER-sh/etc/zsh/zshenv"
+ZDOTDIR="${ZDOTDIR:-$HOME/.config/zsh}"
+echo ZDOTDIR is set to \'$ZDOTDIR\', creating directory…
+mkdir -p "$ZDOTDIR"
+
+echo Appending ZDOTDIR to /etc/zshenv…
+echo 'export ZDOTDIR="$HOME/.config/zsh"' | sudo tee -a /etc/zshenv
 
 echo Linking zsh configuration files…
-mkdir -p "${ZDOTDIR:-$HOME}"
-ln -s "$HOME/.$USER-sh/etc/zsh/zshenv" "${ZDOTDIR:-$HOME}/.zshenv"
-ln -s "$HOME/.$USER-sh/etc/zsh/zprofile" "${ZDOTDIR:-$HOME}/.zprofile"
-ln -s "$HOME/.$USER-sh/etc/zsh/zshrc" "${ZDOTDIR:-$HOME}/.zshrc"
+ln -s "$HOME/.$USER-sh/etc/zsh/zshenv" "$ZDOTDIR/.zshenv"
+ln -s "$HOME/.$USER-sh/etc/zsh/zprofile" "$ZDOTDIR/.zprofile"
+ln -s "$HOME/.$USER-sh/etc/zsh/zshrc" "$ZDOTDIR/.zshrc"
