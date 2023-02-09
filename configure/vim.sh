@@ -14,7 +14,7 @@ ln -s "$HOME/.$USER-sh/etc/vim/vimrc" "$HOME/.config/vim/vimrc"
 ln -s "$HOME/.$USER-sh/etc/vim/vimenv.sh" "$HOME/.$USER-sh/etc/sh/vimenv.sh"
 
 . "$HOME/.$USER-sh/etc/vim/vimenv.sh"
-echo Done, make sure VIMINIT is exported and set to $VIMINIT.
+echo Done, make sure VIMINIT is exported and set to \'$VIMINIT\'.
 
 echo exec\'ing new shell now…
 exec $SHELL
