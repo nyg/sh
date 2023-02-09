@@ -2,4 +2,4 @@
 [ -d "$HOME/.$USER-sh/bin" ] && PATH="$PATH:$HOME/.$USER-sh/bin"
 
 # source any file in etc/sh/login.d/
-find "$HOME/.$USER-sh/etc/sh/login.d" -type f | xargs .
+find "$HOME/.$USER-sh/etc/sh/login.d" -type f | xargs . 2>/dev/null
