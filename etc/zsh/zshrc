@@ -1,7 +1,7 @@
 [ -d "$ZSH" ] && . "$HOME/.$USER-sh/etc/omz/init.zsh"
 [ "${ZSH_THEME#*powerlevel10k}" != "$ZSH" ] && . "$HOME/.$USER-sh/etc/p10k/init.zsh"
 
-# ssh autocomplete\\\\\\\\\\\\\\\\\
+# ssh autocomplete
 # TODO put into a file
 # https://serverfault.com/a/170481
 
