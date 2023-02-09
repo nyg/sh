@@ -1,4 +1,12 @@
-. "$HOME/.$USER-sh/common.sh"
+is_os()
+{
+    [ "$(uname)" = "$1" ]
+}
+
+is_installed()
+{
+    which "$1" >/dev/null
+}
 
 # Utilities
 alias c="clear;clear"
@@ -21,11 +29,6 @@ alias gr="git remote -v"
 alias gd="git diff"
 alias gds="git diff --staged"
 alias gpp="git pull -p"
-
-gh() {
-    URL=$(git remote get-url origin | sed -E 's/^git@|\.git$//g' | sed 's/github.com:/github.com\//')
-    open "https://$URL"
-}
 
 # Vagrant
 alias vl="vagrant box list"
@@ -103,4 +106,9 @@ then
     alias typora='open -a Typora'
     alias cat="bat"
     alias o='open .'
+
+    gh() {
+        URL=$(git remote get-url origin | sed -E 's/^git@|\.git$//g' | sed 's/github.com:/github.com\//')
+        open "https://$URL"
+    }
 fi
