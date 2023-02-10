@@ -2,4 +2,4 @@
 for file in "$HOME"/".$USER-sh"/etc/sh/profile.d/*
 do
     . "$file"
-done 2>/dev/null
+done

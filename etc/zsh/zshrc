@@ -26,9 +26,9 @@ unset mailcheck
 
 
 #
-# source all files in $HOME/.$USER-sh/etc/sh/
+# source any file in etc/sh/rc.d/
 
-for file in "$HOME"/".$USER-sh"/etc/sh/*.sh
+for file in "$HOME"/".$USER-sh"/etc/sh/rc.d/*
 do
     . "$file"
 done
