@@ -35,7 +35,7 @@ backup_if_exists "$HOME/.npmrc"
 ln -s "$HOME/.$USER-sh/etc/npm/npmrc" "$HOME/.npmrc"
 
 echo Linking nvm/init.sh…
-ln -s "$HOME/.$USER-sh/etc/nvm/init.sh" "$HOME/.$USER-sh/etc/sh/login.d/nvm.sh"
+ln -s "$HOME/.$USER-sh/etc/nvm/init.sh" "$HOME/.$USER-sh/etc/sh/profile.d/nvm.sh"
 
 echo Done!
 exec $SHELL -l

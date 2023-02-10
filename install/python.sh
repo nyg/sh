@@ -52,7 +52,7 @@ pyenv rehash
 pyenv global 3
 
 echo Linking pyenv/init.sh…
-ln -s "$HOME/.$USER-sh/etc/pyenv/init.sh" "$HOME/.$USER-sh/etc/sh/login.d/pyenv.sh"
+ln -s "$HOME/.$USER-sh/etc/pyenv/init.sh" "$HOME/.$USER-sh/etc/sh/profile.d/pyenv.sh"
 
 echo Done!
 exec $SHELL -l

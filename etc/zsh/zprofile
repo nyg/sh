@@ -2,8 +2,8 @@
 [ -d "$HOME/.local/bin" ] && PATH="$PATH:$HOME/.local/bin"
 [ -d "$HOME/.$USER-sh/bin" ] && PATH="$PATH:$HOME/.$USER-sh/bin"
 
-# source any file in etc/sh/login.d/
-for file in "$HOME"/".$USER-sh"/etc/sh/login.d/*
+# source any file in etc/sh/profile.d/
+for file in "$HOME"/".$USER-sh"/etc/sh/profile.d/*
 do
     . "$file"
 done 2>/dev/null
