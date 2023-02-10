@@ -1,7 +1,3 @@
-# add .local/bin and .$USER-sh/bin to PATH
-[ -d "$HOME/.local/bin" ] && PATH="$PATH:$HOME/.local/bin"
-[ -d "$HOME/.$USER-sh/bin" ] && PATH="$PATH:$HOME/.$USER-sh/bin"
-
 # source any file in etc/sh/profile.d/
 for file in "$HOME"/".$USER-sh"/etc/sh/profile.d/*
 do
