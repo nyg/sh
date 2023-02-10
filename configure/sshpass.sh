@@ -14,4 +14,7 @@ mkdir -p "$sshp_dir"
 echo "$password" | gpg --personal-cipher-preferences AES256 -c -o $sshp_dir/password.gpg
 
 echo Done!
+
+# reload aliases.sh
+echo exec\'ing new shell now…
 exec $SHELL
