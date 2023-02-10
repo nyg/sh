@@ -112,9 +112,13 @@ then
         alias l="ls -FAGlh"
     fi
 
+    if is_installed bat
+    then
+        alias cat="bat"
+    fi
+
     alias brewery="brew update && brew upgrade && brew cleanup"
     alias typora='open -a Typora'
-    alias cat="bat"
     alias o='open .'
 
     gh() {
