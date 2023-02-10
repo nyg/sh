@@ -1,5 +1,9 @@
+# add .local/bin and .$USER-sh/bin to PATH
 [ -d "$HOME/.local/bin" ] && PATH="$PATH:$HOME/.local/bin"
 [ -d "$HOME/.$USER-sh/bin" ] && PATH="$PATH:$HOME/.$USER-sh/bin"
 
 # source any file in etc/sh/login.d/
-find "$HOME/.$USER-sh/etc/sh/login.d" -type f 2>/dev/null | xargs .
+for file in "$HOME"/".$USER-sh"/etc/sh/login.d/*
+do
+    . "$file"
+done 2>/dev/null

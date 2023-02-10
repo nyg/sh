@@ -28,8 +28,10 @@ unset mailcheck
 #
 # source all files in $HOME/.$USER-sh/etc/sh/
 
-find "$HOME/.$USER-sh/etc/sh" -maxdepth 1 -type f -name '*.sh' 2>/dev/null | xargs .
-
+for file in "$HOME"/".$USER-sh"/etc/sh/*.sh
+do
+    . "$file"
+done
 
 #
 # oh-my-zsh
