@@ -24,6 +24,9 @@ setopt hist_ignore_space
 # disable `you have new mail message'
 unset mailcheck
 
+# vi keymap is used when setting VISUAL to vim, restore emacs keymap
+bindkey -e
+
 
 #
 # source any file in etc/sh/rc.d/
