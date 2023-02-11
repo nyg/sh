@@ -9,7 +9,7 @@
 
 
 #
-# misc zsh options
+# zsh history
 
 HISTFILE=${ZDOTDIR}/.zsh_history
 SAVEHIST=10000000 # items to keep in histfile
@@ -21,6 +21,34 @@ setopt hist_find_no_dups # don't show duplicates when searching history
 setopt hist_ignore_dups # don't record command if it's duplicate from previous entry
 setopt hist_reduce_blanks # remove superfluous blanks
 
+# load history-search-end function from zshcontrib and bind up/down arrows to
+# its two widgets
+autoload -Uz history-search-end
+zle -N history-beginning-search-backward-end history-search-end
+zle -N history-beginning-search-forward-end history-search-end
+[ -n ${key[Up]} ] && bindkey "${key[Up]}" history-beginning-search-backward-end
+[ -n ${key[Down]} ] && bindkey "${key[Down]}" history-beginning-search-forward-end
+
+# bind ctrl space to show a menu of history items matching current line content
+autoload -Uz history-beginning-search-menu
+zle -N history-beginning-search-menu-end history-beginning-search-menu
+bindkey '^ ' history-beginning-search-menu-end
+
+
+#
+# zsh keyboard
+
+# vi keymap is used when setting VISUAL to vim, restore emacs keymap
+bindkey -e
+
+bindkey  "^[[H"   beginning-of-line # home key
+bindkey  "^[[F"   end-of-line # end key
+bindkey  "^[[3~"  delete-char # del key
+
+
+#
+# zsh misc
+
 # if a glob (e.g. *.txt) has no match, pass the glob as-is to the command
 # instead of printing error message
 setopt no_no_match
@@ -31,8 +59,6 @@ setopt glob_dots
 # disable `you have new mail message'
 unset MAILCHECK
 
-# vi keymap is used when setting VISUAL to vim, restore emacs keymap
-bindkey -e
 
 
 #
