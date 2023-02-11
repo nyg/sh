@@ -90,6 +90,14 @@ then
     alias np="pnpm"
 fi
 
+# zsh
+if [ ${SHELL#*zsh} != "$SHELL" ]
+then
+    alias hist='fc -lED 1'
+    alias hg='hist | grep'
+    alias opt='set -o | sort'
+fi
+
 #
 # OS Specific
 
