@@ -11,18 +11,26 @@
 #
 # misc zsh options
 
+HISTFILE=${ZDOTDIR}/.zsh_history
+SAVEHIST=10000000 # items to keep in histfile
+HISTSIZE=10000000 # items from histfile to load into memory
+setopt extended_history # write timestamp of command in histfile
+setopt hist_ignore_space # don't record commands starting with a space
+setopt hist_fcntl_lock # supposedly better performance
+setopt hist_find_no_dups # don't show duplicates when searching history
+setopt hist_ignore_dups # don't record command if it's duplicate from previous entry
+setopt hist_no_store # don't record history command
+setopt hist_reduce_blanks # remove superfluous blanks
+
 # if a glob (e.g. *.txt) has no match, pass the glob as-is to the command
 # instead of printing error message
-unsetopt nomatch
+setopt no_no_match
 
 # do not require a leading . to match dot files
 setopt glob_dots
 
-# do not store commands starting with a space in history
-setopt hist_ignore_space
-
 # disable `you have new mail message'
-unset mailcheck
+unset MAILCHECK
 
 # vi keymap is used when setting VISUAL to vim, restore emacs keymap
 bindkey -e
