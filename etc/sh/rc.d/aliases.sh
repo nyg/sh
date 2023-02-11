@@ -83,6 +83,13 @@ then
     alias scpo='/bin/scp'
 fi
 
+# pnpm
+if [ $VOLTA_FEATURE_PNPM -eq 1 ]
+then
+    alias npm="echo Use pnpm / np instead"
+    alias np="pnpm"
+fi
+
 #
 # OS Specific
 
