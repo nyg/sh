@@ -19,7 +19,6 @@ setopt hist_ignore_space # don't record commands starting with a space
 setopt hist_fcntl_lock # supposedly better performance
 setopt hist_find_no_dups # don't show duplicates when searching history
 setopt hist_ignore_dups # don't record command if it's duplicate from previous entry
-setopt hist_no_store # don't record history command
 setopt hist_reduce_blanks # remove superfluous blanks
 
 # if a glob (e.g. *.txt) has no match, pass the glob as-is to the command
