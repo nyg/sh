@@ -3,13 +3,12 @@
 set -eu
 
 . "$HOME/.$USER-sh/common.sh"
-
-. etc/volta/init.sh
+. "$HOME/.$USER-sh/etc/volta/init.sh"
 
 if [ ! -d $VOLTA_HOME ]
 then
-	echo Install volta…
-	curl https://get.volta.sh | bash -s -- --skip-setup
+    echo Install volta…
+    curl https://get.volta.sh | bash -s -- --skip-setup
 fi
 
 echo Linking npmrc configuration file…
@@ -18,11 +17,18 @@ ln -s "$HOME/.$USER-sh/etc/npm/npmrc" "$HOME/.npmrc"
 
 echo Linking etc/volta/init.sh…
 ln -s "$HOME/.$USER-sh/etc/volta/init.sh" "$HOME/.$USER-sh/etc/sh/profile.d/volta.sh" \
-	|| echo init.sh already linked
+    || echo init.sh already linked
 
-echo Installing pnpm and node…
+echo Installing node…
 volta install node
-volta install pnpm
+
+read -p "Install pnpm? (y/N) " answer
+if [ "$answer" = "y" ]
+then
+    echo Installing pnpm…
+    volta install pnpm
+    echo 'export VOLTA_FEATURE_PNPM=1' >> "$HOME/.$USER-sh/etc/volta/init.sh"
+fi
 
 echo Done!
 
