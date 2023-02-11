@@ -9,6 +9,21 @@
 
 
 #
+# zsh keyboard
+
+# vi keymap is used when setting VISUAL to vim, restore emacs keymap
+bindkey -e
+
+bindkey  "^[[H"   beginning-of-line # home key
+bindkey  "^[[F"   end-of-line # end key
+bindkey  "^[[3~"  delete-char # del key
+
+# add values to key array for later use by bindkey
+typeset -g -A key
+[ -n "$terminfo[kcuu1]" ] && key[Up]=$terminfo[kcuu1]
+[ -n "$terminfo[kcud1]" ] && key[Down]=$terminfo[kcud1]
+
+#
 # zsh history
 
 HISTFILE=${ZDOTDIR}/.zsh_history
@@ -26,24 +41,13 @@ setopt hist_reduce_blanks # remove superfluous blanks
 autoload -Uz history-search-end
 zle -N history-beginning-search-backward-end history-search-end
 zle -N history-beginning-search-forward-end history-search-end
-[ -n ${key[Up]} ] && bindkey "${key[Up]}" history-beginning-search-backward-end
-[ -n ${key[Down]} ] && bindkey "${key[Down]}" history-beginning-search-forward-end
+bindkey "${key[Up]}" history-beginning-search-backward-end
+bindkey "${key[Down]}" history-beginning-search-forward-end
 
 # bind ctrl space to show a menu of history items matching current line content
 autoload -Uz history-beginning-search-menu
 zle -N history-beginning-search-menu-end history-beginning-search-menu
 bindkey '^ ' history-beginning-search-menu-end
-
-
-#
-# zsh keyboard
-
-# vi keymap is used when setting VISUAL to vim, restore emacs keymap
-bindkey -e
-
-bindkey  "^[[H"   beginning-of-line # home key
-bindkey  "^[[F"   end-of-line # end key
-bindkey  "^[[3~"  delete-char # del key
 
 
 #
@@ -60,7 +64,6 @@ setopt glob_dots
 unset MAILCHECK
 
 
-
 #
 # source any file in etc/sh/rc.d/
 
@@ -68,6 +71,7 @@ for file in "$HOME"/".$USER-sh"/etc/sh/rc.d/*
 do
     . "$file"
 done
+
 
 #
 # oh-my-zsh
