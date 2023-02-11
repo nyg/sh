@@ -91,7 +91,7 @@ then
 fi
 
 # zsh
-if [ ${SHELL#*zsh} != "$SHELL" ]
+if [ "${SHELL#*zsh}" != "$SHELL" ]
 then
     alias hist='fc -lED 1'
     alias hg='hist | grep'
