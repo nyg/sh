@@ -71,8 +71,29 @@ apt-update.sh
 
 * Move documentation to cs-notes
 
-### ZSH
+### Shell / ZSH
 
-* fix zcompdump (is compinit invoked twice?)
-* histfile
-* zshdotdir
+* histfile: https://unix.stackexchange.com/questions/265957/zsh-histfile-still-read-from-zsh-history
+
+```sh
+# ssh autocomplete
+# TODO put into a file
+# https://serverfault.com/a/170481
+
+# disable users autocompletion
+zstyle ':completion:*:(ssh|scp):*' users
+
+# retrieve hosts from ssh's config and known_hosts file
+h=()
+if [[ -r ~/.ssh/config ]]; then
+    h=($h ${${${(@M)${(f)"$(cat ~/.ssh/config)"}:#Host *}#Host }:#*[*?]*})
+fi
+
+if [[ -r ~/.ssh/known_hosts ]]; then
+    h=($h ${${${(f)"$(cat ~/.ssh/known_hosts{,2} || true)"}%%\ *}%%,*}) 2>/dev/null
+fi
+
+if [[ $#h -gt 0 ]]; then
+    zstyle ':completion:*:(ssh|scp):*' hosts $h
+fi
+```
