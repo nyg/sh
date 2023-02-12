@@ -19,9 +19,10 @@ bindkey  "^[[F"   end-of-line # end key
 bindkey  "^[[3~"  delete-char # del key
 
 # add values to key array for later use by bindkey
-typeset -g -A key
-[ -n "$terminfo[kcuu1]" ] && key[Up]=$terminfo[kcuu1]
-[ -n "$terminfo[kcud1]" ] && key[Down]=$terminfo[kcud1]
+# typeset -g -A key
+# [ -n "$terminfo[kcuu1]" ] && key[Up]=$terminfo[kcuu1]
+# [ -n "$terminfo[kcud1]" ] && key[Down]=$terminfo[kcud1]
+
 
 #
 # zsh history
@@ -41,8 +42,8 @@ setopt hist_reduce_blanks # remove superfluous blanks
 autoload -Uz history-search-end
 zle -N history-beginning-search-backward-end history-search-end
 zle -N history-beginning-search-forward-end history-search-end
-bindkey "${key[Up]}" history-beginning-search-backward-end
-bindkey "${key[Down]}" history-beginning-search-forward-end
+bindkey '^[[A' history-beginning-search-backward-end
+bindkey '^[[B' history-beginning-search-forward-end
 
 # bind ctrl space to show a menu of history items matching current line content
 autoload -Uz history-beginning-search-menu
