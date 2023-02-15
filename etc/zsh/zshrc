@@ -11,18 +11,43 @@
 #
 # zsh keyboard
 
+# If we want to use terminfo capabilities with bindkey, we need to enable the
+# `application mode' (aka keyboard_transmit) when zle starts, and then disable
+# it when zle exists. The reason is that the terminfo descriptions are written
+# for when the terminal is in application mode. Something like that.
+#
+# e.g. in normal mode, the up arrow key returns ^[[A, in app mode it returns
+# ^[OA, the terminfo value for kcuu1 is ^[OA.
+if (( ${+terminfo[smkx]} )) && (( ${+terminfo[rmkx]} ))
+then
+    function zle-line-init () {
+        echoti smkx
+    }
+
+    function zle-line-finish () {
+        echoti rmkx
+    }
+
+    zle -N zle-line-init
+    zle -N zle-line-finish
+else
+    echo Application mode not supported >&2
+fi
+
 # vi keymap is used when setting VISUAL to vim, restore emacs keymap
 bindkey -e
 
-bindkey  "^[[H"   beginning-of-line # home key
-bindkey  "^[[F"   end-of-line # end key
-bindkey  "^[[3~"  delete-char # del key
+typeset -g -A key
 
-# add values to key array for later use by bindkey
-# typeset -g -A key
-# [ -n "$terminfo[kcuu1]" ] && key[Up]=$terminfo[kcuu1]
-# [ -n "$terminfo[kcud1]" ] && key[Down]=$terminfo[kcud1]
+[ -n "$terminfo[khome]" ] && key[Home]=$terminfo[khome]
+[ -n "$terminfo[kend]" ] && key[End]=$terminfo[kend]
+[ -n "$terminfo[kdch1]" ] && key[Delete]=$terminfo[kdch1]
+[ -n "$terminfo[kcuu1]" ] && key[Up]=$terminfo[kcuu1]
+[ -n "$terminfo[kcud1]" ] && key[Down]=$terminfo[kcud1]
 
+[ -n ${key[Home]} ] && bindkey "${key[Home]}" beginning-of-line
+[ -n ${key[End]} ] && bindkey "${key[End]}" end-of-line
+[ -n ${key[Delete]} ] && bindkey "${key[Delete]}" delete-char
 
 #
 # zsh history
@@ -37,15 +62,15 @@ setopt hist_find_no_dups # don't show duplicates when searching history
 setopt hist_ignore_dups # don't record command if it's duplicate from previous entry
 setopt hist_reduce_blanks # remove superfluous blanks
 
-# load history-search-end function from zshcontrib and bind up/down arrows to
-# its two widgets
-autoload -Uz history-search-end
-zle -N history-beginning-search-backward-end history-search-end
-zle -N history-beginning-search-forward-end history-search-end
-bindkey '^[[A' history-beginning-search-backward-end
-bindkey '^[[B' history-beginning-search-forward-end
+# bind up/down arrows to history search
+autoload -Uz up-line-or-beginning-search
+autoload -Uz down-line-or-beginning-search
+zle -N up-line-or-beginning-search
+zle -N down-line-or-beginning-search
+[ -n ${key[Up]} ] && bindkey "${key[Up]}" up-line-or-beginning-search
+[ -n ${key[Down]} ] && bindkey "${key[Down]}" down-line-or-beginning-search
 
-# bind ctrl space to show a menu of history items matching current line content
+# bind ctrl-space to show a menu of history items matching current line content
 autoload -Uz history-beginning-search-menu
 zle -N history-beginning-search-menu-end history-beginning-search-menu
 bindkey '^ ' history-beginning-search-menu-end
@@ -61,9 +86,11 @@ compinit
 # enable the arrow-key-driven ui
 zstyle ':completion:*' menu select
 
-# in-word autocompletion: https://stackoverflow.com/a/68794830
+# in-word autocompletion:
+#   https://stackoverflow.com/a/68794830
+#   https://stackoverflow.com/a/69014927
 zstyle ':completion:*' matcher-list \
-    'm:{[:lower:]}={[:upper:]}' \
+    'm:{[:lower:][:upper:]}={[:upper:][:lower:]}' \
     '+r:|[._-]=* r:|=*' \
     '+l:|=*'
 
@@ -94,6 +121,10 @@ setopt glob_dots
 
 # disable `you have new mail message'
 unset MAILCHECK
+
+# `/' also delimits words (for backward-kill-word, etc.)
+autoload -Uz select-word-style
+select-word-style bash
 
 
 #
