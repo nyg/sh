@@ -1,9 +1,11 @@
-# TODO not needed for macOS if installed with brew
-export PYENV_ROOT="$HOME/.pyenv"
-[ -d $PYENV_ROOT/bin ] && PATH="$PATH:$PYENV_ROOT/bin"
+if [ "$(uname)" != Darwin ]
+then
+    export PYENV_ROOT="$HOME/.pyenv"
+    PATH="$PATH:$PYENV_ROOT/bin"
+fi
 
 # add pyenv shims to the path
 eval "$(pyenv init --path)"
 
 # init pyenv (shell completion, etc.)
-eval "$(pyenv init -)"
+#eval "$(pyenv init -)"

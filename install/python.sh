@@ -4,9 +4,6 @@ set -eu
 
 . "$HOME/.$USER-sh/common.sh"
 
-export PYENV_ROOT="$HOME/.pyenv"
-export PATH="$PYENV_ROOT/bin:$PATH"
-
 if is_os Darwin
 then
     echo Installing pyenv…
@@ -14,6 +11,9 @@ then
 
 elif is_os Linux && is_installed apt
 then
+    export PYENV_ROOT="$HOME/.pyenv"
+    export PATH="$PYENV_ROOT/bin:$PATH"
+
     echo Installing dependencies…
     sudo apt update
     sudo apt install -y make build-essential libssl-dev zlib1g-dev libbz2-dev  \
@@ -25,14 +25,14 @@ then
     curl https://pyenv.run | bash
 
 else
-    echo Could not install python >&2
+    echo Could not install pyenv >&2
     exit 1
 fi
 
 echo Setting up pyenv shims path…
 eval "$(pyenv init --path)"
-echo Init pyenv…
-eval "$(pyenv init -)"
+# echo Init pyenv…
+# eval "$(pyenv init -)"
 
 for v in 2 3
 do
@@ -47,7 +47,7 @@ do
     pyenv install $last_version
 done
 
-echo Setting the last version as the global one…
+echo Setting version 3 as the global one…
 pyenv rehash
 pyenv global 3
 
