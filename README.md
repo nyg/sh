@@ -65,6 +65,10 @@ apt-update.sh
 ./install/zsh.sh
 ```
 
+### macOS
+
+See [macOS](MACOS.md).
+
 ## TODO
 
 ### Misc

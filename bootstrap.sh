@@ -67,6 +67,9 @@ fi
 #
 # Clone the repo into `$HOME/.$USER-sh'.
 git clone https://git.sr.ht/~nyg/sh "$HOME/.$USER-sh"
-mkdir -p "$HOME/.$USER-sh/softwares" "$HOME/.local/bin" "$HOME/.$USER-sh/etc/zsh/sh/profile.d"
+mkdir -p "$HOME/.$USER-sh/softwares" \
+         "$HOME/.$USER-sh/etc/zsh/sh/profile.d" \
+         "$HOME/.local/bin" \
+         "$HOME/.ssh"
 
 echo Done!
