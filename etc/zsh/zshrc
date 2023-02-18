@@ -1,11 +1,6 @@
 #
-# oh-my-zsh
-
-# source oh-my-zsh init file if directy exists
-[ -d "$ZSH" ] && . "$HOME/.$USER-sh/etc/omz/init.zsh"
-
-# source powerlevel10k init file if omz theme is powerlevel10k
-[ "${ZSH_THEME#*powerlevel10k}" != "$ZSH_THEME" ] && . "$HOME/.$USER-sh/etc/p10k/init.zsh"
+# powerlevel10k theme
+[ -d "$HOME/.$USER-sh/softwares/powerlevel10k" ] && . "$HOME/.$USER-sh/etc/zsh/p10k/instant-prompt.zsh"
 
 
 #
@@ -134,10 +129,3 @@ for file in "$HOME"/".$USER-sh"/etc/sh/rc.d/*
 do
     . "$file"
 done
-
-
-#
-# oh-my-zsh
-
-# source powerlevel10k config file if omz theme is powerlevel10k
-[ "${ZSH_THEME#*powerlevel10k}" != "$ZSH_THEME" ] && . "$HOME/.$USER-sh/etc/p10k/config.zsh"
