@@ -1,6 +1,14 @@
 #!/usr/bin/env sh
 
-pkg_add curl vim colorls git jdk maven zip unzip
+pkg_add \
+    curl \
+    vim \
+    colorls \
+    git \
+    jdk \
+    maven \
+    zip \
+    unzip
 
 # TODO
 # echo "\nexport ENV=$HOME/.shrc" >> $HOME/.profile

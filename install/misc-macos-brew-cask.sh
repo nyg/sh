@@ -1,35 +1,38 @@
-brew install --cask alt-tab
-brew install --cask apparency
-brew install --cask brave-browser
-brew install --cask coteditor
-brew install --cask db-browser-for-sqlite
-brew install --cask discord
-brew install --cask docker
-brew install --cask firefox
-brew install --cask free-ruler
-brew install --cask ganache
-brew install --cask handbrake
-brew install --cask hex-fiend
-brew install --cask iina
-brew install --cask imageoptim
-brew install --cask iterm2
-brew install --cask jetbrains-toolbox
-brew install --cask karabiner-elements
-brew install --cask knockknock
-brew install --cask meld
-brew install --cask mkvtoolnix
-brew install --cask onyx
-brew install --cask pacifist
-brew install --cask postman
-brew install --cask sequel-ace
-brew install --cask suspicious-package
-brew install --cask taskexplorer
-brew install --cask textmate
-brew install --cask tor-browser
-brew install --cask transmission
-brew install --cask typora
-brew install --cask unpkg
-brew install --cask virtualbox virtualbox-extension-pack
-brew install --cask vscodium
-brew install --cask vlc
-brew install --cask wireshark
+#!/usr/bin/env sh
+
+brew install --cask
+    alt-tab \
+    apparency \
+    brave-browser \
+    coteditor \
+    db-browser-for-sqlite \
+    discord \
+    docker \
+    firefox \
+    free-ruler \
+    ganache \
+    handbrake \
+    hex-fiend \
+    iina \
+    imageoptim \
+    iterm2 \
+    jetbrains-toolbox \
+    karabiner-elements \
+    knockknock \
+    meld \
+    mkvtoolnix \
+    onyx \
+    pacifist \
+    postman \
+    sequel-ace \
+    suspicious-package \
+    taskexplorer \
+    textmate \
+    tor-browser \
+    transmission \
+    typora \
+    unpkg \
+    virtualbox virtualbox-extension-pack \
+    vscodium \
+    vlc \
+    wireshark

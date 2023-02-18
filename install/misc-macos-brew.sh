@@ -1,12 +1,15 @@
-brew install bat
-brew install cloc
-brew install exa
-brew install ffmpeg
-brew install hashcat
-brew install jq
-brew install mas
-brew install maven
-brew install nmap
-brew install shellcheck
-brew install tree
-brew install youtube-dl
+#!/usr/bin/env sh
+
+brew install \
+    bat \
+    cloc \
+    exa \
+    ffmpeg \
+    hashcat \
+    jq \
+    mas \
+    maven \
+    nmap \
+    shellcheck \
+    tree \
+    youtube-dl
