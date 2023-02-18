@@ -77,11 +77,7 @@ See [macOS](MACOS.md).
 
 ### Shell / ZSH
 
-* histfile: https://unix.stackexchange.com/questions/265957/zsh-histfile-still-read-from-zsh-history
-
 ```sh
-# ssh autocomplete
-# TODO put into a file
 # https://serverfault.com/a/170481
 
 # disable users autocompletion

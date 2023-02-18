@@ -54,3 +54,4 @@
       <TODO manually configure installed software>
    6. TODO: update documentation on how to set upstream repo
    7. TODO: backup CotEditor preferences
+   8. TODO: jenv, pyenv, volta
