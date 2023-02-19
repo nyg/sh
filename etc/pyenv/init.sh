@@ -1,11 +1,10 @@
+export PYENV_ROOT="$HOME/.config/pyenv"
+
+# On macOS pyenv is installed via brew so pyenv binaries are alreadying in the
+# path, on other OSes that won't be the case.
 if [ "$(uname)" != Darwin ]
 then
-    export PYENV_ROOT="$HOME/.pyenv"
     PATH="$PATH:$PYENV_ROOT/bin"
 fi
 
-# add pyenv shims to the path
-eval "$(pyenv init --path)"
-
-# init pyenv (shell completion, etc.)
-#eval "$(pyenv init -)"
+PATH="$PYENV_ROOT/shims:$PATH"

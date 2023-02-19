@@ -4,6 +4,8 @@ set -eu
 
 . "$HOME/.$USER-sh/common.sh"
 
+export PYENV_ROOT="$HOME/.config/pyenv"
+
 if is_os Darwin
 then
     echo Installing pyenv…
@@ -11,8 +13,7 @@ then
 
 elif is_os Linux && is_installed apt
 then
-    export PYENV_ROOT="$HOME/.pyenv"
-    export PATH="$PYENV_ROOT/bin:$PATH"
+    PATH="$PATH:$PYENV_ROOT/bin"
 
     echo Installing dependencies…
     sudo apt update
@@ -29,22 +30,17 @@ else
     exit 1
 fi
 
-echo Setting up pyenv shims path…
-eval "$(pyenv init --path)"
-# echo Init pyenv…
-# eval "$(pyenv init -)"
-
 for v in 2 3
 do
     if is_os Darwin
     then
-        last_version=$(pyenv install -l | grep -e "^\s*$v\.\d*\.\d*$" | tail -1 | sed 's/ *//')
+        latest=$(pyenv install -l | grep -e "^\s*$v\.\d*\.\d*$" | tail -1 | sed 's/ *//')
     else
-        last_version=$(pyenv install -l | grep -P "^\s*$v\.\d*\.\d*$" | tail -1 | sed 's/ *//')
+        latest=$(pyenv install -l | grep -P "^\s*$v\.\d*\.\d*$" | tail -1 | sed 's/ *//')
     fi
 
-    echo Installing version ${last_version}…
-    pyenv install $last_version
+    echo Installing version ${latest}…
+    pyenv install $latest
 done
 
 echo Setting version 3 as the global one…
