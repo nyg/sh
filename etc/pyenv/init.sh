@@ -1,7 +1,6 @@
 export PYENV_ROOT="$HOME/.config/pyenv"
 
-# On macOS pyenv is installed via brew so pyenv binaries are alreadying in the
-# path, on other OSes that won't be the case.
+# On macOS pyenv is installed via brew so its binaries are already in the path.
 if [ "$(uname)" != Darwin ]
 then
     PATH="$PATH:$PYENV_ROOT/bin"

@@ -7,8 +7,10 @@ set -eu
 
 . "$HOME/.$USER-sh/common.sh"
 
+export JENV_ROOT="$HOME/.config/jenv"
+
 init_jenv() {
-    PATH="$PATH:$HOME/.jenv/bin"
+    PATH="$PATH:$JENV_ROOT/bin"
     eval "$(jenv init - $(basename $SHELL))"
 }
 
@@ -27,7 +29,7 @@ then
     echo Installing jenv…
     brew install jenv
 
-    init_jenv
+    #init_jenv
     enable_export_plugin
 
     echo Installing latest Java version…
@@ -54,7 +56,7 @@ then
 elif is_os Linux
 then
     echo Cloning jenv to ~/.jenv…
-    git clone https://github.com/jenv/jenv.git ~/.jenv
+    git clone https://github.com/jenv/jenv.git "$HOME/.config/jenv"
 
     init_jenv
     enable_export_plugin
@@ -88,7 +90,7 @@ then
     fi
 
 else
-    echo Unknown OS, aborting… >&2
+    echo Could not install jenv >&2
     exit 1
 fi
 
