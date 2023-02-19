@@ -10,7 +10,6 @@ set -eu
 export JENV_ROOT="$HOME/.config/jenv"
 
 init_jenv() {
-    PATH="$PATH:$JENV_ROOT/bin"
     eval "$(jenv init - $(basename $SHELL))"
 }
 
@@ -29,7 +28,7 @@ then
     echo Installing jenv…
     brew install jenv
 
-    #init_jenv
+    init_jenv
     enable_export_plugin
 
     echo Installing latest Java version…
@@ -58,6 +57,7 @@ then
     echo Cloning jenv to ~/.jenv…
     git clone https://github.com/jenv/jenv.git "$HOME/.config/jenv"
 
+    PATH="$PATH:$JENV_ROOT/bin"
     init_jenv
     enable_export_plugin
 
