@@ -31,21 +31,19 @@ then
     init_jenv
     enable_export_plugin
 
-    echo Installing latest Java version…
-    brew install --cask temurin
-
-    echo Installing Java 8…
+    echo Installing Java 8 \& 17…
     brew tap homebrew/cask-versions
-    brew install --cask temurin8
+    brew install --cask temurin8 temurin17
 
-    echo Adding installed Java versions to jenv…
+    echo Finding installed versions with /usr/libexec/java_home…
     /usr/libexec/java_home -X > /tmp/jvm.plist
     i=0
     while :
     do
-        jvm_path=$(/usr/libexec/PlistBuddy -c "print :$i:JVMHomePath" /tmp/jvm.plist 2>/dev/null)
-        [ $? -ne 0 ] && break
+        jvm_path=$(/usr/libexec/PlistBuddy -c "print :$i:JVMHomePath" /tmp/jvm.plist 2>/dev/null || echo end)
+        [ "$jvm_path" = "end" ] && break
 
+        echo Adding $jvm_path to jenv…
         jenv add "$jvm_path"
         i=$((i+1))
     done
@@ -54,8 +52,8 @@ then
 
 elif is_os Linux
 then
-    echo Cloning jenv to ~/.jenv…
-    git clone https://github.com/jenv/jenv.git "$HOME/.config/jenv"
+    echo Cloning jenv to ${JENV_ROOT}…
+    git clone https://github.com/jenv/jenv.git "$JENV_ROOT"
 
     PATH="$PATH:$JENV_ROOT/bin"
     init_jenv
