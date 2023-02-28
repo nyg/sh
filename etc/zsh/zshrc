@@ -6,13 +6,13 @@
 #
 # zsh keyboard
 
-# If we want to use terminfo capabilities with bindkey, we need to enable the
+# If we want to use terminfo capabilities with `bindkey', we need to enable the
 # `application mode' (aka keyboard_transmit) when zle starts, and then disable
 # it when zle exists. The reason is that the terminfo descriptions are written
 # for when the terminal is in application mode. Something like that.
 #
 # e.g. in normal mode, the up arrow key returns ^[[A, in app mode it returns
-# ^[OA, the terminfo value for kcuu1 is ^[OA.
+# ^[OA, the terminfo value for kcuu1 (i.e. up arrow) is ^[OA.
 if (( ${+terminfo[smkx]} )) && (( ${+terminfo[rmkx]} ))
 then
     function zle-line-init () {
@@ -29,7 +29,7 @@ else
     echo Application mode not supported >&2
 fi
 
-# vi keymap is used when setting VISUAL to vim, restore emacs keymap
+# vi keymap is used when setting VISUAL to vim, restore emacs keymap instead
 bindkey -e
 
 typeset -g -A key
@@ -43,6 +43,7 @@ typeset -g -A key
 [ -n ${key[Home]} ] && bindkey "${key[Home]}" beginning-of-line
 [ -n ${key[End]} ] && bindkey "${key[End]}" end-of-line
 [ -n ${key[Delete]} ] && bindkey "${key[Delete]}" delete-char
+
 
 #
 # zsh history
@@ -72,16 +73,39 @@ bindkey '^ ' history-beginning-search-menu-end
 
 
 #
-# zsh autocompletion
+# zsh completion system
 
-# enable autocompletion
+# enable compsys
+fpath=($HOME/.local/share/zsh/functions $fpath)
 autoload -Uz compinit
-compinit
+compinit -i
 
-# enable the arrow-key-driven ui
+# disabled by default, try to make completion list smaller
+setopt list_packed
+
+# disabled by default, when ambiguous completion, don't require another TAB to
+# select the first choice, but select the first choice immediately (then use
+# arrows or TAB to navigate between items)
+setopt menu_complete
+
+# enable menu selection (with TAB and arrow keys)
 zstyle ':completion:*' menu select
 
-# in-word autocompletion:
+# load menu selection module to define key bindings for the menuselect keymap
+zmodload -i zsh/complist
+
+# [1] TAB or Ctrl-I to move to next item while in interactive mode (but will
+# exit interactive mode). Shift-TAB to go to previous item in completion.
+bindkey -M menuselect '^I' vi-forward-char
+bindkey -M menuselect '^[[Z' vi-backward-char
+
+# [2] Ctrl-L to bring (back) the interactive mode
+bindkey -M menuselect '^L' vi-insert
+
+# Ctrl-O to accept completion item and execute command immediately
+bindkey -M menuselect '^O' .accept-line
+
+# in-word case-insensitive completion. From:
 #   https://stackoverflow.com/a/68794830
 #   https://stackoverflow.com/a/69014927
 zstyle ':completion:*' matcher-list \
@@ -89,15 +113,30 @@ zstyle ':completion:*' matcher-list \
     '+r:|[._-]=* r:|=*' \
     '+l:|=*'
 
-# disable completion of users for the ssh and scp command
-zstyle ':completion:*:(ssh|scp):*' users
 
-setopt no_list_ambiguous # do show menu after inserting unambiguous prefix
-setopt list_packed # try to make completion list smaller
+#
+# zsh improvements for ssh
+
+# Enable the interactive mode of the menu selection which allows to filter
+# hosts by continuing to type letters on the cli. May be too much as it prevents
+# TAB from being used to go to the next item (see [1] above). Arrow keys can be
+# used but then the interactive mode will exit (see [2] above).
+zstyle ':completion:*:(ssh|scp):*:*' menu select interactive
+
+# Retrieve hosts from ~/.ssh/{config,known_hosts{,2}}. Note: if the ssh config
+# option HashKnownHosts is enabled, the hosts in known_hosts are hashed and thus
+# can't be used here. From: https://serverfault.com/a/170481
+typeset -U h # remove duplicates
+h=(${${${(@M)${(f)"$(cat ~/.ssh/config)"}:#Host *}#Host }:#*[*?]*})
+h=($h ${${${(f)"$(cat ~/.ssh/known_hosts{,2} || true)"}%%\ *}%%,*}) 2>/dev/null
+zstyle ':completion:*:(ssh|scp):*:hosts' hosts $h
+
+# disable users completion
+zstyle ':completion:*:(ssh|scp):*:users' users
 
 
 #
-# zsh directory stack
+# zsh directory stack (`d' alias)
 
 setopt auto_pushd # push current directory visited on the stack
 setopt pushd_ignore_dups # don't store duplicates in the stack
@@ -114,7 +153,7 @@ setopt no_no_match
 # do not require a leading . to match dot files
 setopt glob_dots
 
-# disable `you have new mail message'
+# disable `you have new mail' message
 unset MAILCHECK
 
 # `/' also delimits words (for backward-kill-word, etc.)
