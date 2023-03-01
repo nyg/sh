@@ -19,6 +19,7 @@ alias ...="cd ../.."
 alias ....="cd ../../.."
 alias p='echo -e "${PATH//:/\\n}"'
 alias diff='diff --color -y --suppress-common-lines'
+alias x='exit'
 
 # Git
 alias gs="git status"
