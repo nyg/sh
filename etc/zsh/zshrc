@@ -83,11 +83,6 @@ compinit -i
 # disabled by default, try to make completion list smaller
 setopt list_packed
 
-# disabled by default, when ambiguous completion, don't require another TAB to
-# select the first choice, but select the first choice immediately (then use
-# arrows or TAB to navigate between items)
-setopt menu_complete
-
 # enable menu selection (with TAB and arrow keys)
 zstyle ':completion:*' menu select
 
