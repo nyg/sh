@@ -1,5 +1,2 @@
-export VISUAL=vim
-export ZSH="$HOME/.config/oh-my-zsh"
-
-ICLOUD="$HOME/Library/Mobile Documents/com~apple~CloudDocs/"
-[ -d "$ICLOUD" ] && export ICLOUD
+ZDOTDIR="${XDG_CONFIG_HOME:-$HOME/.config}/zsh"
+. "$ZDOTDIR/.zshenv"
