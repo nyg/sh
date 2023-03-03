@@ -4,7 +4,7 @@ err_report()
     echo Error on line $(caller): \'$1\'
 }
 
-trap 'err_report "$BASH_COMMAND"' ERR
+trap '[ $? -eq 0 ] && exit 0 || echo "$0 FAILED at line ${LINENO}"' EXIT
 
 # Checks if the given software is installed.
 is_installed()
