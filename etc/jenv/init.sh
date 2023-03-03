@@ -6,4 +6,9 @@ then
     PATH="$PATH:$JENV_ROOT/bin"
 fi
 
-zsh-defer eval "$(jenv init - --no-rehash | grep -v completions)"
+if typeset -f zsh-defer > /dev/null
+then
+    zsh-defer eval "$(jenv init -)"
+else
+    eval "$(jenv init -)"
+fi

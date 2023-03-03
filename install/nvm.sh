@@ -15,14 +15,14 @@ git -C $NVM_DIR -c advice.detachedHead=false co $last_tag
 echo Loading nvm…
 . "$NVM_DIR/nvm.sh"
 
-echo Installing latest node version…
-nvm install node
+echo Installing latest LTS node version…
+nvm install --lts
 
 echo Linking npmrc configuration file…
 append_if_exists "$HOME/.npmrc" "$HOME/.$USER-sh/etc/npm/npmrc"
 ln -s "$HOME/.$USER-sh/etc/npm/npmrc" "$HOME/.npmrc"
 
 echo Linking nvm/init.sh…
-ln -s "$HOME/.$USER-sh/etc/nvm/init.sh" "$HOME/.$USER-sh/etc/sh/rc.d/nvm.sh"
+ln -s "$HOME/.$USER-sh/etc/nvm/init.sh" "$HOME/.$USER-sh/etc/sh/profile.d/nvm.sh"
 
 echo Done!
