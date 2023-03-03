@@ -3,6 +3,7 @@
 brew install \
     bat \
     cloc \
+    duf \
     exa \
     ffmpeg \
     hashcat \
@@ -12,4 +13,5 @@ brew install \
     nmap \
     shellcheck \
     tree \
-    youtube-dl
+    youtube-dl \
+    zsh
