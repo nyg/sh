@@ -18,11 +18,6 @@ enable_export_plugin() {
     jenv enable-plugin export
 }
 
-link_config() {
-    echo Linking jenv/init.sh…
-    ln -s "$HOME/.$USER-sh/etc/jenv/init.sh" "$HOME/.$USER-sh/etc/sh/profile.d/jenv.sh"
-}
-
 if is_os Darwin
 then
     echo Installing jenv…
@@ -92,8 +87,11 @@ else
     exit 1
 fi
 
-jenv global 17
-link_config
+echo Try setting global version to Java 17…
+jenv global 17 || echo Could not set global version
+
+echo Linking jenv/init.sh…
+ln -s "$HOME/.$USER-sh/etc/jenv/init.sh" "$HOME/.$USER-sh/etc/sh/profile.d/jenv.sh"
 
 echo Done! Check everything is ok with \'jenv doctor\'.
 exec $SHELL -l
