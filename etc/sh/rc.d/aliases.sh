@@ -94,7 +94,7 @@ alias mcis='mvn clean install -DskipTests -Dpmd.skip -Dcheckstyle.skip -Dspotbug
 alias mcds='mvn clean deploy -DskipTests -Dpmd.skip -Dcheckstyle.skip -Dspotbugs.skip'
 alias mbp='mvn buildplan:list -Dbuildplan.showLifecycles'
 alias mep='mvn help:effective-pom -Dverbose'
-alias mpu='mvn versions:display-property-updates | grep '\''->'\'''
+alias mpu='mvn versions:display-property-updates | grep -- "->"'
 
 # Carnotzet
 alias mza='mvn zet:start'
