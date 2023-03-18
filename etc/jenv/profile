@@ -1,0 +1,25 @@
+export JENV_ROOT="$HOME/.config/jenv"
+
+unset JAVA_HOME
+unset JDK_HOME
+
+# On macOS jenv is installed via brew so its binaries are already in the path.
+command -v jenv > /dev/null || { [ "$(uname)" != Darwin ] && PATH="$PATH:$JENV_ROOT/bin"; }
+command -v jenv > /dev/null || PATH="$JENV_ROOT/shims:$PATH"
+
+jenv() {
+  type typeset &> /dev/null && typeset command
+  command="$1"
+  if [ "$#" -gt 0 ]; then
+    shift
+  fi
+
+  case "$command" in
+  enable-plugin|rehash|shell|shell-options)
+    eval "\`jenv \"sh-\$command\" \"\$@\"\`"
+    ;;
+  *)
+    command jenv "$command" "$@"
+    ;;
+  esac
+}

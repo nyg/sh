@@ -88,10 +88,11 @@ else
 fi
 
 echo Try setting global version to Java 17…
-jenv global 17 || echo Could not set global version
+jenv global 17 || echo Could not set global version to 17
 
-echo Linking jenv/init.sh…
-ln -s "$HOME/.$USER-sh/etc/jenv/init.sh" "$HOME/.$USER-sh/etc/sh/profile.d/jenv.sh"
+echo Linking jenv configuration files…
+ln -s "$HOME/.$USER-sh/etc/jenv/profile" "$HOME/.$USER-sh/etc/sh/profile.d/jenv.sh"
+ln -s "$HOME/.$USER-sh/etc/jenv/rc" "$HOME/.$USER-sh/etc/sh/rc.d/jenv.sh"
 
 echo Done! Check everything is ok with \'jenv doctor\'.
 exec $SHELL -l
