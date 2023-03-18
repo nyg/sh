@@ -88,7 +88,7 @@ else
 fi
 
 echo Try setting global version to Java 17…
-jenv global 17 || echo Could not set global version to 17
+jenv global 17.0 || echo Could not set global version to 17
 
 echo Linking jenv configuration files…
 ln -s "$HOME/.$USER-sh/etc/jenv/profile" "$HOME/.$USER-sh/etc/sh/profile.d/jenv.sh"
