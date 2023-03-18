@@ -1,6 +1,7 @@
 #!/usr/bin/env sh
 
 brew install \
+    asciinema \
     bat \
     cloc \
     duf \
@@ -13,5 +14,6 @@ brew install \
     nmap \
     shellcheck \
     tree \
-    youtube-dl \
+    xdg-ninja \
+    yt-dlp \
     zsh

@@ -11,7 +11,7 @@ mkdir $dir
 cd $dir
 
 # dl audio only
-youtube-dl -x --audio-format m4a --audio-quality 0 $1
+yt-dlp -x --audio-format m4a --audio-quality 0 $1
 
 # move file to iTunes, uh, I mean Music
 mv * ~/Music/Music/Media/Automatically\ Add\ to\ Music.localized/
