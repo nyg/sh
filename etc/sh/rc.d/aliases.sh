@@ -90,8 +90,8 @@ alias dcbu='dcb && dcu'
 
 # Maven
 alias mci='mvn clean install'
-alias mcis='mvn clean install -DskipTests -Dpmd.skip -Dcheckstyle.skip -Dspotbugs.skip'
-alias mcds='mvn clean deploy -DskipTests -Dpmd.skip -Dcheckstyle.skip -Dspotbugs.skip'
+alias mcis='mvn clean install -Ddependency-check.skip=true -DskipTests -Dmaven.test.skip -Dspotbugs.skip=true -Dfindbugs.skip=true -Dpmd.skip=true -Dmaven.javadoc.skip=true -Dcheckstyle.skip=true -Djsp.compile.skip=true'
+alias mcds='mvn clean deploy -Ddependency-check.skip=true -DskipTests -Dmaven.test.skip -Dspotbugs.skip=true -Dfindbugs.skip=true -Dpmd.skip=true -Dmaven.javadoc.skip=true -Dcheckstyle.skip=true -Djsp.compile.skip=true'
 alias mbp='mvn buildplan:list -Dbuildplan.showLifecycles'
 alias mep='mvn help:effective-pom -Dverbose'
 alias mpu='mvn versions:display-property-updates | grep -- "->"'
