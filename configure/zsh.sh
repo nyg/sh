@@ -16,6 +16,6 @@ ln -s "$HOME/.$USER-sh/etc/zsh/zshenv_zdotdir" "$ZDOTDIR/.zshenv"
 ln -s "$HOME/.$USER-sh/etc/zsh/zprofile" "$ZDOTDIR/.zprofile"
 ln -s "$HOME/.$USER-sh/etc/zsh/zshrc" "$ZDOTDIR/.zshrc"
 
-echo Done!
+echo Done! Run ./configure/profile.sh if on Linux and not using Wayland.
 echo exec\'ing new login shell now…
 exec $SHELL -l
