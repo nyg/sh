@@ -22,7 +22,8 @@ echo Linking npmrc configuration file…
 append_if_exists "$HOME/.npmrc" "$HOME/.$USER-sh/etc/npm/npmrc"
 ln -s "$HOME/.$USER-sh/etc/npm/npmrc" "$HOME/.npmrc"
 
-echo Linking nvm/init.sh…
-ln -s "$HOME/.$USER-sh/etc/nvm/init.sh" "$HOME/.$USER-sh/etc/sh/profile.d/nvm.sh"
+echo Linking nvm configuration file…
+ln -s "$HOME/.$USER-sh/etc/nvm/profile" "$HOME/.$USER-sh/etc/sh/profile.d/nvm.sh"
 
 echo Done!
+exec $SHELL -l
