@@ -1,11 +1,7 @@
 export PYENV_ROOT="$HOME/.config/pyenv"
 
-if ! command -v pyenv > /dev/null
-then
-    # when installed with brew, binary is already in PATH
-    [ "$(uname)" = Darwin ] || PATH="$PATH:$PYENV_ROOT/bin"
-    PATH="$PYENV_ROOT/shims:$PATH"
-fi
+add_to_path $PYENV_ROOT/bin
+add_to_path -p $PYENV_ROOT/shims
 
 pyenv() {
   local command

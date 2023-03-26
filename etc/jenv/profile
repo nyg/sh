@@ -3,12 +3,8 @@ export JENV_ROOT="$HOME/.config/jenv"
 unset JAVA_HOME
 unset JDK_HOME
 
-if ! command -v jenv > /dev/null
-then
-    # when installed with brew, binary is already in PATH
-    [ "$(uname)" = Darwin ] || PATH="$PATH:$JENV_ROOT/bin"
-    PATH="$JENV_ROOT/shims:$PATH"
-fi
+add_to_path $JENV_ROOT/bin
+add_to_path -p $JENV_ROOT/shims
 
 jenv() {
   type typeset &> /dev/null && typeset command

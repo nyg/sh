@@ -1,3 +1,23 @@
+add_to_path()
+{
+    prepend=0
+    if [ $1 = "-p" ]
+    then
+        prepend=1
+        shift
+    fi
+
+    [ ! -d "$1" ] && return
+    echo $PATH | grep "$1" > /dev/null && return
+
+    if [ $prepend -eq 1 ]
+    then
+        PATH="$1:$PATH"
+    else
+        PATH="$PATH:$1"
+    fi
+}
+
 # source any file in etc/sh/profile.d/
 for file in "$HOME"/".$USER-sh"/etc/sh/profile.d/*
 do
