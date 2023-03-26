@@ -1,5 +1,5 @@
 # source zsh-defer, used to defer execution of nvm init, jenv init, etc.
-# [ -d "$HOME/.$USER-sh/softwares/zsh-defer" ] && . "$HOME/.$USER-sh/softwares/zsh-defer/zsh-defer.plugin.zsh"
+[ -d "$HOME/.$USER-sh/softwares/zsh-defer" ] && . "$HOME/.$USER-sh/softwares/zsh-defer/zsh-defer.plugin.zsh"
 
 . "$HOME/.$USER-sh/etc/sh/profile"
 
