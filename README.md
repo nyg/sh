@@ -36,7 +36,8 @@ sh <(wget -q -O - https://git.sr.ht/~nyg/sh/blob/master/bootstrap.sh)
 
 ./configure/zsh.sh
 ./install/zsh-p10k.sh
-./install/zsh-defer.sh
+./install/zsh-defer.sh # optional (used for nvm)
+./configure/profile.sh # if display manager doesn't start a login shell
 
 apt-update.sh
 
@@ -72,6 +73,5 @@ See [macOS](MACOS.md).
 
 ## TODO
 
-### Misc
-
+* Fix install of Terminator on Kali
 * Move documentation to cs-notes
