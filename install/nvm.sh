@@ -20,7 +20,7 @@ nvm install --lts
 
 echo Linking npmrc configuration file…
 append_if_exists "$HOME/.npmrc" "$HOME/.$USER-sh/etc/npm/npmrc"
-ln -s "$HOME/.$USER-sh/etc/npm/npmrc" "$HOME/.npmrc"
+ln -s "$HOME/.$USER-sh/etc/npm/npmrc" "${NPM_CONFIG_USERCONFIG:-$HOME/.npmrc}"
 
 echo Linking nvm configuration file…
 ln -s "$HOME/.$USER-sh/etc/nvm/profile" "$HOME/.$USER-sh/etc/sh/profile.d/nvm.sh"
