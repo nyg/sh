@@ -56,6 +56,7 @@ alias p='echo -e "${PATH//:/\\n}"'
 alias diff='diff --color -y --suppress-common-lines'
 alias x='exit'
 alias o='open .'
+alias grep='grep --color'
 
 # git
 alias gs='git status'

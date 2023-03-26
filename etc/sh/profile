@@ -18,6 +18,24 @@ add_to_path()
     fi
 }
 
+# XDG base directory specification
+export XDG_CONFIG_HOME="$HOME/.config"
+export XDG_CACHE_HOME="$HOME/.cache"
+export XDG_DATA_HOME="$HOME/.local/share"
+export XDG_STATE_HOME="$HOME/.local/state"
+
+if [ "$(uname)" = "$1" ]
+then
+    export XDG_DATA_DIRS="/usr/local/share:/usr/share"
+    export XDG_CONFIG_DIRS="/etc/xdg"
+fi
+
+
+# common env var
+VISUAL=vim
+export LESSHISTFILE="$XDG_CACHE_HOME"/less/history
+
+
 # source any file in etc/sh/profile.d/
 for file in "$HOME"/".$USER-sh"/etc/sh/profile.d/*
 do

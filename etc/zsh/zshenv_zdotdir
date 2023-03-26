@@ -1,4 +1,2 @@
-VISUAL=vim
-
 ICLOUD="$HOME/Library/Mobile Documents/com~apple~CloudDocs/"
 [ -d "$ICLOUD" ] && export ICLOUD

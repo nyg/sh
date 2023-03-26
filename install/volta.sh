@@ -3,7 +3,7 @@
 set -eu
 
 . "$HOME/.$USER-sh/common.sh"
-. "$HOME/.$USER-sh/etc/volta/init.sh"
+. "$HOME/.$USER-sh/etc/volta/profile"
 
 if [ ! -d $VOLTA_HOME ]
 then
@@ -27,7 +27,7 @@ if [ "$answer" = "y" ]
 then
     echo Installing pnpm…
     volta install pnpm
-    echo 'export VOLTA_FEATURE_PNPM=1' >> "$HOME/.$USER-sh/etc/volta/init.sh"
+    echo 'export VOLTA_FEATURE_PNPM=1' >> "$HOME/.$USER-sh/etc/volta/profile"
 fi
 
 echo Done!
