@@ -90,6 +90,11 @@ alias dcd='docker-compose down'
 alias dcbu='dcb && dcu'
 
 # Maven
+if is_installed mvnd
+then
+    alias mvn='mvnd'
+fi
+
 alias mci='mvn clean install'
 alias mcis='mvn clean install -Ddependency-check.skip=true -DskipTests -Dmaven.test.skip -Dspotbugs.skip=true -Dfindbugs.skip=true -Dpmd.skip=true -Dmaven.javadoc.skip=true -Dcheckstyle.skip=true -Djsp.compile.skip=true'
 alias mcds='mvn clean deploy -Ddependency-check.skip=true -DskipTests -Dmaven.test.skip -Dspotbugs.skip=true -Dfindbugs.skip=true -Dpmd.skip=true -Dmaven.javadoc.skip=true -Dcheckstyle.skip=true -Djsp.compile.skip=true'
