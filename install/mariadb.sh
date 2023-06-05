@@ -8,6 +8,8 @@ if is_os Darwin
 then
     echo Installing MariaDB…
     brew install mariadb
+    # sudo mariadb -u root
+    # ALTER USER 'root'@'localhost' IDENTIFIED BY 'root';
 
 elif is_os Linux && is_installed apt
 then
