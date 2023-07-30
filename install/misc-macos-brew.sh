@@ -8,6 +8,7 @@ brew install \
     exa \
     ffmpeg \
     hashcat \
+    jless \
     jq \
     mas \
     maven \
