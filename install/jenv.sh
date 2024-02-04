@@ -26,9 +26,9 @@ then
     init_jenv
     enable_export_plugin
 
-    echo Installing Java 8 \& 17…
+    echo Installing Java 8 \& 21…
     brew tap homebrew/cask-versions
-    brew install --cask temurin8 temurin17
+    brew install --cask temurin8 temurin21
 
     echo Finding installed versions with /usr/libexec/java_home…
     /usr/libexec/java_home -X > /tmp/jvm.plist
@@ -54,7 +54,7 @@ then
     init_jenv
     enable_export_plugin
 
-    read -p "Install Adoptium JDK 8 and 17? (y/n) " confirm
+    read -p "Install Adoptium JDK 8 and 21? (y/n) " confirm
     if [ $confirm = y ]
     then
         echo Downloading Adoptium GPG key…
@@ -66,9 +66,9 @@ then
         echo "deb [signed-by=/etc/apt/keyrings/adoptium.asc] https://packages.adoptium.net/artifactory/deb $(awk -F= '/^VERSION_CODENAME/{print$2}' /etc/os-release) main" \
             | sudo tee /etc/apt/sources.list.d/adoptium.list
 
-        echo Installing Java 8 \& 17…
+        echo Installing Java 8 \& 21…
         sudo apt update
-        sudo apt install -y apt-transport-https temurin-8-jdk temurin-17-jdk
+        sudo apt install -y apt-transport-https temurin-8-jdk temurin-21-jdk
 
         if is_installed update-alternatives
         then
@@ -78,7 +78,7 @@ then
 
         echo Adding JDKs to jenv…
         jenv add /usr/lib/jvm/temurin-8-jdk-amd64/
-        jenv add /usr/lib/jvm/temurin-17-jdk-amd64/
+        jenv add /usr/lib/jvm/temurin-21-jdk-amd64/
         jenv rehash
     fi
 
@@ -87,8 +87,8 @@ else
     exit 1
 fi
 
-echo Try setting global version to Java 17…
-jenv global 17.0 || echo Could not set global version to 17
+echo Try setting global version to Java 21…
+jenv global 21.0 || echo Could not set global version to 21
 
 echo Linking jenv configuration files…
 ln -s "$HOME/.$USER-sh/etc/jenv/profile" "$HOME/.$USER-sh/etc/sh/profile.d/jenv.sh"
