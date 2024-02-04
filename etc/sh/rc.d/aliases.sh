@@ -29,9 +29,9 @@ then
     is_installed bat && alias cat='bat'
     [ -d /Applications/Typora.app ] && alias typora='open -a Typora'
 
-    if is_installed exa
+    if is_installed eza
     then
-        alias l='exa -lFag --group-directories-first --time-style=long-iso'
+        alias l='eza -lagF --group-directories-first --time-style=long-iso'
     elif is_installed gls
     then
         alias l=ll

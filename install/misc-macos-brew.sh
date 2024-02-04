@@ -5,7 +5,7 @@ brew install \
     bat \
     cloc \
     duf \
-    exa \
+    eza \
     ffmpeg \
     hashcat \
     jless \
