@@ -1,7 +1,9 @@
 #!/usr/bin/env sh
+# TODO redo install without github script
+# wait for https://youtrack.jetbrains.com/issue/TBX-8561/Native-build-for-Linux-ARM64
 # https://www.jetbrains.com/toolbox-app/
-# https://www.jetbrains.com/help/idea/installation-guide.html#fe5cb000
-# TODO modifies .profile and creates .profile.bak
+# https://www.jetbrains.com/help/idea/installation-guide.html#toolbox
+# curl https://download.jetbrains.com/product?code=TBA&latest&distribution=linuxARM64 then tar xvf...
 
 set -eu
 
