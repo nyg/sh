@@ -10,7 +10,14 @@ then
     rm -rf "$HOME/.$USER-sh/softwares/postman"
 
     echo Downloading latest Postman version…
-    wget -O /tmp/postman.tar.gz https://dl.pstmn.io/download/latest/linux64
+
+    arch=$(uname -m)
+    if [ "$arch" = "aarch64" -o "$arch" = "arm64" ]
+    then
+        wget -O /tmp/postman.tar.gz https://dl.pstmn.io/download/latest/linux_arm64
+    else
+        wget -O /tmp/postman.tar.gz https://dl.pstmn.io/download/latest/linux_64
+    fi
 
     echo Extracting archive…
     tar xvf /tmp/postman.tar.gz -C "$HOME/.$USER-sh/softwares"
