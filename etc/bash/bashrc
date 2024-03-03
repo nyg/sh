@@ -56,7 +56,7 @@ if ! shopt -oq posix; then
 fi
 
 # source any file in etc/sh/rc.d/
-for file in "$HOME"/".$USER-sh"/etc/sh/rc.d/*
+for file in $(find "$HOME"/".$USER-sh"/etc/sh/rc.d -type f ! -name 'zsh*'
 do
     . "$file"
 done
