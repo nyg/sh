@@ -14,7 +14,7 @@ then
         | sudo tee $key > /dev/null
 
     echo Adding repository…
-    echo "deb [signed-by=$key] https://paulcarroty.gitlab.io/vscodium-deb-rpm-repo/debs vscodium main" \
+    echo "deb [signed-by=$key] https://download.vscodium.com/debs vscodium main" \
         | sudo tee /etc/apt/sources.list.d/vscodium.list
 
     echo Installing VSCodium…
