@@ -43,7 +43,7 @@ apt-update.sh
 
 ./configure/git.sh
 
-./install/debian-misc.sh
+./install/misc-linux-apt.sh
 ./configure/vim.sh
 
 ./install/ssh-server.sh
