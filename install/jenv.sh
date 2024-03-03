@@ -77,9 +77,15 @@ then
             sudo update-alternatives --remove-all java || echo No java alternatives removed
         fi
 
+        arch=$(uname -m)
+        if [ "$arch" = "aarch64" ]
+        then
+            arch=arm64
+        fi
+
         echo Adding JDKs to jenv…
-        jenv add /usr/lib/jvm/temurin-8-jdk-amd64/
-        jenv add /usr/lib/jvm/temurin-21-jdk-amd64/
+        jenv add /usr/lib/jvm/temurin-8-jdk-$arch/
+        jenv add /usr/lib/jvm/temurin-21-jdk-$arch/
         jenv rehash
     fi
 
