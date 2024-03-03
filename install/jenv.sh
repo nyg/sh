@@ -58,12 +58,13 @@ then
     if [ $confirm = y ]
     then
         echo Downloading Adoptium GPG key…
-        sudo mkdir -p /etc/apt/keyrings
-        wget -O - https://packages.adoptium.net/artifactory/api/gpg/key/public \
-            | sudo tee /etc/apt/keyrings/adoptium.asc
+        key=/etc/apt/keyrings/adoptium.gpg
+        curl -fsS https://packages.adoptium.net/artifactory/api/gpg/key/public \
+            | gpg --dearmor \
+            | sudo tee $key > /dev/null
 
         echo Configuring Adoptium apt repository…
-        echo "deb [signed-by=/etc/apt/keyrings/adoptium.asc] https://packages.adoptium.net/artifactory/deb $(awk -F= '/^VERSION_CODENAME/{print$2}' /etc/os-release) main" \
+        echo "deb [signed-by=$key] https://packages.adoptium.net/artifactory/deb $(awk -F= '/^VERSION_CODENAME/{print$2}' /etc/os-release) main" \
             | sudo tee /etc/apt/sources.list.d/adoptium.list
 
         echo Installing Java 8 \& 21…
