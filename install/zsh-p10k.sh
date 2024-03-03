@@ -20,6 +20,6 @@ echo Cloning powerlevel10k…
 git clone --depth=1 https://github.com/romkatv/powerlevel10k.git "$HOME/.$USER-sh/softwares/powerlevel10k"
 
 echo Linking zsh init file…
-ln -s "$HOME/.$USER-sh/etc/zsh/p10k/init.zsh" "$HOME/.$USER-sh/etc/sh/rc.d/zsh-init.zsh"
+ln -s "$HOME/.$USER-sh/etc/zsh/p10k/init.zsh" "$HOME/.$USER-sh/etc/sh/rc.d/zsh-p10k-init.zsh"
 
 echo Done, change terminal font to MesloLGS before running new shell!
