@@ -17,6 +17,12 @@ then
     curl -fsS https://brave-browser-apt-release.s3.brave.com/brave-browser-archive-keyring.gpg \
         | sudo tee $key > /dev/null
 
+    arch=$(uname -m)
+    if [ "$(uname -m)" = "aarch64" ]
+    then
+        arch="arm64"
+    fi
+
     echo Adding repository…
     echo "deb [arch=$(uname -m) signed-by=$key] https://brave-browser-apt-release.s3.brave.com/ stable main" \
         | sudo tee /etc/apt/sources.list.d/brave-browser.list
