@@ -1,6 +1,7 @@
 #!/usr/bin/env sh
 
 sudo apt install -y \
+    zsh \
     vim \
     curl \
     tree \
@@ -15,8 +16,8 @@ sudo apt install -y \
     samba \
     gnome-tweaks \
     dconf-editor \
-    # rdesktop \
-    asciinema
+    asciinema \
+    # rdesktop
 
 sudo apt remove --purge -y \
     nano
