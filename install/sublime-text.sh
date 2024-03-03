@@ -13,7 +13,7 @@ then
         | sudo tee $key > /dev/null
 
     echo Adding repository…
-    echo "deb [arch=amd64 signed-by=$key] https://download.sublimetext.com/ apt/stable/" \
+    echo "deb [arch=$(uname -m) signed-by=$key] https://download.sublimetext.com/ apt/stable/" \
         | sudo tee /etc/apt/sources.list.d/sublime-text.list
 
     echo Installing Sublime Text…
