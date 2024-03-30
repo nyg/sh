@@ -75,6 +75,8 @@ See [macOS](MACOS.md).
 
 * Fix install of Terminator on Kali
 * Move documentation to cs-notes
+* Complete and link RPI5.md
+* KEYCHRON.md
 * Add GPG for macOS:
   ```sh
   # etc/sh/rc.d/gpg.sh
