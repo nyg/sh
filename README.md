@@ -75,3 +75,12 @@ See [macOS](MACOS.md).
 
 * Fix install of Terminator on Kali
 * Move documentation to cs-notes
+* Add GPG for macOS:
+  ```sh
+  # etc/sh/rc.d/gpg.sh
+  export GPG_TTY=$(tty)
+
+  # brew install pinentry-mac
+  # echo "pinentry-program $(which pinentry-mac)" >> ~/.gnupg/gpg-agent.conf
+  # killall gpg-agent
+  ```
