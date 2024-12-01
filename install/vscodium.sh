@@ -13,8 +13,14 @@ then
         | gpg --dearmor \
         | sudo tee $key > /dev/null
 
+    arch=$(uname -m)
+    if [ "$(uname -m)" = "aarch64" ]
+    then
+        arch="arm64"
+    fi
+
     echo Adding repository…
-    echo "deb [signed-by=$key] https://download.vscodium.com/debs vscodium main" \
+    echo "deb [arch=$arch signed-by=$key] https://download.vscodium.com/debs vscodium main" \
         | sudo tee /etc/apt/sources.list.d/vscodium.list
 
     echo Installing VSCodium…

@@ -24,7 +24,7 @@ then
     fi
 
     echo Adding repository…
-    echo "deb [arch=$(uname -m) signed-by=$key] https://brave-browser-apt-release.s3.brave.com/ stable main" \
+    echo "deb [arch=$arch signed-by=$key] https://brave-browser-apt-release.s3.brave.com/ stable main" \
         | sudo tee /etc/apt/sources.list.d/brave-browser.list
 
     echo Installing Brave…
