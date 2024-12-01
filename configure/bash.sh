@@ -7,6 +7,7 @@ set -eu
 echo Backup existing files…
 backup_if_exists "$HOME"/.profile \
                  "$HOME"/.bash_profile \
+                 "$HOME"/.bash_history \
                  "$HOME"/.bashrc \
                  "$HOME"/.inputrc \
                  "$HOME"/.bash_login \
