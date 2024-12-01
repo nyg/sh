@@ -45,7 +45,7 @@ do
 done
 
 # source .bashrc if bash login shell
-if [ -n "$BASH_VERSION" ] && shopt -q login_shell && [ -f "$HOME/.bashrc" ]; then
+if [ -n "$BASH_VERSION" ] && shopt -q login_shell && [ -f "$HOME/.bashrc" ]
 then
     . "$HOME/.bashrc"
 fi
