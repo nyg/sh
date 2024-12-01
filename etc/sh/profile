@@ -30,7 +30,6 @@ then
     export XDG_CONFIG_DIRS="/etc/xdg"
 fi
 
-
 # common env var
 VISUAL=vim
 export LESSHISTFILE="$XDG_STATE_HOME"/less/history
@@ -44,3 +43,9 @@ for file in "$HOME"/".$USER-sh"/etc/sh/profile.d/*
 do
     . "$file"
 done
+
+# source .bashrc if bash login shell
+if [ -n "$BASH_VERSION" ] && shopt -q login_shell && [ -f "$HOME/.bashrc" ]; then
+then
+    . "$HOME/.bashrc"
+fi
