@@ -4,7 +4,11 @@ set -eu
 
 . "$HOME/.$USER-sh/common.sh"
 
-backup_if_exists "${ZDOTDIR:-$HOME}"/.{zshenv,zprofile,zshrc,zlogin,zlogout}
+backup_if_exists "${ZDOTDIR:-$HOME}"/.zshenv \
+                 "${ZDOTDIR:-$HOME}"/.zprofile \
+                 "${ZDOTDIR:-$HOME}"/.zshrc \
+                 "${ZDOTDIR:-$HOME}"/.zlogin \
+                 "${ZDOTDIR:-$HOME}"/.zlogout
 
 ZDOTDIR="${XDG_CONFIG_HOME:-$HOME/.config}/zsh"
 echo ZDOTDIR is set to \'$ZDOTDIR\', creating directory…

@@ -5,7 +5,12 @@ set -eu
 . "$HOME/.$USER-sh/common.sh"
 
 echo Backup existing files…
-backup_if_exists "$HOME"/.{profile,bash_profile,bashrc,inputrc,bash_login,bash_logout}
+backup_if_exists "$HOME"/.profile \
+                 "$HOME"/.bash_profile \
+                 "$HOME"/.bashrc \
+                 "$HOME"/.inputrc \
+                 "$HOME"/.bash_login \
+                 "$HOME"/.bash_logout
 
 echo Linking configuration file…
 ln -s "$HOME/.$USER-sh/etc/sh/profile" "$HOME/.profile"
