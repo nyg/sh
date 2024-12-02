@@ -7,8 +7,14 @@ $include /etc/inputrc
 
 # binds TAB to cycle through auto-complete results and shift-TAB to
 # cycle through results backwards
-"\e[C": menu-complete
-"\e[D": menu-complete-backward
+"\t": menu-complete
+"\e[Z": menu-complete-backward
+
+# immediately show menu if input is ambiguous
+set show-all-if-ambiguous on
+
+# display common prefix when cycling through options
+set menu-complete-display-prefix on
 
 # bind ctrl-w to erasing a word (composed of digits and letters only)
 # will stop at other characters, e.g. _ - /
