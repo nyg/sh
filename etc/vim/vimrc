@@ -15,5 +15,18 @@ set softtabstop=4
 " syntax highlighter
 syntax on
 
-" viminfo location
-set viminfo+=n~/.config/vim/viminfo
+" for .swp files
+set directory=$XDG_CACHE_HOME/vim,/tmp
+
+" for .bak files
+set backupdir=$XDG_CACHE_HOME/vim,/tmp
+
+" https://tlvince.com/vim-respect-xdg
+" change viminfo location
+set viminfo+=n$XDG_CACHE_HOME/vim/viminfo
+
+" setup the different locations for runtimepath
+set runtimepath=$XDG_CONFIG_HOME/vim,$XDG_CONFIG_HOME/vim/after,$VIM,$VIMRUNTIME
+
+" not sure why it's setup twice
+let $MYVIMRC="$XDG_CONFIG_HOME/vim/vimrc"
