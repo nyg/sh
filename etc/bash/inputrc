@@ -10,12 +10,6 @@ $include /etc/inputrc
 "\t": menu-complete
 "\e[Z": menu-complete-backward
 
-# immediately show menu if input is ambiguous
-set show-all-if-ambiguous on
-
-# display common prefix when cycling through options
-set menu-complete-display-prefix on
-
 # bind ctrl-w to erasing a word (composed of digits and letters only)
 # will stop at other characters, e.g. _ - /
 set bind-tty-special-chars off
@@ -34,6 +28,10 @@ set colored-stats on
 # shows all possible completions (if no partial completion is possible)
 # immediatly instead of ringing the bell
 set show-all-if-ambiguous on
+
+# display the common prefix of completions when cycling through options, without
+# inserting a selection into the command line
+set menu-complete-display-prefix on
 
 # add slash after symbolic links and directory in auto-complete results
 set mark-symlinked-directories on
