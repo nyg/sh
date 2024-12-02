@@ -16,6 +16,10 @@ HISTSIZE=1000
 HISTFILESIZE=2000
 
 HISTFILE="$XDG_STATE_HOME/bash/history"
+if [ ! -f "$HISTFILE" ]
+then
+    touch $HISTFILE
+fi
 
 # check the window size after each command and, if necessary,
 # update the values of LINES and COLUMNS.
