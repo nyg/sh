@@ -18,6 +18,7 @@ HISTFILESIZE=2000
 HISTFILE="$XDG_STATE_HOME/bash/history"
 if [ ! -f "$HISTFILE" ]
 then
+    mkdir -p $(dirname $HISTFILE)
     touch $HISTFILE
 fi
 
