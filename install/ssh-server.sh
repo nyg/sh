@@ -13,7 +13,7 @@ then
     sudo systemctl enable ssh
 
     echo Linking SSH configuration file…
-    ln -s "$HOME/.$USER-sh/etc/ssh/server-config.conf" /etc/ssh/sshd_config.d/custom.conf
+    sudo ln -s "$HOME/.$USER-sh/etc/ssh/server-config.conf" /etc/ssh/sshd_config.d/custom.conf
 
     echo Done!
 else
