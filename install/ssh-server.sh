@@ -12,6 +12,9 @@ then
     echo Enabling ssh.service
     sudo systemctl enable ssh
 
+    echo Linking SSH configuration file…
+    ln -s "$HOME/.$USER-sh/etc/ssh/server-config.conf" /etc/ssh/sshd_config.d/custom.conf
+
     echo Done!
 else
     echo Unsupported OS >&2
