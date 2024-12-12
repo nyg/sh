@@ -4,4 +4,4 @@
 . "$HOME/.$USER-sh/etc/sh/profile"
 
 # skip sourcing of /etc/z{shrc,login,logout}
-unsetopt global_rcs
+#unsetopt global_rcs

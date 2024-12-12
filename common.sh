@@ -18,7 +18,7 @@ is_os()
     [ "$(uname)" = "$1" ]
 }
 
-# Moves any existing of $@ to directory .$USER-sh/backup.
+# Moves the given files or directories to .$USER-sh/backup/.
 backup_if_exists()
 {
     bck_dir="$HOME/.$USER-sh/backup"
@@ -28,13 +28,12 @@ backup_if_exists()
     do
         if [ -w "$f" ]
         then
+            # build backup filename
             temp_file=$(mktemp /tmp/XXXXXX)
             bck_file=$(basename "$f").$(basename "$temp_file")
 
             echo Moving "$f" to "$bck_dir/$bck_file"
-            cat "$f" > "$temp_file"
-            rm "$f"
-            cat "$temp_file" > "$bck_dir/$bck_file"
+            mv "$f" "$bck_dir/$bck_file"
         fi
     done
 }
