@@ -30,6 +30,12 @@ then
     then
         echo Installing brew…
         /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
+
+        echo Loading brew in current shell…
+        if [ -d /opt/homebrew ]
+        then
+            eval "$(/opt/homebrew/bin/brew shellenv)"
+        fi
     else
         echo Brew is already installed
     fi
