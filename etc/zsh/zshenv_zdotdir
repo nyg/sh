@@ -1,2 +1,5 @@
+# disable sessions (set in /etc/zshrc_Apple_Terminal)
+SHELL_SESSIONS_DISABLE=1
+
 ICLOUD="$HOME/Library/Mobile Documents/com~apple~CloudDocs/"
 [ -d "$ICLOUD" ] && export ICLOUD
