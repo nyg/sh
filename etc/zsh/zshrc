@@ -122,8 +122,17 @@ zstyle ':completion:*:(ssh|scp):*:*' menu select interactive
 # option HashKnownHosts is enabled, the hosts in known_hosts are hashed and thus
 # can't be used here. From: https://serverfault.com/a/170481
 typeset -U h # remove duplicates
-h=(${${${(@M)${(f)"$(cat ~/.ssh/config)"}:#Host *}#Host }:#*[*?]*})
-h=($h ${${${(f)"$(cat ~/.ssh/known_hosts{,2} || true)"}%%\ *}%%,*}) 2>/dev/null
+
+if [ -r "$HOME/.ssh/config" ]
+then
+    h=(${${${(@M)${(f)"$(cat "$HOME"/.ssh/config)"}:#Host *}#Host }:#*[*?]*})
+fi
+
+if [ -r "$HOME/.ssh/known_hosts" ]
+then
+    h=($h ${${${(f)"$(cat "$HOME"/.ssh/known_hosts{,2} || true)"}%%\ *}%%,*}) 2>/dev/null
+fi
+
 zstyle ':completion:*:(ssh|scp):*:hosts' hosts $h
 
 # disable users completion
