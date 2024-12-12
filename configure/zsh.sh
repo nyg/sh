@@ -15,6 +15,10 @@ ZDOTDIR="${XDG_CONFIG_HOME:-$HOME/.config}/zsh"
 echo ZDOTDIR is set to \'$ZDOTDIR\', creating directory…
 mkdir -p "$ZDOTDIR"
 
+HISTDIR="${XDG_STATE_HOME:-$HOME/.local/state}/zsh"
+echo Creating directory for HISTFILE: \'$HISTDIR\'
+mkdir -p $HISTDIR
+
 echo Linking zsh configuration files…
 ln -s "$HOME/.$USER-sh/etc/zsh/zshenv" "$HOME/.zshenv"
 ln -s "$HOME/.$USER-sh/etc/zsh/zshenv_zdotdir" "$ZDOTDIR/.zshenv"

@@ -27,7 +27,7 @@
    1. Zsh
       ```shell
       ./configure/zsh.sh
-      ./install/p10k.sh
+      ./install/zsh-p10k.sh
       ```
    2. SSH
       ```shell

@@ -48,7 +48,7 @@ typeset -g -A key
 #
 # zsh history
 
-HISTFILE="$XDG_STATE_HOME"/zsh/history
+HISTFILE="$XDG_STATE_HOME/zsh/history"
 SAVEHIST=10000000 # items to keep in histfile
 HISTSIZE=10000000 # items from histfile to load into memory
 setopt extended_history # write timestamp of command in histfile
