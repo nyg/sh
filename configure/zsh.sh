@@ -3,7 +3,7 @@
 set -eu
 
 . "$HOME/.$USER-sh/common.sh"
-.
+
 backup_if_exists "${ZDOTDIR:-$HOME}"/.zshenv \
                  "${ZDOTDIR:-$HOME}"/.zprofile \
                  "${ZDOTDIR:-$HOME}"/.zshrc \
