@@ -24,34 +24,37 @@
 4. Bootstrap `sh` with `sh <(curl -s https://git.sr.ht/~nyg/sh/blob/master/bootstrap.sh)`.
 5. While bootstrap runs, configure System Preferences and macOS apps preferences.
 6. Run bootstrap configuration and install scripts:
-   1. Zsh
-      ```shell
-      ./configure/zsh.sh
-      ./install/zsh-p10k.sh
-      ```
-   2. SSH
-      ```shell
-      cp /Volumes/<path-to-ssh-keys> ~/.ssh
-      ./configure/ssh-client.sh
-      ```
-   3. Git
-      ```shell
-      ./configure/git.sh
-      git remote add upstream git@git.sr.ht:~nyg/sh
-      git remote set-url origin git@git.sr.ht:~nyg/sh-<id>
-      git push -u origin master
-      ```
-   4. Vim
-      ```shell
-      ./configure/vim.sh
-      ```
-   5. Install macOS softwares
-      ```shell
-      ./install/misc-macos-brew.sh
-      ./install/misc-macos-brew-cask.sh
-      <TODO mac app store with mas>
-      <TODO restore .plist files>
-      <TODO manually configure installed software>
-   6. TODO: update documentation on how to set upstream repo
-   7. TODO: backup CotEditor preferences
-   8. TODO: jenv, pyenv, volta
+
+```sh
+# brew
+./configure/brew.sh
+
+# zsh
+./configure/zsh.sh
+./install/zsh-p10k.sh
+
+# ssh
+cp /Volumes/<path-to-ssh-keys> ~/.ssh
+./configure/ssh-client.sh
+
+# git
+./configure/git.sh
+git remote add upstream git@git.sr.ht:~nyg/sh
+git remote set-url origin git@git.sr.ht:~nyg/sh-<id>
+git push -u origin master
+
+# vim
+./configure/vim.sh
+
+# install macOS softwares
+./install/misc-macos-brew.sh
+./install/misc-macos-brew-cask.sh
+
+# TODO
+# mac app store with mas>
+# restore .plist files>
+# manually configure installed software>
+# update documentation on how to set upstream repo
+# backup CotEditor preferences
+# jenv, pyenv, volta
+```
