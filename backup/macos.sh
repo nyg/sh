@@ -13,7 +13,7 @@ mkdir $bck_dir
 ls -1 /Applications > $bck_dir/application-list.txt
 
 # App Store
-mas list | sed -E 's/[ ]{2,}/;;;/g' | awk -F";;;" '{print "mas install " $2 }' > $bck_dir/mas-install.sh
+mas list | sed -E 's/[ ]{2,}/;;;/g' | awk -F";;;" '{print "mas install " $1 " # " $2 }' > $bck_dir/mas-install.sh
 chmod u+x $bck_dir/mas-install.sh
 
 # Homebrew
@@ -45,9 +45,10 @@ cp -R ~/Library/Application\ Support/Firefox/Profiles $bck_dir/firefox
 
 # IINA
 cp ~/Library/Preferences/com.colliderli.iina.plist $bck_dir
+# on host copy preferences, delete ~/Library/Caches/com.colliderli.iina/, start app
 
 # iTerm
-echo Manually backup iTerm preferences: https://nyg.srht.site/softwares/iterm/#preferences-backup-restore
+echo Manually backup iTerm preferences: https://notes.andstuff.dev/softwares/iterm2/#preferences-backup-restore
 
 # Karabiner Elements
 mkdir $bck_dir/karabiner
@@ -61,16 +62,24 @@ cp ~/Library/Preferences/org.m0k.transmission.plist $bck_dir
 
 # Typora
 cp ~/Library/Preferences/abnerworks.Typora.plist $bck_dir
+# rm -rf ~/Library/Caches/abnerworks.Typora/
+# https://github.com/typora/typora-issues/issues/2353
 
 # VSCode
 mkdir $bck_dir/vscode
-cp -R ~/.vscode $bck_dir/vscode/dotfolder
-cp -R ~/Library/Application\ Support/Code/User/snippets $bck_dir/vscode
-cp ~/Library/Application\ Support/Code/User/{settings,keybindings}.json $bck_dir/vscode
+cp -R ~/.vscode-oss $bck_dir/vscode/dotfolder
+cp -R ~/Library/Application\ Support/VSCodium/User/snippets $bck_dir/vscode
+cp ~/Library/Application\ Support/VSCodium/User/{settings,keybindings}.json $bck_dir/vscode
 
 # VLC
-cp ~/Library/Preferences/org.videolan.vlc.plist $bck_dir
+mkdir $bck_dir/vlc
+cp ~/Library/Preferences/org.videolan.vlc.plist $bck_dir/vlc
+cp ~/Library/Preferences/org.videolan.vlc/vlcrc $bck_dir/vlc
+# delete ~/Library/Caches/org.videolan.vlc/
 
+# Zed
+mkdir $bck_dir/zed
+cp ~/.config/zed/{keymap,settings}.json $bck_dir/zed
 
 #
 # Misc
@@ -84,7 +93,7 @@ cp ~/.ssh/*@* $bck_dir/ssh-keys
 cat /etc/hosts | grep '# back-up' > $bck_dir/etc-hosts
 
 # ZSH
-cp ~/.zsh_history $bck_dir/zsh_history
+cp "$HISTFILE" $bck_dir/shell_history
 
 
 #
