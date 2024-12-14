@@ -4,7 +4,6 @@ set -eu
 
 . "$HOME/.$USER-sh/common.sh"
 
-
 if is_os Darwin
 then
     echo Installing dependencies…
@@ -23,12 +22,13 @@ else
     exit 1
 fi
 
+export PYENV_ROOT="$XDG_DATA_HOME/pyenv"
+export PATH="$PATH:$PYENV_ROOT/bin"
+
 echo Cloning pyenv into ${PYENV_ROOT}…
 git clone https://github.com/pyenv/pyenv.git "$PYENV_ROOT"
 
 echo Loading pyenv…
-export PYENV_ROOT="$XDG_DATA_HOME/pyenv"
-export PATH="$PATH:$PYENV_ROOT/bin"
 eval "$(pyenv init -)"
 
 for v in 2 3
