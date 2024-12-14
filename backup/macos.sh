@@ -45,7 +45,7 @@ cp -R ~/Library/Application\ Support/Firefox/Profiles $bck_dir/firefox
 
 # IINA
 cp ~/Library/Preferences/com.colliderli.iina.plist $bck_dir
-# on host copy preferences, delete ~/Library/Caches/com.colliderli.iina/, start app
+# on new host: copy preferences, delete ~/Library/Caches/com.colliderli.iina/, start app
 
 # iTerm
 echo Manually backup iTerm preferences: https://notes.andstuff.dev/softwares/iterm2/#preferences-backup-restore
@@ -62,7 +62,7 @@ cp ~/Library/Preferences/org.m0k.transmission.plist $bck_dir
 
 # Typora
 cp ~/Library/Preferences/abnerworks.Typora.plist $bck_dir
-# rm -rf ~/Library/Caches/abnerworks.Typora/
+# on new host: rm -rf ~/Library/Caches/abnerworks.Typora/
 # https://github.com/typora/typora-issues/issues/2353
 
 # VSCode
@@ -70,12 +70,17 @@ mkdir $bck_dir/vscode
 cp -R ~/.vscode-oss $bck_dir/vscode/dotfolder
 cp -R ~/Library/Application\ Support/VSCodium/User/snippets $bck_dir/vscode
 cp ~/Library/Application\ Support/VSCodium/User/{settings,keybindings}.json $bck_dir/vscode
+# on new host:
+# rm -rf ~/.vscode-oss
+# cp -R dotfolder ~/.vscode-oss
+# cp snippets/* ~/Library/Application\ Support/VSCodium/User/snippets/
+# cp keybindings.json settings.json ~/Library/Application\ Support/VSCodium/User/
 
 # VLC
 mkdir $bck_dir/vlc
 cp ~/Library/Preferences/org.videolan.vlc.plist $bck_dir/vlc
 cp ~/Library/Preferences/org.videolan.vlc/vlcrc $bck_dir/vlc
-# delete ~/Library/Caches/org.videolan.vlc/
+# on new host: delete ~/Library/Caches/org.videolan.vlc/
 
 # Zed
 mkdir $bck_dir/zed
