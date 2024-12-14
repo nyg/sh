@@ -23,7 +23,8 @@
 3. Download and setup 1Password: https://1password.com/downloads/mac/.
 4. Bootstrap `sh` with `sh <(curl -s https://git.sr.ht/~nyg/sh/blob/master/bootstrap.sh)`.
 5. While bootstrap runs, configure System Preferences and macOS apps preferences.
-6. Run bootstrap configuration and install scripts:
+6. Run bootstrap configuration and install scripts (see below).
+7. Restore back-up (installed brew softwares, App Store, etc.)
 
 ```sh
 # brew
@@ -46,15 +47,15 @@ git push -u origin master
 # vim
 ./configure/vim.sh
 
-# install macOS softwares
-./install/misc-macos-brew.sh
-./install/misc-macos-brew-cask.sh
+# pyenv + python
+./install/pyenv.sh
 
-# TODO
-# mac app store with mas>
-# restore .plist files>
-# manually configure installed software>
-# update documentation on how to set upstream repo
-# backup CotEditor preferences
-# jenv, pyenv, volta
+# jenv + java
+./install/jenv.sh
+
+# nvm + node
+./install/nvm.sh
+
+# mvnd
+./install/mvnd.sh
 ```
