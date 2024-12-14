@@ -1,5 +1,4 @@
 #!/usr/bin/env bash
-# jEnv files generated for bash are not sh-compatible.
 # https://whichjdk.com/ -> Adoptium Temurin by Eclipse (formerly AdoptOpenJdk)
 # https://adoptium.net/installation/linux
 
@@ -7,28 +6,26 @@ set -eu
 
 . "$HOME/.$USER-sh/common.sh"
 
-export JENV_ROOT="$HOME/.config/jenv"
+export JENV_ROOT="$XDG_DATA_HOME/jenv"
+PATH="$PATH:$JENV_ROOT/bin"
 
-init_jenv() {
-    eval "$(jenv init - $(basename $SHELL))"
-}
+# TODO we could do like with nvm and clone only the last tag
+# TODO update script
+echo Cloning jenv into ${JENV_ROOT}…
+git clone https://github.com/jenv/jenv.git "$JENV_ROOT"
 
-enable_export_plugin() {
-    # keeps JAVA_HOME up-to-date
-    jenv enable-plugin export
-}
+# `jenv init -` output is not compatible for sh shell
+echo Loading jenv…
+eval "$(jenv init - $(basename $SHELL))"
+
+# keeps JAVA_HOME up-to-date
+echo Enable jenv export plugin…
+jenv enable-plugin export
 
 if is_os Darwin
 then
-    echo Installing jenv…
-    brew install jenv
-
-    init_jenv
-    enable_export_plugin
-
-    echo Installing Java 8 \& 21…
-    brew tap homebrew/cask-versions
-    brew install --cask temurin8 temurin21
+    echo Installing latest Java version…
+    brew install --cask temurin
 
     echo Finding installed versions with /usr/libexec/java_home…
     /usr/libexec/java_home -X > /tmp/jvm.plist
@@ -47,13 +44,6 @@ then
 
 elif is_os Linux
 then
-    echo Cloning jenv to ${JENV_ROOT}…
-    git clone https://github.com/jenv/jenv.git "$JENV_ROOT"
-
-    PATH="$PATH:$JENV_ROOT/bin"
-    init_jenv
-    enable_export_plugin
-
     read -p "Install Adoptium JDK 8 and 21? (y/n) " confirm
     if [ $confirm = y ]
     then
@@ -87,6 +77,9 @@ then
         jenv add /usr/lib/jvm/temurin-8-jdk-$arch/
         jenv add /usr/lib/jvm/temurin-21-jdk-$arch/
         jenv rehash
+
+        echo Setting global version to Java 21…
+        jenv global 21.0 || echo Could not set global version to 21
     fi
 
 else
@@ -94,11 +87,8 @@ else
     exit 1
 fi
 
-echo Try setting global version to Java 21…
-jenv global 21.0 || echo Could not set global version to 21
-
 echo Linking jenv configuration files…
-ln -s "$HOME/.$USER-sh/etc/jenv/profile" "$HOME/.$USER-sh/etc/sh/profile.d/jenv.sh"
+#ln -s "$HOME/.$USER-sh/etc/jenv/profile" "$HOME/.$USER-sh/etc/sh/profile.d/jenv.sh"
 ln -s "$HOME/.$USER-sh/etc/jenv/rc" "$HOME/.$USER-sh/etc/sh/rc.d/jenv.sh"
 
 echo Done! Check everything is ok with \'jenv doctor\'.
