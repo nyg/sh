@@ -8,18 +8,18 @@ if is_os Linux
 then
     echo Fetching URL of latest mvnd version…
     download_url=$(curl -s https://api.github.com/repos/apache/maven-mvnd/releases/latest \
-        | jq -r '.assets[] | select(.name | test(".*-linux-amd64.zip")) | .browser_download_url')
+        | jq -r '.assets[] | select(.name | test("-linux-amd64.zip$")) | .browser_download_url')
 elif is_os Darwin
 then
     echo Fetching URL of latest mvnd version…
     if  [ "$(uname -m)" = "x86_64" ]
     then
         download_url=$(curl -s https://api.github.com/repos/apache/maven-mvnd/releases/latest \
-            | jq -r '.assets[] | select(.name | test(".*-darwin-amd64.zip")) | .browser_download_url')
+            | jq -r '.assets[] | select(.name | test("-darwin-amd64.zip$")) | .browser_download_url')
     elif [ "$(uname -m)" = "arm64" ]
     then
         download_url=$(curl -s https://api.github.com/repos/apache/maven-mvnd/releases/latest \
-            | jq -r '.assets[] | select(.name | test(".*-darwin-aarch64.zip")) | .browser_download_url')
+            | jq -r '.assets[] | select(.name | test("-darwin-aarch64.zip$")) | .browser_download_url')
     else
         echo macOS architecture not supported! >&2
         exit 1
