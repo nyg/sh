@@ -87,8 +87,7 @@ else
     exit 1
 fi
 
-echo Linking jenv configuration files…
-#ln -s "$HOME/.$USER-sh/etc/jenv/profile" "$HOME/.$USER-sh/etc/sh/profile.d/jenv.sh"
+echo Linking jenv configuration file…
 ln -s "$HOME/.$USER-sh/etc/jenv/rc" "$HOME/.$USER-sh/etc/sh/rc.d/jenv.sh"
 
 echo Done! Check everything is ok with \'jenv doctor\'.

@@ -1,10 +1,3 @@
-# SHELLNAME=$(basename $SHELL)
-
-# export JENV_SHELL=$SHELLNAME
-# export JENV_LOADED=1
-
-# . "$JENV_ROOT/plugins/export/etc/jenv.d/init/export_jenv_hook.$SHELLNAME"
-
 export JENV_ROOT="$XDG_DATA_HOME/jenv"
 export PATH="$JENV_ROOT/bin:$PATH"
 eval "$(jenv init -)"
