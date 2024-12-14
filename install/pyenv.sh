@@ -4,31 +4,32 @@ set -eu
 
 . "$HOME/.$USER-sh/common.sh"
 
-export PYENV_ROOT="$HOME/.config/pyenv"
 
 if is_os Darwin
 then
-    echo Installing pyenv…
-    brew install pyenv
+    echo Installing dependencies…
+    #brew install brew install openssl readline sqlite3 xz zlib tcl-tk@8
 
 elif is_os Linux && is_installed apt
 then
-    PATH="$PATH:$PYENV_ROOT/bin"
-
     echo Installing dependencies…
     sudo apt update
     sudo apt install -y make build-essential libssl-dev zlib1g-dev libbz2-dev  \
                         libreadline-dev libsqlite3-dev wget curl llvm          \
                         libncursesw5-dev xz-utils tk-dev libxml2-dev           \
                         libxmlsec1-dev libffi-dev liblzma-dev
-
-    echo Installing pyenv…
-    curl https://pyenv.run | bash
-
 else
-    echo Could not install pyenv >&2
+    echo Unsupported OS >&2
     exit 1
 fi
+
+echo Cloning pyenv into ${PYENV_ROOT}…
+git clone https://github.com/pyenv/pyenv.git "$PYENV_ROOT"
+
+echo Loading pyenv…
+export PYENV_ROOT="$XDG_DATA_HOME/pyenv"
+export PATH="$PATH:$PYENV_ROOT/bin"
+eval "$(pyenv init -)"
 
 for v in 2 3
 do

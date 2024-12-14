@@ -1,21 +1,21 @@
-export PYENV_ROOT="$HOME/.config/pyenv"
+# export PYENV_ROOT="$HOME/.config/pyenv"
 
-add_to_path $PYENV_ROOT/bin
-add_to_path -p $PYENV_ROOT/shims
+# add_to_path $PYENV_ROOT/bin
+# add_to_path -p $PYENV_ROOT/shims
 
-pyenv() {
-  local command
-  command="${1:-}"
-  if [ "$#" -gt 0 ]; then
-    shift
-  fi
+# pyenv() {
+#   local command
+#   command="${1:-}"
+#   if [ "$#" -gt 0 ]; then
+#     shift
+#   fi
 
-  case "$command" in
-  rehash|shell)
-    eval "$(pyenv "sh-$command" "$@")"
-    ;;
-  *)
-    command pyenv "$command" "$@"
-    ;;
-  esac
-}
+#   case "$command" in
+#   rehash|shell)
+#     eval "$(pyenv "sh-$command" "$@")"
+#     ;;
+#   *)
+#     command pyenv "$command" "$@"
+#     ;;
+#   esac
+# }
