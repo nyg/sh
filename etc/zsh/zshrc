@@ -2,6 +2,9 @@
 # powerlevel10k theme
 [ -d "$HOME/.$USER-sh/softwares/powerlevel10k" ] && . "$HOME/.$USER-sh/etc/zsh/p10k/instant-prompt.zsh"
 
+#
+# zsh-defer
+[ -d "$HOME/.$USER-sh/softwares/zsh-defer" ] && . "$HOME/.$USER-sh/softwares/zsh-defer/zsh-defer.plugin.zsh"
 
 #
 # zsh keyboard
