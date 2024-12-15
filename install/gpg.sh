@@ -16,6 +16,7 @@ fi
 export GNUPGHOME="$XDG_DATA_HOME"/gnupg
 echo Creating GPG home directory in ${GNUPGHOME}…
 mkdir -p "$GNUPGHOME"
+chmod 700 $GNUPGHOME
 
 echo Linking configuration files…
 ln -s "$HOME/.$USER-sh/etc/gpg/agent.conf" "$GNUPGHOME/gpg-agent.conf"
