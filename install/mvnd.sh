@@ -47,6 +47,6 @@ rm /tmp/mvnd.zip
 mv "$HOME"/".$USER-sh"/softwares/maven-mvnd-* "$HOME/.$USER-sh/softwares/mvnd"
 
 echo Linking launcher to "$HOME/.local/bin/mvnd"…
-ln -s "$HOME/.$USER-sh/softwares/mvnd/bin/mvnd" "$HOME/.local/bin/mvnd" || echo Link already exists
+ln -s "$HOME/.$USER-sh/softwares/mvnd/bin/mvnd.sh" "$HOME/.local/bin/mvnd" || echo Link already exists
 
 echo Done!
