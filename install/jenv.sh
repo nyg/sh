@@ -35,7 +35,9 @@ then
         jvm_path=$(/usr/libexec/PlistBuddy -c "print :$i:JVMHomePath" /tmp/jvm.plist 2>/dev/null || echo end)
         [ "$jvm_path" = "end" ] && break
 
-        echo Adding $jvm_path to jenv…
+        jvm_version=$(/usr/libexec/PlistBuddy -c "print :$i:JVMPlatformVersion" /tmp/jvm.plist | cut -d'.' -f1)
+
+        echo Adding "$jvm_path" to jenv…
         jenv add "$jvm_path"
         i=$((i+1))
     done
@@ -45,7 +47,7 @@ then
 elif is_os Linux
 then
     read -p "Install Adoptium JDK 8 and 21? (y/n) " confirm
-    if [ $confirm = y ]
+    if [ "$confirm" = y ]
     then
         echo Downloading Adoptium GPG key…
         key=/etc/apt/keyrings/adoptium.gpg
@@ -60,6 +62,7 @@ then
         echo Installing Java 8 \& 21…
         sudo apt update
         sudo apt install -y apt-transport-https temurin-8-jdk temurin-21-jdk
+        jvm_version=21
 
         if is_installed update-alternatives
         then
@@ -78,10 +81,7 @@ then
         jenv add /usr/lib/jvm/temurin-21-jdk-$arch/
         jenv rehash
 
-        echo Setting global version to Java 21…
-        jenv global 21.0 || echo Could not set global version to 21
     fi
-
 else
     echo Could not install jenv >&2
     exit 1
@@ -89,6 +89,9 @@ fi
 
 echo Linking jenv configuration file…
 ln -s "$HOME/.$USER-sh/etc/jenv/rc" "$HOME/.$USER-sh/etc/sh/rc.d/jenv.sh"
+
+echo Setting global version to Java ${jvm_version}…
+jenv global $jvm_version
 
 echo Done! Check everything is ok with \'jenv doctor\'.
 exec $SHELL -l
