@@ -94,6 +94,17 @@ cp ~/.config/zed/{keymap,settings}.json $bck_dir/zed
 mkdir $bck_dir/ssh-keys
 cp ~/.ssh/*@* $bck_dir/ssh-keys
 
+# GPG keys
+mkdir $bck_dir/gpg
+gpg --export --armor > $bck_dir/gpg/all-public-keys.asc
+gpg --export-secret-keys --armor > $bck_dir/gpg/all-private-keys.asc
+gpg --export-ownertrust > $bck_dir/gpg/ownertrust.txt
+# on new host:
+# gpg --import all-public-keys.asc
+# gpg --import all-private-keys.asc
+# gpg --import-ownertrust ownertrust.txt
+# gpg -k
+
 # Custom hosts
 cat /etc/hosts | grep '# back-up' > $bck_dir/etc-hosts
 
