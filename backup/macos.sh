@@ -100,6 +100,9 @@ cat /etc/hosts | grep '# back-up' > $bck_dir/etc-hosts
 # ZSH
 cp "$HISTFILE" $bck_dir/shell_history
 
+# Maven
+mkdir $bck_dir/maven
+cp ~/.m2/{settings.xml,mvnd.properties} $bck_dir/maven
 
 #
 # Create archive
