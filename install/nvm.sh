@@ -4,7 +4,7 @@ set -eu
 
 . "$HOME/.$USER-sh/common.sh"
 
-export NVM_DIR="$HOME/.config/nvm"
+export NVM_DIR="$XDG_DATA_HOME/nvm"
 
 echo Cloning nvm…
 git clone https://github.com/nvm-sh/nvm.git "$NVM_DIR"
