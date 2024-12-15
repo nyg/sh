@@ -77,12 +77,3 @@ See [macOS](MACOS.md).
 * Move documentation to cs-notes
 * Complete and link RPI5.md
 * KEYCHRON.md
-* Add GPG for macOS:
-  ```sh
-  # etc/sh/rc.d/gpg.sh
-  export GPG_TTY=$(tty)
-
-  # brew install pinentry-mac
-  # echo "pinentry-program $(which pinentry-mac)" >> ~/.gnupg/gpg-agent.conf
-  # killall gpg-agent
-  ```
