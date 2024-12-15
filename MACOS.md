@@ -53,7 +53,7 @@ git push -u origin master
 # jenv + java
 ./install/jenv.sh
 
-# nvm + node
+# nvm + node + pnpm
 ./install/nvm.sh
 
 # mvnd
