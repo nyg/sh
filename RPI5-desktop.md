@@ -1,8 +1,8 @@
-##  Raspberry Pi 5
+##  Raspberry Pi 5 – Desktop
 
 ### Pre-Install
 
-Set-up options with the Raspberry Pi Imager
+Set-up options with the Raspberry Pi Imager.
 
 ### Post-Install
 
@@ -41,9 +41,7 @@ Set-up options with the Raspberry Pi Imager
    22. mvnd, no aarch64 bin...  #888 issue
    23. install pyenv, ok
 
-
-
-TODO
+### TODO
 
 * mvn script
 * keyboard arrow issues with different terminal

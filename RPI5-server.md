@@ -1,4 +1,4 @@
-## Raspberry Pi 5 with NVMe
+## Raspberry Pi 5 – Server
 
 ### Waveshare PCIe to M.2 Board (D)
 
@@ -38,6 +38,10 @@ sudo apt install -y vim tree jq
 
 # disable mDNS
 sudo systemctl status avahi-daemon
+
+# disable power management for wlan0
+echo -e "[connection]\nwifi.powersave=2" | sudo tee /etc/NetworkManager/conf.d/wifi-powersave.conf > /dev/null
+sudo systemctl restart NetworkManager
 ```
 
 ### Updating the bootloader EEPROM
@@ -55,11 +59,12 @@ sudo reboot
 
 ### Bitcoin node
 
-conf -> .config/bitcoin/bitcoin.confg
-data -> .local/share/bitcoin
+- Setup logrotate
+- Create aliases
+- cleaner config file
 
-ln -s $HOME/.$USER-sh/softwares/bitcoin/bin/bitcoind $HOME/.local/bin/bitcoind
-ln -s $HOME/.$USER-sh/softwares/bitcoin/bin/bitcoin-cli $HOME/.local/bin/bitcoin-cli
+Summary of folders/files, proper permissions?
+
 
 
 [1]: https://www.waveshare.com/wiki/PCIe_TO_M.2_Board_(D)
