@@ -52,7 +52,7 @@ sudo raspi-config # Advanced Options > Bootloader Version > Latest (Yes, Finish,
 
 # For each update
 sudo apt update
-sudo rpi-eeprom-update # if *** UPDATE AVAILABLE *** is display, run commands below
+sudo rpi-eeprom-update # if *** UPDATE AVAILABLE *** is displayed, run commands below
 sudo rpi-eeprom-update -a
 sudo reboot
 ```
