@@ -33,7 +33,7 @@ git clone https://github.com/pyenv/pyenv.git "$PYENV_ROOT"
 echo Loading pyenv…
 eval "$(pyenv init -)"
 
-for v in 2 3
+for v in 3
 do
     if is_os Darwin
     then
