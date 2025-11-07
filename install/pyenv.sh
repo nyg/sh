@@ -7,7 +7,7 @@ set -eu
 if is_os Darwin
 then
     echo Installing dependencies…
-    #brew install brew install openssl readline sqlite3 xz zlib tcl-tk@8
+    brew install openssl readline sqlite3 xz zlib tcl-tk pkg-config
 
 elif is_os Linux && is_installed apt
 then
@@ -26,7 +26,6 @@ export PYENV_ROOT="$XDG_DATA_HOME/pyenv"
 export PATH="$PATH:$PYENV_ROOT/bin"
 
 # TODO we could do like with nvm and clone only the last tag
-# TODO update script
 echo Cloning pyenv into ${PYENV_ROOT}…
 git clone https://github.com/pyenv/pyenv.git "$PYENV_ROOT"
 
