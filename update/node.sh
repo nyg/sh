@@ -6,6 +6,10 @@
 
 set -e
 
+# upgrade node to latest lts
 current_version=$(nvm version)
 nvm install node --reinstall-packages-from=$current_version
 nvm uninstall $current_version
+
+# update pnpm
+npm update -g pnpm
