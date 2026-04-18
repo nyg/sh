@@ -68,11 +68,6 @@ alias gd='git diff'
 alias gds='git diff --staged'
 alias gpp='git pull -p'
 
-gh() {
-    URL=$(git remote get-url origin | sed -E 's/^git@|\.git$//g' | sed 's/github.com:/github.com\//')
-    open https://$URL
-}
-
 # Vagrant
 alias vl='vagrant box list'
 alias vu='vagrant up'
