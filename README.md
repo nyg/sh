@@ -16,7 +16,7 @@ This will install `git` and clone this repository in `$HOME/.$USER-sh`.
 
 Files are divided in multiple folders:
 
-* `etc` configuration files,
+* `etc` configuration files, one folder per software,
 * `bin` miscellaneous scripts, directory is added to the path,
 * `install` installation scripts, one per software,
 * `uninstall` uninstallation scripts,
@@ -24,6 +24,10 @@ Files are divided in multiple folders:
 * `update` update scripts for installed softwares,
 * `softwares` install location for softwares such as Postman, SQLDeveloper, etc.
 * `backup` backup scripts for specific OSes.
+
+`common.sh` holds the helpers shared by these scripts.
+
+The shell reads `etc/sh/profile` in login shells, which exports the environment and sources `etc/sh/profile.d/*`. Interactive shells read `etc/bash/bashrc` or `etc/zsh/zshrc`, both sourcing `etc/sh/rc.d/*`, where install scripts symlink the initialization of each software. See [AGENTS.md](AGENTS.md) for the conventions these files follow.
 
 ## Examples
 
@@ -69,9 +73,12 @@ apt-update.sh
 ./install/vscodium.sh
 ```
 
-### macOS
+### Other machines
 
-See [macOS](MACOS.md).
+* [macOS](MACOS.md),
+* [Raspberry Pi 5, server](RPI5-server.md),
+* [Raspberry Pi 5, desktop](RPI5-desktop.md),
+* [Keychron keyboards](KEYCHRON.md).
 
 ## TODO
 
