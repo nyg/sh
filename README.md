@@ -34,6 +34,8 @@ Examples of post-install flows.
 ```sh
 sh <(wget -q -O - https://git.sr.ht/~nyg/sh/blob/master/bootstrap.sh)
 
+./configure/xdg.sh
+
 ./configure/zsh.sh
 ./install/zsh-p10k.sh
 ./install/zsh-defer.sh # optional (used for nvm)

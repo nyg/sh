@@ -27,6 +27,9 @@
 7. Restore back-up (installed brew softwares, App Store, etc.)
 
 ```sh
+# xdg
+./configure/xdg.sh
+
 # brew
 ./configure/brew.sh
 

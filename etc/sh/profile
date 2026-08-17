@@ -19,31 +19,38 @@ add_to_path()
 }
 
 # XDG base directory specification
-export XDG_CONFIG_HOME="$HOME/.config"
-export XDG_CACHE_HOME="$HOME/.cache"
-export XDG_DATA_HOME="$HOME/.local/share"
-export XDG_STATE_HOME="$HOME/.local/state"
-mkdir -p $XDG_CONFIG_HOME $XDG_CACHE_HOME $XDG_DATA_HOME $XDG_STATE_HOME
+export XDG_CACHE_HOME="${XDG_CACHE_HOME:-$HOME/.cache}"
+export XDG_CONFIG_HOME="${XDG_CONFIG_HOME:-$HOME/.config}"
+export XDG_DATA_HOME="${XDG_DATA_HOME:-$HOME/.local/share}"
+export XDG_STATE_HOME="${XDG_STATE_HOME:-$HOME/.local/state}"
 
-if [ "$(uname)" = "Linux" ]
+os=$(uname)
+
+if [ "$os" = "Linux" ]
 then
-    export XDG_DATA_DIRS="/usr/local/share:/usr/share"
-    export XDG_CONFIG_DIRS="/etc/xdg"
+    export XDG_DATA_DIRS="${XDG_DATA_DIRS:-/usr/local/share:/usr/share}"
+    export XDG_CONFIG_DIRS="${XDG_CONFIG_DIRS:-/etc/xdg}"
+elif [ "$os" = "Darwin" ] && [ -z "${XDG_RUNTIME_DIR:-}" ]
+then
+    export XDG_RUNTIME_DIR="${TMPDIR:-/tmp}/xdg-runtime-$(id -u)"
+    mkdir -p "$XDG_RUNTIME_DIR"
+    chmod 700 "$XDG_RUNTIME_DIR"
 fi
 
+unset os
+
 # common env var
-VISUAL=vim
-EDITOR=vim
-export LESSHISTFILE="$XDG_STATE_HOME/less/history"
-export ANDROID_HOME="$XDG_DATA_HOME/android"
-export DOCKER_CONFIG="$XDG_CONFIG_HOME/docker"
-export NPM_CONFIG_USERCONFIG="$XDG_CONFIG_HOME/npm/npmrc"
-export NODE_REPL_HISTORY="$XDG_STATE_HOME/node/history"
-mkdir -p $(dirname $LESSHISTFILE) \
-         $ANDROID_HOME \
-         $DOCKER_CONFIG \
-         $(dirname $NPM_CONFIG_USERCONFIG) \
-         $(dirname $NODE_REPL_HISTORY)
+export VISUAL=vim
+export EDITOR=vim
+
+export ANDROID_HOME="$XDG_DATA_HOME"/android
+export CARGO_HOME="$XDG_DATA_HOME"/cargo
+export DOCKER_CONFIG="$XDG_CONFIG_HOME"/docker
+export LESSHISTFILE="$XDG_STATE_HOME"/less/history
+export NODE_REPL_HISTORY="$XDG_STATE_HOME"/node/history
+export NPM_CONFIG_USERCONFIG="$XDG_CONFIG_HOME"/npm/npmrc
+export SONARLINT_USER_HOME="$XDG_DATA_HOME"/sonarlint
+export VAGRANT_HOME="$XDG_DATA_HOME"/vagrant
 
 # source any file in etc/sh/profile.d/
 for file in "$HOME"/".$USER-sh"/etc/sh/profile.d/*
@@ -52,7 +59,7 @@ do
 done
 
 # source .bashrc if bash login shell
-if [ -n "$BASH_VERSION" ] && shopt -q login_shell && [ -f "$HOME/.bashrc" ]
+if [ -n "${BASH_VERSION:-}" ] && shopt -q login_shell && [ -f "$HOME/.bashrc" ]
 then
     . "$HOME/.bashrc"
 fi

@@ -30,6 +30,7 @@ Documentation: [Waveshare PCIe_TO_M.2_Board_(D)][1]
 # Bootstrap
 sh <(curl -s https://git.sr.ht/~nyg/sh/blob/master/bootstrap.sh)
 
+./configure/xdg.sh
 ./configure/bash.sh
 ./configure/git.sh
 
