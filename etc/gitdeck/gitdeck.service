@@ -1,0 +1,18 @@
+[Unit]
+Description=Gitdeck local Git dashboard
+
+[Service]
+Type=simple
+WorkingDirectory=%h/.local/opt/gitdeck
+EnvironmentFile=%h/.config/gitdeck/env
+ExecStart=/usr/bin/node dist/server.js
+Restart=on-failure
+RestartSec=5
+NoNewPrivileges=true
+ProtectSystem=strict
+ProtectHome=read-only
+ReadWritePaths=%h/.gitdeck
+PrivateTmp=true
+
+[Install]
+WantedBy=default.target
