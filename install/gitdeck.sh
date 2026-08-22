@@ -16,17 +16,19 @@ then
         exit 1
     fi
 
-    if [ ! -x /usr/bin/node ]
+    node_bin=$(command -v node || true)
+
+    if [ -z "$node_bin" ]
     then
-        echo Node.js not found at /usr/bin/node, install it or adjust ExecStart >&2
+        echo Node.js not found in PATH, install it first >&2
         exit 1
     fi
 
-    node_major=$(/usr/bin/node -p 'process.versions.node.split(".")[0]')
+    node_major=$("$node_bin" -p 'process.versions.node.split(".")[0]')
 
     if [ "$node_major" -lt 22 ]
     then
-        echo Node.js 22 or later required, found "$(/usr/bin/node -v)" >&2
+        echo Node.js 22 or later required, found "$("$node_bin" -v)" >&2
         exit 1
     fi
 
@@ -56,6 +58,10 @@ then
     echo Linking service file…
     backup_if_exists "$unit_file"
     ln -s "$HOME/.$USER-sh/etc/gitdeck/gitdeck.service" "$unit_file"
+
+    echo Writing the Node.js path override…
+    mkdir -p "$unit_file.d"
+    printf '[Service]\nExecStart=\nExecStart=%s dist/server.js\n' "$node_bin" > "$unit_file.d/node.conf"
 
     echo Enabling lingering so the service survives logout…
     sudo loginctl enable-linger "$USER"
