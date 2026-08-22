@@ -10,12 +10,6 @@ then
     env_file="$XDG_CONFIG_HOME/gitdeck/env"
     unit_file="$XDG_CONFIG_HOME/systemd/user/gitdeck.service"
 
-    if [ ! -d "$gitdeck_dir" ]
-    then
-        echo "$gitdeck_dir" not found, clone gitdeck there first >&2
-        exit 1
-    fi
-
     if ! is_installed pnpm
     then
         echo pnpm not found, install it first >&2
@@ -35,6 +29,16 @@ then
         echo Node.js 22 or later required, found "$(/usr/bin/node -v)" >&2
         exit 1
     fi
+
+    if [ ! -d "$gitdeck_dir" ]
+    then
+        echo Cloning gitdeck into "$gitdeck_dir"…
+        mkdir -p "$(dirname "$gitdeck_dir")"
+        git clone https://github.com/debba/gitdeck.git "$gitdeck_dir"
+    fi
+
+    echo Building gitdeck…
+    (cd "$gitdeck_dir"; pnpm install --frozen-lockfile; pnpm run build)
 
     echo Creating directories…
     mkdir -p "$XDG_CONFIG_HOME/gitdeck" \
