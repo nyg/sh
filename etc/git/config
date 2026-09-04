@@ -6,6 +6,7 @@
     b = branch
     r = remote
     s = status
+    w = worktree
 
 [core]
     precomposeUnicode = false
