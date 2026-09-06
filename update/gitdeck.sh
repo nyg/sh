@@ -9,7 +9,7 @@ then
     echo Updating gitdeck…
     cd "$HOME/.local/opt/gitdeck"
     git pull --ff-only
-    pnpm install --frozen-lockfile
+    pnpm install
     pnpm run build
 
     echo Restarting gitdeck.service…
