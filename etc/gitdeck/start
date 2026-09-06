@@ -1,0 +1,9 @@
+#!/usr/bin/env sh
+
+set -eu
+
+export NVM_DIR="${XDG_DATA_HOME:-$HOME/.local/share}/nvm"
+
+. "$NVM_DIR/nvm.sh"
+
+exec "$(nvm which default)" dist/server.js

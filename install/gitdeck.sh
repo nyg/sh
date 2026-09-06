@@ -59,10 +59,6 @@ then
     backup_if_exists "$unit_file"
     ln -s "$HOME/.$USER-sh/etc/gitdeck/gitdeck.service" "$unit_file"
 
-    echo Writing the Node.js path override…
-    mkdir -p "$unit_file.d"
-    printf '[Service]\nExecStart=\nExecStart=%s dist/server.js\n' "$node_bin" > "$unit_file.d/node.conf"
-
     echo Enabling lingering so the service survives logout…
     sudo loginctl enable-linger "$USER"
 
