@@ -25,10 +25,6 @@ echo Linking npmrc configuration file…
 append_if_exists "$HOME/.npmrc" "$HOME/.$USER-sh/etc/npm/npmrc"
 ln -s "$HOME/.$USER-sh/etc/npm/npmrc" "${NPM_CONFIG_USERCONFIG:-$HOME/.npmrc}"
 
-echo Linking pnpm configuration file…
-backup_if_exists "$XDG_CONFIG_HOME/pnpm/config.yaml"
-ln -s "$HOME/.$USER-sh/etc/pnpm/config.yaml" "$XDG_CONFIG_HOME/pnpm/config.yaml"
-
 echo Linking nvm configuration file…
 ln -s "$HOME/.$USER-sh/etc/nvm/rc" "$HOME/.$USER-sh/etc/sh/rc.d/nvm.sh"
 

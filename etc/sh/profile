@@ -49,6 +49,7 @@ export DOCKER_CONFIG="$XDG_CONFIG_HOME"/docker
 export LESSHISTFILE="$XDG_STATE_HOME"/less/history
 export NODE_REPL_HISTORY="$XDG_STATE_HOME"/node/history
 export NPM_CONFIG_USERCONFIG="$XDG_CONFIG_HOME"/npm/npmrc
+export pnpm_config_allow_builds='{"esbuild":true}'
 export SONARLINT_USER_HOME="$XDG_DATA_HOME"/sonarlint
 export VAGRANT_HOME="$XDG_DATA_HOME"/vagrant
 

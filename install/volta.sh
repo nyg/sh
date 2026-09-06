@@ -28,10 +28,6 @@ then
     echo Installing pnpm…
     volta install pnpm
     echo 'export VOLTA_FEATURE_PNPM=1' >> "$HOME/.$USER-sh/etc/volta/profile"
-
-    echo Linking pnpm configuration file…
-    backup_if_exists "$XDG_CONFIG_HOME/pnpm/config.yaml"
-    ln -s "$HOME/.$USER-sh/etc/pnpm/config.yaml" "$XDG_CONFIG_HOME/pnpm/config.yaml"
 fi
 
 echo Done!

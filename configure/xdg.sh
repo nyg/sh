@@ -12,7 +12,6 @@ mkdir -p "$XDG_CACHE_HOME" \
 
 echo Creating directories for softwares which do not create their own…
 mkdir -p "$XDG_CONFIG_HOME/npm" \
-         "$XDG_CONFIG_HOME/pnpm" \
          "$XDG_STATE_HOME/less" \
          "$XDG_STATE_HOME/node"
 
