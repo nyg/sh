@@ -9,10 +9,11 @@ set -e
 echo Installing node latest version…
 current_version=$(nvm version)
 nvm install node --reinstall-packages-from=$current_version
+nvm alias default node
 nvm use node
 
 echo Removing node ${current_version}…
 nvm uninstall $current_version
 
 echo Updating pnpm…
-npm update -g pnpm
+npm update -g pnpm --allow-scripts=pnpm
