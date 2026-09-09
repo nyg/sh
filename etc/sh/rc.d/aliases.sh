@@ -132,10 +132,3 @@ if is_installed codium && ! is_installed code
 then
     alias code='codium'
 fi
-
-# pnpm
-if [ ${VOLTA_FEATURE_PNPM-0} -eq 1 ]
-then
-    alias npm='echo Use pnpm / np instead'
-    alias np='pnpm'
-fi

@@ -25,7 +25,8 @@ echo Linking npmrc configuration file…
 append_if_exists "$HOME/.npmrc" "$HOME/.$USER-sh/etc/npm/npmrc"
 ln -s "$HOME/.$USER-sh/etc/npm/npmrc" "${NPM_CONFIG_USERCONFIG:-$HOME/.npmrc}"
 
-echo Linking nvm configuration file…
+echo Linking nvm configuration files…
+ln -s "$HOME/.$USER-sh/etc/nvm/profile" "$HOME/.$USER-sh/etc/sh/profile.d/nvm.sh"
 ln -s "$HOME/.$USER-sh/etc/nvm/rc" "$HOME/.$USER-sh/etc/sh/rc.d/nvm.sh"
 
 echo Done!

@@ -1,0 +1,4 @@
+export JENV_ROOT="$XDG_DATA_HOME/jenv"
+export JENV_LOADED=1
+add_to_path -p "$JENV_ROOT/bin"
+add_to_path -p "$JENV_ROOT/shims"

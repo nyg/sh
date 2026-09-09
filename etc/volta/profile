@@ -1,2 +1,0 @@
-export VOLTA_HOME="$HOME/.config/volta"
-add_to_path "$VOLTA_HOME/bin"

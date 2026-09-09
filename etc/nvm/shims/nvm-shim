@@ -1,0 +1,48 @@
+#!/usr/bin/env sh
+
+set -eu
+
+NVM_DIR="${NVM_DIR:-${XDG_DATA_HOME:-$HOME/.local/share}/nvm}"
+
+newest_version_dir()
+{
+    ls -d "$NVM_DIR/versions/node"/v*/ 2>/dev/null | sed 's|/$||' | sort -V | tail -1
+}
+
+resolve_alias_dir()
+{
+    name=$1
+    hops=0
+
+    while [ "$hops" -lt 8 ]
+    do
+        case $name in
+            v[0-9]*)
+                if [ -x "$NVM_DIR/versions/node/$name/bin/node" ]
+                then
+                    printf '%s' "$NVM_DIR/versions/node/$name"
+                    return 0
+                fi
+                return 1
+                ;;
+        esac
+
+        [ -f "$NVM_DIR/alias/$name" ] || return 1
+        name=$(cat "$NVM_DIR/alias/$name")
+        hops=$((hops + 1))
+    done
+
+    return 1
+}
+
+tool=${0##*/}
+dir=$(resolve_alias_dir default 2>/dev/null || true)
+[ -n "${dir:-}" ] || dir=$(newest_version_dir)
+
+if [ -z "$dir" ] || [ ! -x "$dir/bin/$tool" ]
+then
+    echo "nvm-shim: no nvm-installed $tool under $NVM_DIR" >&2
+    exit 127
+fi
+
+exec "$dir/bin/$tool" "$@"

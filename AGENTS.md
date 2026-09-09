@@ -18,7 +18,9 @@ Personal dotfiles and machine provisioning repository, cloned to `$HOME/.$USER-s
 * `etc/sh/rc.d/*` sourced by interactive shells, bash skips the `zsh*` files,
 * `etc/bash/bashrc`, `etc/zsh/zshrc` interactive configuration of each shell.
 
-Install scripts wire a software into the shell by symlinking `etc/<software>/rc` to `etc/sh/rc.d/<software>.sh`.
+Install scripts wire a software into the shell by symlinking `etc/<software>/rc` to `etc/sh/rc.d/<software>.sh`, and `etc/<software>/profile` to `etc/sh/profile.d/<software>.sh` when the software also needs to be reachable outside an interactive shell.
+
+Version managers are split along that line: the `profile` half exports the root variable and puts the shims on the path, so hooks, launchd jobs and GUI applications resolve the right `python`, `java` or `node`, while the `rc` half runs `init` for the shell function and completions. `nvm` has no shims of its own, so `etc/nvm/shims` provides wrappers resolving its `default` alias.
 
 Everything under `etc/sh` must be POSIX and work in dash, bash and zsh, as all three source it, and `configure/xdg.sh` sources the profile under `set -eu`. Shell specific syntax belongs in `etc/bash` or `etc/zsh`.
 

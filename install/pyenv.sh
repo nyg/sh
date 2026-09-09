@@ -49,7 +49,8 @@ echo Setting version 3 as the global one…
 pyenv rehash
 pyenv global 3
 
-echo Linking pyenv configuration file…
+echo Linking pyenv configuration files…
+ln -s "$HOME/.$USER-sh/etc/pyenv/profile" "$HOME/.$USER-sh/etc/sh/profile.d/pyenv.sh"
 ln -s "$HOME/.$USER-sh/etc/pyenv/rc" "$HOME/.$USER-sh/etc/sh/rc.d/pyenv.sh"
 
 echo Done!
