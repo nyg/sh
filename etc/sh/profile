@@ -7,8 +7,11 @@ add_to_path()
         shift
     fi
 
-    [ ! -d "$1" ] && return
-    echo $PATH | grep "$1" > /dev/null && return
+    [ ! -d "$1" ] && return 0
+
+    case ":$PATH:" in
+        *":$1:"*) return 0 ;;
+    esac
 
     if [ $prepend -eq 1 ]
     then

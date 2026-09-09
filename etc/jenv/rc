@@ -1,6 +1,6 @@
 if typeset -f zsh-defer > /dev/null
 then
-    zsh-defer eval "$(jenv init -)"
+    zsh-defer -c 'eval "$(jenv init - | grep -v "^export PATH=")"'
 else
-    eval "$(jenv init -)"
+    eval "$(jenv init - | grep -v '^export PATH=')"
 fi

@@ -1,6 +1,6 @@
 if typeset -f zsh-defer > /dev/null
 then
-    zsh-defer eval "$(pyenv init -)"
+    zsh-defer -c 'eval "$(pyenv init - --no-push-path)"'
 else
-    eval "$(pyenv init -)"
+    eval "$(pyenv init - --no-push-path)"
 fi
