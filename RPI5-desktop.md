@@ -20,7 +20,7 @@ Set-up options with the Raspberry Pi Imager.
    4. configure git
    5. on mbp, add raspberrypi5 to etc hosts
       1. ssh user@raspberrypi5, worked
-      2. scp git@git.sr.ht* user@raspberrypi5:.ssh
+      2. scp git@github.com* user@raspberrypi5:.ssh
    6. change upstream and origin as explain in macos doc
    7. configure ssh client for ssh config
    8. push master in user-sh

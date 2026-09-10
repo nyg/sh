@@ -17,18 +17,18 @@ Documentation: [Waveshare PCIe_TO_M.2_Board_(D)][1]
    does not appear to work with the Samsung 990 Pro (boot fails).
 1. Nice to have: [update the bootloader][2] ([bootloader version][3])
 1. Set password, keyboard layout, hostname and timezone (could be set using the Raspberry Pi Imager, along with SSH keys, etc.)
-1. Copy authorized_keys and sr.ht SSH keys from SD card
+1. Copy authorized_keys and GitHub SSH keys from SD card
    ```sh
    mkdir ~/sdcard
    sudo mount /dev/mmcblk0p2 ~/sdcard
-   cp ~/sdcard/home/user/.ssh/{authorized_keys,git@git.sr.ht*}
+   cp ~/sdcard/home/user/.ssh/{authorized_keys,git@github.com*} ~/.ssh/
    ```
 
 ### Post-install
 
 ```sh
 # Bootstrap
-sh <(curl -s https://git.sr.ht/~nyg/sh/blob/master/bootstrap.sh)
+sh <(curl -s https://raw.githubusercontent.com/nyg/sh/master/bootstrap.sh)
 
 ./configure/xdg.sh
 ./configure/bash.sh

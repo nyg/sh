@@ -3,8 +3,8 @@
 # The goal of this script is to clone the repo in $HOME/.$USER-sh.
 #
 # Usage:
-#   sh <(curl -s https://git.sr.ht/~nyg/sh/blob/master/bootstrap.sh)
-#   sh <(wget -q -O - https://git.sr.ht/~nyg/sh/blob/master/bootstrap.sh)
+#   sh <(curl -s https://raw.githubusercontent.com/nyg/sh/master/bootstrap.sh)
+#   sh <(wget -q -O - https://raw.githubusercontent.com/nyg/sh/master/bootstrap.sh)
 
 set -eu
 
@@ -72,7 +72,7 @@ fi
 
 #
 # Clone the repo into `$HOME/.$USER-sh'.
-git clone https://git.sr.ht/~nyg/sh "$HOME/.$USER-sh"
+git clone https://github.com/nyg/sh.git "$HOME/.$USER-sh"
 mkdir -p "$HOME/.$USER-sh/softwares" \
          "$HOME/.$USER-sh/etc/zsh/sh/profile.d" \
          "$HOME/.local/bin" \

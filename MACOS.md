@@ -21,7 +21,7 @@
 1. Update macOS and configure auto-update settings.
 2. Configure iCloud settings.
 3. Download and setup 1Password: https://1password.com/downloads/mac/.
-4. Bootstrap `sh` with `sh <(curl -s https://git.sr.ht/~nyg/sh/blob/master/bootstrap.sh)`.
+4. Bootstrap `sh` with `sh <(curl -s https://raw.githubusercontent.com/nyg/sh/master/bootstrap.sh)`.
 5. While bootstrap runs, configure System Preferences and macOS apps preferences.
 6. Run bootstrap configuration and install scripts (see below).
 7. Restore back-up (installed brew softwares, App Store, etc.)
@@ -43,8 +43,8 @@ cp /Volumes/<path-to-ssh-keys> ~/.ssh
 
 # git
 ./configure/git.sh
-git remote add upstream git@git.sr.ht:~nyg/sh
-git remote set-url origin git@git.sr.ht:~nyg/sh-<id>
+git remote add upstream git@github.com:nyg/sh.git
+git remote set-url origin git@github.com:nyg/sh-<id>.git
 git push -u origin master
 
 # vim
