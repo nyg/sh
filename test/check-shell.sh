@@ -12,7 +12,7 @@ then
     status=1
 fi
 
-for cmd in brew git python java node pnpm mvnd
+for cmd in brew git python java node pnpm mvnd gpg mariadb
 do
     echo "==> $cmd"
     if command -v "$cmd"
@@ -23,6 +23,25 @@ do
         status=1
     fi
 done
+
+for app in mvnd visualvm
+do
+    echo "==> $app in ~/.local/opt"
+    target=$(readlink "$HOME/.local/bin/$app")
+    echo "$target"
+    case $target in
+        "$HOME/.local/opt/$app/"*) [ -x "$target" ] || status=1 ;;
+        *) status=1 ;;
+    esac
+done
+
+echo "==> zsh-defer"
+zsh -ic 'whence -w zsh-defer' < /dev/null || status=1
+
+echo "==> brew cron job"
+crontab -l
+cron_path=$(crontab -l | sed -n 's/^PATH=//p')
+PATH="$cron_path" command -v brew || status=1
 
 echo "==> jenv doctor"
 doctor=$(jenv doctor 2>&1)

@@ -137,13 +137,18 @@ for script in configure/xdg.sh \
               configure/brew.sh \
               configure/zsh.sh \
               install/zsh-p10k.sh \
+              install/zsh-defer.sh \
+              configure/brew-cron.sh \
               configure/ssh-client.sh \
               configure/git.sh \
               configure/vim.sh \
               install/pyenv.sh \
               install/jenv.sh \
               install/nvm.sh \
-              install/mvnd.sh
+              install/mvnd.sh \
+              install/visualvm.sh \
+              install/gpg.sh \
+              install/mariadb.sh
 do
     input=/dev/null
     [ "$script" = configure/git.sh ] && input="$work_dir/git-answers"
