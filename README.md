@@ -23,7 +23,8 @@ Files are divided in multiple folders:
 * `configure` configuration scripts (for softwares that are already installed),
 * `update` update scripts for installed softwares,
 * `softwares` install location for softwares such as Postman, SQLDeveloper, etc.
-* `backup` backup scripts for specific OSes.
+* `backup` backup scripts for specific OSes,
+* `test` run of the macOS post-install flow in a throwaway Tart VM.
 
 `common.sh` holds the helpers shared by these scripts.
 

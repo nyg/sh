@@ -9,6 +9,7 @@ Personal dotfiles and machine provisioning repository, cloned to `$HOME/.$USER-s
 * `etc` configuration files, one directory per software, symlinked into `$HOME` or the XDG directories,
 * `bin` utility scripts, added to the path,
 * `backup` backup scripts for specific OSes,
+* `test` run of the macOS post-install flow in a throwaway Tart VM,
 * root markdown files, per-machine setup walkthroughs.
 
 ## Shell initialization

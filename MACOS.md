@@ -1,3 +1,17 @@
+## Test
+
+Run the post-install flow below in a throwaway VM of the future OS, using [Tart](https://tart.run) and a Cirrus Labs vanilla image. An image of a newer OS may need a newer host, e.g. the macOS 27 image needs Tahoe.
+
+```sh
+brew install openai/tools/tart
+tart clone ghcr.io/cirruslabs/macos-<name>-vanilla:<version> <vm>
+
+./backup/macos.sh
+test/macos-vm.sh -f backup-<date>/brew-install.sh -c backup-<date>/brew-cask-install.sh <vm>
+```
+
+Each run clones `<vm>`, so it stays untouched, and writes its logs to `test/logs`. The terminal running it needs the Local Network permission to reach the VM.
+
 ## Before
 
 1. Create Time Machine backups on two differents disks.
