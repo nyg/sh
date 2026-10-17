@@ -11,6 +11,7 @@ set -eu
 # url="https://www.oracle.com/webapps/redirect/signon?nexturl=$download_url"
 # echo URL is "$url"
 url=https://www.oracle.com/database/sqldeveloper/technologies/download/
+sqldeveloper_dir="$HOME/.local/opt/sqldeveloper"
 
 echo "Web browser will open at: $url"
 echo "Save SQLDeveloper for Other Platforms into the Downloads folder."
@@ -29,18 +30,18 @@ then
 fi
 
 echo Removing previous version…
-rm -rf "$HOME/.$USER-sh/softwares/sqldeveloper"
+rm -rf "$sqldeveloper_dir"
 
 echo Extracting archive…
-unzip "$archive" -d $HOME/.$USER-sh/softwares/
+unzip "$archive" -d "$(dirname "$sqldeveloper_dir")"
 rm $archive
 
 echo Overriding launcher…
-launcher="$HOME/.$USER-sh/softwares/sqldeveloper/sqldeveloper.sh"
+launcher="$sqldeveloper_dir/sqldeveloper.sh"
 echo "#!/usr/bin/env sh" > "$launcher"
-echo 'nohup $HOME/.$USER-sh/softwares/sqldeveloper/sqldeveloper/bin/sqldeveloper > /dev/null 2>&1 &' >> "$launcher"
+echo "nohup \"$sqldeveloper_dir/sqldeveloper/bin/sqldeveloper\" > /dev/null 2>&1 &" >> "$launcher"
 
 echo Linking launcher to "$HOME/.local/bin/sqldev"…
-ln -s "$HOME/.$USER-sh/softwares/sqldeveloper/sqldeveloper.sh" "$HOME/.local/bin/sqldev" || echo Link already exists
+ln -sf "$launcher" "$HOME/.local/bin/sqldev"
 
 echo Done!

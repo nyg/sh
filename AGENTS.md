@@ -31,6 +31,7 @@ Everything under `etc/sh` must be POSIX and work in dash, bash and zsh, as all t
 * a `bash` or `zsh` shebang only when the script needs their syntax,
 * branch on the OS with `is_os Darwin` or `is_os Linux && is_installed apt`,
 * call `backup_if_exists` before symlinking over an existing file,
+* install self-contained vendor bundles into `$HOME/.local/opt/<software>` and link their launcher into `$HOME/.local/bin`,
 * end with `exec $SHELL -l` when the shell configuration changed,
 * detect the architecture with `uname -m`, handling both `aarch64` and `arm64`.
 

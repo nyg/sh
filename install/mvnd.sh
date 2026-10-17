@@ -29,6 +29,8 @@ else
     exit 1
 fi
 
+mvnd_dir="$HOME/.local/opt/mvnd"
+
 echo Downloading mvnd from "$download_url"…
 (cd /tmp; curl -Lo mvnd.zip "$download_url")
 
@@ -39,14 +41,14 @@ then
 fi
 
 echo Removing previous version…
-rm -rf "$HOME/.$USER-sh/softwares/mvnd"
+rm -rf "$mvnd_dir"
 
 echo Extracting archive…
-unzip /tmp/mvnd.zip -d "$HOME/.$USER-sh/softwares/"
+unzip /tmp/mvnd.zip -d "$(dirname "$mvnd_dir")"
 rm /tmp/mvnd.zip
-mv "$HOME"/".$USER-sh"/softwares/maven-mvnd-* "$HOME/.$USER-sh/softwares/mvnd"
+mv "$(dirname "$mvnd_dir")"/maven-mvnd-* "$mvnd_dir"
 
 echo Linking launcher to "$HOME/.local/bin/mvnd"…
-ln -s "$HOME/.$USER-sh/softwares/mvnd/bin/mvnd.sh" "$HOME/.local/bin/mvnd" || echo Link already exists
+ln -sf "$mvnd_dir/bin/mvnd.sh" "$HOME/.local/bin/mvnd"
 
 echo Done!

@@ -6,8 +6,10 @@ set -eu
 
 if is_os Linux
 then
+    postman_dir="$HOME/.local/opt/postman"
+
     echo Removing existing version…
-    rm -rf "$HOME/.$USER-sh/softwares/postman"
+    rm -rf "$postman_dir"
 
     echo Downloading latest Postman version…
 
@@ -20,20 +22,21 @@ then
     fi
 
     echo Extracting archive…
-    tar xvf /tmp/postman.tar.gz -C "$HOME/.$USER-sh/softwares"
+    mkdir -p "$(dirname "$postman_dir")"
+    tar xvf /tmp/postman.tar.gz -C "$(dirname "$postman_dir")"
     rm /tmp/postman.tar.gz
 
-    mv "$HOME/.$USER-sh/softwares/Postman/app" "$HOME/.$USER-sh/softwares/postman"
-    rm -rf "$HOME/.$USER-sh/softwares/Postman"
+    mv "$(dirname "$postman_dir")/Postman/app" "$postman_dir"
+    rm -rf "$(dirname "$postman_dir")/Postman"
 
     echo Creating launcher…
-    launcher="$HOME/.$USER-sh/softwares/postman/postman.sh"
+    launcher="$postman_dir/postman.sh"
     echo "#!/usr/bin/env sh" > "$launcher"
-    echo 'nohup $HOME/.$USER-sh/softwares/postman/Postman > /dev/null 2>&1 &' >> "$launcher"
+    echo "nohup \"$postman_dir/Postman\" > /dev/null 2>&1 &" >> "$launcher"
     chmod u+x "$launcher"
 
     echo Linking launcher to "$HOME/.local/bin/postman"…
-    ln -s "$HOME/.$USER-sh/softwares/postman/postman.sh" "$HOME/.local/bin/postman" || echo Link already exists
+    ln -sf "$launcher" "$HOME/.local/bin/postman"
 
     echo Done!
 else

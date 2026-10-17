@@ -22,7 +22,7 @@ Files are divided in multiple folders:
 * `uninstall` uninstallation scripts,
 * `configure` configuration scripts (for softwares that are already installed),
 * `update` update scripts for installed softwares,
-* `softwares` install location for softwares such as Postman, SQLDeveloper, etc.
+* `softwares` install location for zsh plugins, standalone applications such as Postman or SQLDeveloper go into `~/.local/opt`,
 * `backup` backup scripts for specific OSes,
 * `test` run of the macOS post-install flow in a throwaway Tart VM.
 
