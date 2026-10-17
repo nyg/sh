@@ -20,8 +20,14 @@ chmod u+x $bck_dir/mas-install.sh
 brew leaves --installed-on-request | xargs -n1 echo brew install > $bck_dir/brew-install.sh
 chmod u+x $bck_dir/brew-install.sh
 
-# Homebrew casks
-brew list --cask | xargs -n1 echo brew install --cask > $bck_dir/brew-cask-install.sh
+# Homebrew casks, prefixed with their tap, which `brew list --full-name` omits for untrusted taps
+taps_dir="$(brew --repository)/Library/Taps"
+brew list --cask | while read -r cask
+do
+    cask_file=$(find "$taps_dir" -path '*/Casks/*' -name "$cask.rb" | head -1)
+    tap=$(echo "${cask_file#"$taps_dir"/}" | awk -F/ 'NF > 1 { sub(/^homebrew-/, "", $2); printf "%s/%s/", $1, $2 }')
+    echo brew install --cask "$tap$cask"
+done > $bck_dir/brew-cask-install.sh
 chmod u+x $bck_dir/brew-cask-install.sh
 
 
