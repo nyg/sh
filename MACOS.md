@@ -75,4 +75,7 @@ git push -u origin master
 
 # mvnd
 ./install/mvnd.sh
+
+# colima
+./configure/colima.sh
 ```

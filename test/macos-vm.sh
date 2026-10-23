@@ -142,6 +142,7 @@ for script in configure/xdg.sh \
               configure/ssh-client.sh \
               configure/git.sh \
               configure/vim.sh \
+              configure/colima.sh \
               install/pyenv.sh \
               install/jenv.sh \
               install/nvm.sh \

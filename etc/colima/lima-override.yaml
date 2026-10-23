@@ -1,0 +1,5 @@
+portForwards:
+  - guestIP: "0.0.0.0"
+    guestPortRange: [1, 65535]
+    hostIP: "127.0.0.1"
+    proto: any
