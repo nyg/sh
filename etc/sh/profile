@@ -45,6 +45,7 @@ unset os
 # common env var
 export VISUAL=vim
 export EDITOR=vim
+export DISABLE_TELEMETRY=1
 
 export ANDROID_HOME="$XDG_DATA_HOME"/android
 export CARGO_HOME="$XDG_DATA_HOME"/cargo
